@@ -1,0 +1,8 @@
+{
+  "datum": "2026-10-21",
+  "meddelande": "Det blir regn efter lunch. Paraply, sir – och ni andra.",
+  "handelser": [
+    {"id": "tandlakare-1", "datum": "2026-10-23", "tid": "09:30", "text": "Tandläkare", "vem": "me"}
+  ],
+  "inkop": ["kaffe", "havregryn"]
+}
