@@ -1,32 +1,55 @@
-# Jarvis hemskärm v2 – planeringstavla för kylskåpet
+# Jarvis hemskärm 3.0 – planeringstavla för kylskåpet (och mobilen)
 
-En enda fil (`index.html`) för en gammal iPad Air 2 (iOS 15, Safari 15).
-Byggd för liggande läge (1024×768) men fungerar även stående (768×1024).
-Allt är på svenska och kan ändras direkt på plattan.
+En enda fil (`index.html`) för en gammal iPad Air 2 (iOS 15, Safari 15). Ingen byggprocess,
+inga externa bibliotek. Byggd för liggande läge (1024×768), fungerar stående (768×1024)
+och har en egen mobillayout (t.ex. 390×844). Allt är på svenska och ändras direkt på skärmen.
 
-## Det här finns
+## Nytt i 3.0
+
+- **Dagens Jarvis** – morgonkort som samlar dagen: kalender, räkningar, mat som går ut, paket, underhåll, röda dagar och en torr kommentar. På kvällen byter det till *Kvällens Jarvis*.
+- **Snabbtillägg (+)** – en knapp för allt: inköp, att göra, lapp, kylen, händelse, paket, Till Jarvis och recept.
+- **Svensk kalender** – röda dagar, aftnar, flaggdagar (inkl. valdag), klämdagar, sommar-/vintertid, mors/fars dag, kanelbullens dag m.m. Räknas ut för alla år. Namnsdag (Svenska Akademiens almanacka).
+- **Hemmet** – räkningar (betald-bock, kvar att betala denna månad), prenumerationer (kr/mån och kr/år, "se över"-markering), underhåll (brandvarnare, filter, däckbyte … med förlopp) och paket (på väg → att hämta → hämtat, med uthämtningskod).
+- **Receptbank** – favoriter, senast lagad, "Till menyn" och "Spara i receptbanken" från veckomenyn.
+- **Vad ska vi äta?** – Jarvis föreslår en middag, helst med det som snart går ut i kylen och inget ni åt nyss. Välj dag och lägg ingredienserna i inköpslistan.
+- **Kylen** – bäst före-datum i ordning, Uppätet/Slängt och en liten månadsstatistik.
+- **Familjetavlan** – veckan som rutnät: middag, varje person, båda och hämtning.
+- **Sysslor med poäng och sviter** – 1–3 poäng per syssla, veckans ställning och "veckor i rad allt klart".
+- **Lappar med avsändare och tid**, plus **Till Jarvis** – meddelanden sparas lokalt och märks "väntar på synk" (riktig synk kommer senare).
+- **Kvällsläge och Godnatt-vy** – efter kl. 20 (ändras i Inställningar): i morgon (väder, händelser, sopor att ställa ut, middag), kvällsrutin att bocka av, det som ligger kvar, och "Släck skärmen".
+- **Mobillayout och "Den här enheten"** – flikrad längst ner, Mer-meny och plusknapp. Varje enhet kan veta vem som använder den (hälsar med namn och sätter avsändare). Sparas bara på enheten.
+- Mjuka animationer som följer inställningen *Rörelse* och systemets "minska rörelse".
+- **Fler personer i hushållet** – Inställningar → *Hushållet*: lägg till, byt namn, ändra färg/emoji, flytta upp/ner och ta bort. Varje person kan vara vuxen, barn eller husdjur/annan. Alla färger är ljusa pastellfärger med mörk text, så de klarar kontrastregeln i alla teman.
+  - Alla val av "vem" (uppgifter, händelser, inköp, lappar, paket, kylen, Till Jarvis, viktiga datum, *Den här enheten*) visar alla personer. Med exakt två heter det gemensamma valet **Båda**, med fler **Alla**.
+  - Sysslor kan växla mellan valfria personer (t.ex. bara barnen). En ny person kommer automatiskt med i sysslor som redan växlar mellan alla. Poäng och svit räknas per person. Husdjur får inga poäng.
+  - Familjetavlan får en rad per person plus Alla. Födelsedagar kan kopplas till en person och syns då på deras rad.
+  - Tar man bort någon frågar Jarvis vem som ska ta över deras saker (Alla eller en annan person). Inget raderas. Den sista personen kan inte tas bort.
+  - Befintlig data flyttas över automatiskt: gamla "me/partner" blir de två första personerna med samma id, så inget i listorna behöver skrivas om och sysslornas växling blir som förut.
+
+Allt från v2 finns kvar (Idag, Vecka, veckomeny → inköp, inköpslista per avdelning, sysslor med rotation,
+hämtning, timers med larm, väder, 12 teman, skärmsläckare, nattdämpning, säkerhetskopia).
+Data från v2 (och v1) flyttas över automatiskt första gången 3.0 öppnas. v2-datan lämnas orörd som reserv.
+Några tydligt märkta exempel (en elräkning, en streamingtjänst, en brandvarnare) läggs in – ta bort dem med
+Inställningar → *Ta bort exempel*.
+
+## Vyer
 
 | Vy | Innehåll |
 |---|---|
-| **Hem** | Stor klocka, datum, vecka och Jarvis hälsning. Vädret just nu med timmar och 5 dagar framåt. **Nästa** (nästa händelse med nedräkning). Påminnelser: timers, sophämtning, födelsedagar, nedräkning till högtid. Idag, Ikväll äter vi och Inköp i korthet. |
-| **Idag** | Att göra (bocka av), dagens schema, hämtning, veckans sysslor och lappar till varandra. |
-| **Vecka** | Måndag till söndag med händelser och veckans middagar. Bläddra framåt och bakåt. Viktiga datum (födelsedagar, årsdagar) med ålder. |
-| **Mat** | Veckomeny med middag per veckodag. **Till inköp** lägger ingredienserna i inköpslistan (en dag eller hela veckan, utan dubbletter). |
-| **Inköp** | Sorterat per avdelning: Frukt & grönt, Mejeri, Kött & fisk, Skafferi, Hushåll, Övrigt. Avdelningen gissas från vanliga svenska ord. Flera varor går att lägga till samtidigt med komma. Favoriter läggs till med ett tryck. |
-| **Sysslor** | Per person. ↻-sysslor byter person varje måndag och allt nollställs varje vecka. Sophämtning och återvinning varje, varannan eller var fjärde vecka. |
-| **Timer** | Flera namngivna timers med stor nedräkning, paus och +1 min. När tiden är ute: blinkande helskärm och pip. |
-| **Inställningar** | Namn, väderort (sök), tema, semesterläge, rörelse, glaseffekt, skärmsläckare, nattdämpning, ljud, nedräkning, säkerhetskopia. |
+| **Hem** | Klocka, datum, vecka, röda dagar/namnsdag, hälsning. Väder. Nästa händelse. Ikväll äter vi (tärning = förslag). Idag, Dagens Jarvis, Inköp. |
+| **Idag** | Att göra, schema, hämtning, veckans sysslor, lappar. Knapp till Godnatt-läget på kvällen. |
+| **Vecka** | Kalender (med röda dagar och namnsdagar) eller Familjetavla. Kommande: viktiga datum och helgdagar. |
+| **Mat** | Veckomeny, Receptbank och Kylen. |
+| **Inköp** | Per avdelning, favoriter, flera varor med komma. |
+| **Sysslor** | Poängställning, svit, sysslor per person och hämtning. |
+| **Hemmet** | Räkningar, Prenumerationer, Underhåll, Paket. |
+| **Lappar** | Stora lappar och Till Jarvis. |
+| **Timer** | Flera timers med namn, larm i helskärm. |
+| **Inställningar** | Den här enheten, hushållet (personer), utseende, kalender, skärm & ljud, väder, säkerhetskopia. |
 
-Händelser kan upprepas varje vecka, varannan vecka, varje månad eller varje år.
-Varje sak kan märkas Patrik, Sambo eller Båda. Namnen ändras i Inställningar.
-
-Skärmsläckaren startar efter valt antal minuter utan beröring (standard 5 min).
-Den visar en stor klocka, vädret och nästa händelse, och flyttar sig långsamt
-så att inget bränns in i skärmen. Tryck för att väcka.
-
-Kontrast: ljus text på mörka ytor, mörk text bara på ljusa ytor (knappar, lappar,
-inmatningsfält, dialogrutor). Alla teman och vyer har kontrollerats automatiskt.
-Svagaste text ligger på kontrast 7:1 (WCAG AAA).
+Kontrast: ljus text på mörka och halvmörka ytor, mörk text bara på ljusa/gula ytor.
+Alla 12 teman och alla vyer (liggande, stående och mobil) kontrolleras automatiskt:
+brödtext minst 7:1, stor text minst 4,5:1, och ingen mörk text på mörk bakgrund.
 
 ## Teman (byts automatiskt efter datum)
 
@@ -93,7 +116,7 @@ Den blinkande helskärmen visas alltid, även utan ljud.
 Allt sparas bara på iPaden. Inställningar → **Exportera fil**. Om nedladdning inte
 fungerar i helskärmsläge: **Visa som text** → kopiera → klistra in i Anteckningar.
 Återställ med **Importera fil** eller **Importera text**.
-Data från v1 flyttas över automatiskt första gången v2 öppnas.
+Data från v2/v1 flyttas över automatiskt första gången 3.0 öppnas. Inställningen *Den här enheten* följer inte med i säkerhetskopian (den gäller bara enheten).
 
 ## 7. Dagligt meddelande från Jarvis (förberett)
 
@@ -104,27 +127,36 @@ GitHub Pages-förråd), dyker dagens rad upp av sig själv.
 
 ## 8. Begränsningar
 
-- Data finns bara på den här iPaden. Ingen synk med telefonerna.
+- Data finns bara på varje enhet. Ingen synk mellan iPad och telefoner än – "Till Jarvis" och avsändare är förberedda för synken.
 - Raderar man webbplatsdata, eller tar bort ikonen, försvinner listorna. Ha en säkerhetskopia.
 - Timers fortsätter räkna även om sidan laddas om, men iPaden kan inte pipa när skärmen är låst.
-- Sysslornas rotation växlar strikt varannan vecka. Den räknar inte vem som faktiskt gjorde vad.
+- Sysslornas rotation växlar varje vecka. Poängen räknar vem som bockade av, men på en delad skärm är det den som är vald i *Den här enheten* (eller sysslans person).
+- Namnsdagarna följer almanackan som den ser ut 2026 (de sex nya namnen från 2027 är inte med). Skollov är inte med – de skiljer sig mellan kommuner.
+- Räkningar och prenumerationer är bara påminnelser. Inget kopplas till banken.
+- Receptförslaget matchar ingredienser på ordstam (t.ex. "laxfilé" ↔ "lax"). Det kan missa ibland.
 - Kategorigissningen är en ordlista. Okända varor hamnar i Övrigt och kan flyttas för hand.
 
 ## Filer
 
 | Fil | Vad |
 |---|---|
-| `index.html` | Hela appen (v2). |
-| `v1-index.html` | Förra versionen, som reserv. |
+| `index.html` | Hela appen (3.0). |
+| `v2-index.html`, `v1-index.html` | Tidigare versioner, som reserv. |
 | `manifest.webmanifest`, `icon-*.png` | Namn och ikon på hemskärmen. |
 | `sw.js` | Offline-cache (bara via https). |
 | `dagens.exempel.json` | Format för dagligt meddelande. |
 | `src/` | Källdelar som `index.html` sätts ihop av (`cat src/* > index.html`). Behövs inte på plattan. |
 | `test/` | Testsidor och skript (funktionstest, kontrastgranskning, skärmdumpar). Behövs inte på plattan. |
-| `screens/` | Skärmdumpar. |
+| `screens/` | Skärmdumpar (`v3-*.png` för 3.0). |
+| `demo/` | Demovideo (`hemskarm-v3-demo.mp4`), tilläggsklipp om fler personer (`hemskarm-v3-personer.mp4`) och kontaktark. |
+| `src-v2/`, `test-v2/` | Källor och tester för v2, som reserv. |
 
 ## Testläge (på en dator, inte på plattan)
 
 `index.html?datum=2026-12-10&tid=08:00` låtsas att det är ett annat datum. Andra parametrar:
-`?tema=midsommar`, `?vy=inkop`, `?saver=1` och `?wx=fixture` (låtsasväder utan nät).
+`?tema=midsommar`, `?vy=inkop`, `?saver=1`, `?wx=fixture` (låtsasväder utan nät), `?enhet=telefon`, `?jag=me`,
+`?sub=recept` (Mat) och `?vmode=tavla` (Vecka). `test/seed.html?…&fyra=1` ger ett påhittat hushåll med fyra personer.
+
+Tester: starta `python3 -m http.server 8017` i mappen och kör `node test/run-test.js 1024 768`
+(även `768 1024` och `390 844`), `node test/audit.js landscape|portrait|phone` (med `FYRA=1` för fyra personer) och `node test/shots.js`.
 Ett låtsat datum kan räknas som en ny dag och rensa avbockade uppgifter, så använd det inte på riktig data.
