@@ -11,9 +11,9 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
-<title>Jarvis – hemskärm 3.0</title>
+<title>Jarvis – hemskärm 4.0</title>
 <style>
-/* Jarvis hemskärm 3.0 – en fil, ingen byggprocess. Mål: iPad Air 2 / Safari 15.
+/* Jarvis hemskärm 4.0 – en fil, ingen byggprocess. Mål: iPad Air 2 / Safari 15.
    Regel: ljus text på mörka ytor, mörk text bara på ljusa ytor (knappar, lappar, fält, dialoger). */
 :root{
   --c1:#071d24;--c2:#0b3340;--c3:#0f4a52;
@@ -153,7 +153,7 @@ body.glass .card{background:linear-gradient(180deg,rgba(var(--card),.62),rgba(va
 #v-home{display:none}
 #v-home.on{display:grid}
 #v-home{grid-template-columns:repeat(12,1fr);grid-template-rows:214px 100px minmax(0,1fr);gap:14px;
-  grid-template-areas:"clk clk clk clk clk wx wx wx wx wx wx wx" "nx nx nx nx nx nx nx ml ml ml ml ml" "td td td td jv jv jv jv sh sh sh sh"}
+  grid-template-areas:"clk clk clk clk clk wx wx wx wx wx wx wx" "nx nx nx nx nx ml ml ml ml cd cd cd" "td td td td jv jv jv jv sh sh sh sh"}
 #hClock{grid-area:clk;display:flex;flex-direction:column;justify-content:flex-start;padding:2px 4px 0;text-shadow:0 0 3px rgba(0,0,0,.55),0 0 14px rgba(0,0,0,.55),0 2px 22px rgba(0,0,0,.5);min-width:0}
 .bigtime{font-size:100px;font-weight:200;letter-spacing:-4px;line-height:.92;font-variant-numeric:tabular-nums}
 .bigtime .sec2{font-size:.3em;font-weight:300;letter-spacing:0;color:var(--ink2);margin-left:6px}
@@ -545,8 +545,10 @@ body.isnight #saverDim,#saver.deep #saverDim{opacity:.5}
   #main{left:0;height:calc(var(--vh) * 100 - 86px)}
   #garland{left:0}
   #v-home{grid-template-columns:repeat(12,1fr);grid-template-rows:200px 176px 96px minmax(0,1fr);
-    grid-template-areas:"clk clk clk clk clk clk clk clk clk clk clk clk" "wx wx wx wx wx wx wx wx wx wx wx wx" "nx nx nx nx nx nx nx ml ml ml ml ml" "td td td td jv jv jv jv sh sh sh sh"}
-  .bigtime{font-size:118px}
+    grid-template-areas:"clk clk clk clk clk clk clk clk cd cd cd cd" "wx wx wx wx wx wx wx wx wx wx wx wx" "nx nx nx nx nx nx nx ml ml ml ml ml" "td td td td jv jv jv jv sh sh sh sh"}
+  #hCd .cdt2{display:block}#hCd .cdtop b{font-size:52px}
+  .bigtime{font-size:104px}
+  #v-home .ch .cnt{display:none}
   #tpills{bottom:100px;right:auto;left:18px;align-items:flex-start}
   .weekgrid{flex-direction:column;overflow-y:auto}
   .wday{margin:0 0 10px;flex:0 0 auto}
@@ -581,7 +583,8 @@ body.phone #main{left:0;right:0;height:calc(var(--vh) * 100 - 74px - env(safe-ar
 body.phone #garland{left:0}
 body.phone .view.on{height:auto;display:block}
 body.phone #v-home.on{display:flex;flex-direction:column}
-body.phone #hClock{order:0}body.phone #hWx{order:1}body.phone #hNext{order:2}body.phone #hJarvis{order:3}body.phone #hMeal{order:4}body.phone #hToday{order:5}body.phone #hShop{order:6}
+body.phone #hClock{order:0}body.phone #hWx{order:1}body.phone #hNext{order:2}body.phone #hCd{order:3}body.phone #hJarvis{order:4}body.phone #hMeal{order:5}body.phone #hToday{order:6}body.phone #hShop{order:7}
+body.phone #hCd{min-height:96px}body.phone #hCd .cdt2{display:block}
 body.phone #v-home > *{flex:0 0 auto}
 body.phone .nextc{padding:0 14px}body.phone .nextc .ic{width:46px;height:46px;margin-right:12px}body.phone .nextc .tx{font-size:18px;white-space:normal;line-height:1.2}body.phone .nextc .when b{font-size:18px}body.phone .nextc{flex-wrap:wrap;padding:12px 14px;height:auto}body.phone .nextc .when{flex:1 1 100%;max-width:none;text-align:left;margin:4px 0 0 58px;display:flex;align-items:baseline}body.phone .nextc .when small{margin-left:8px}body.phone .nextc .tx{-webkit-line-clamp:2}
 body.phone .view .card{margin-bottom:12px}
@@ -623,7 +626,6 @@ body.phone .score .sq{max-width:none;margin-top:8px;flex:1 1 100%}
 body.phone .datesStrip{flex-direction:column}
 body.phone .datesStrip .ch{flex-basis:auto;border-right:0;flex-direction:row;align-items:center}
 body.phone .datesStrip .ch > * + *{margin:0 0 0 auto !important}
-body.phone .board{overflow-x:auto}
 body.phone .brow2{min-width:760px;min-height:80px}
 body.phone .seg2{display:flex;width:100%}
 body.phone .seg2 button{flex:1 1 0;justify-content:center;padding:0 8px}
@@ -642,6 +644,127 @@ body.phone #saver .st{font-size:110px;letter-spacing:-4px}
 body.phone #saver .sd{font-size:22px}
 body.phone #saver .sx > div{font-size:20px;margin:8px 10px}
 body.phone .rem{font-size:15px}
+
+/* ---------- v4 ---------- */
+#hCd{grid-area:cd;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:8px 14px;color:var(--ink);overflow:hidden;min-width:0}
+#hCd .lbl{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink3)}
+.cdtop{display:flex;align-items:baseline;line-height:1;margin-top:2px}
+.cdtop .ce{font-size:24px;margin-right:6px;align-self:center}
+.cdtop b{font-size:36px;font-weight:300;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.cdtop span{font-size:15px;color:var(--ink2);margin-left:6px}
+.cdt1{font-size:15px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin-top:2px}
+.cdt2{display:none;font-size:14px;color:var(--ink2);line-height:1.45;margin-top:6px}
+.cdt2 b{color:var(--ink)}
+.cdnone{font-size:15px;color:var(--ink2);font-style:italic;margin-top:4px}
+.subnav{flex:0 0 auto;margin:-4px 0 14px}
+.subnav .seg2{flex-wrap:wrap}
+.pi2{flex:0 0 auto;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-right:12px;color:#111}
+.pi2 svg{width:22px;height:22px}
+.pbar{height:10px;border-radius:5px;background:rgba(255,255,255,.16);overflow:hidden;margin:0 16px 6px}
+.pbar i{display:block;height:100%;border-radius:5px;background:#9be3a5}
+.bud{padding:10px 4px 12px;border-bottom:1px solid var(--line)}
+.bud:last-child{border-bottom:0}
+.bh{display:flex;align-items:center;font-size:18px}
+.bdot{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-right:10px;color:#111}
+.bdot svg{width:19px;height:19px}
+.bv{margin-left:auto;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bv small{font-weight:400;color:var(--ink2);font-size:14px}
+.bbar{height:14px;border-radius:7px;background:rgba(255,255,255,.14);overflow:hidden;margin:8px 0 6px}
+.bbar i{display:block;height:100%;border-radius:7px}
+.bbar.over{box-shadow:inset 0 0 0 2px #ff9e9e}
+.bs{font-size:14px;color:var(--ink2)}
+.bs .tag{margin-right:6px}
+.spf{display:flex}
+.spf .fi{flex:1 1 0;min-width:0}
+.spf .fi + .fi{margin-left:8px}
+.spf #spAmt{flex:0 0 120px}
+.doses{display:flex;flex-wrap:wrap;justify-content:flex-end;margin-left:8px}
+.dose{min-height:44px;min-width:70px;margin:3px 0 3px 6px;border-radius:13px;border:2px solid rgba(255,255,255,.55);background:transparent;color:var(--ink);font-size:16px;font-weight:800;padding:0 10px;font-variant-numeric:tabular-nums}
+.dose.on{background:#9be3a5;border-color:#9be3a5;color:#111}
+.plgrid{display:flex;flex-wrap:wrap}
+.place{width:calc(33.33% - 10px);margin:0 10px 10px 0;min-height:96px;border-radius:16px;background:#fff6cf;color:#111;padding:12px 14px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.place .pw{font-size:18px;font-weight:800;line-height:1.2}
+.place .pl{display:flex;align-items:flex-start;font-size:16px;line-height:1.3;margin-top:6px;color:#2b2b2b}
+.place .pl svg{width:18px;height:18px;flex:0 0 auto;margin:1px 6px 0 0}
+.place .pb{margin-top:auto;padding-top:6px;font-size:13px;color:#4a4a4a}
+.place.new{animation:pop .42s cubic-bezier(.2,.9,.3,1.4)}
+.packb{display:flex;align-items:center;width:100%;min-height:54px;padding:6px 12px;border-radius:14px;margin-bottom:6px;font-size:17px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.07);border:1px solid var(--line);text-align:left}
+.packb span{flex:1 1 auto;min-width:0}
+.packb b{font-variant-numeric:tabular-nums;font-size:15px;margin-left:8px}
+.packb.on{background:var(--accent);color:var(--accentInk);border-color:transparent}
+ul.cols2{-webkit-column-count:2;column-count:2;-webkit-column-gap:18px;column-gap:18px}
+ul.cols2 .li{-webkit-column-break-inside:avoid;break-inside:avoid}
+.wificard{display:flex;align-items:center;background:#fff !important;color:#111;padding:18px;border:0}
+.wificard .wq{flex:0 0 auto;line-height:0}
+.wificard .wq svg{display:block}
+.wt{margin-left:20px;color:#111;min-width:0}
+.wt b{display:block;font-size:26px;font-weight:800}
+.wt span{display:block;font-size:16px;color:#333;margin-top:4px}
+.wt dl{margin:14px 0 0}
+.wt dt{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#555;margin-top:8px}
+.wt dd{margin:2px 0 0;font-size:22px;font-weight:700;word-break:break-word}
+.wbig{display:flex;flex-direction:column;align-items:center;background:#fff;color:#111;border-radius:20px;padding:18px;margin-top:10px;text-align:center}
+.wbig svg{flex:0 0 auto}
+.wbig > div{margin-top:10px;min-width:0;max-width:100%}
+.lblk{font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#555;margin-top:10px}
+.wv{font-size:24px;font-weight:800;color:#111;word-break:break-word}
+.cdgrid{display:flex;flex-wrap:wrap}
+.cdt{width:calc(25% - 10px);margin:0 10px 10px 0;min-height:170px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--ink);padding:14px;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.cdt.soon{background:#ffe9a8;color:#111;border-color:transparent}
+.cdt .ce{font-size:30px;line-height:1}
+.cdt .cn{font-size:46px;font-weight:300;line-height:1;margin-top:8px;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.cdt .cu{font-size:14px;color:var(--ink2)}
+.cdt .ctt{font-size:17px;font-weight:800;line-height:1.25;margin-top:8px}
+.cdt .cdd{font-size:14px;color:var(--ink2);margin-top:2px}
+.cdt .who{margin:8px 0 0}
+.cdt.soon .cu,.cdt.soon .cdd{color:#333}
+.carb{border-radius:16px;border:1px solid var(--line);padding:6px 10px;margin-bottom:12px}
+.carh{display:flex;align-items:center;width:100%;min-height:48px;font-size:20px;color:var(--ink);text-align:left}
+.carh .reg{margin-left:10px;font-size:14px;font-weight:800;letter-spacing:1px;background:#fff;color:#111;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px}
+.carh .who{margin-left:auto}
+.carb .brw .gbtn{margin-left:8px}
+.pdc{display:inline-block;font-size:13px;font-weight:700;color:#111;background:#eceff1;border-radius:999px;padding:1px 8px;margin:4px 4px 0 0}
+.pdl{display:block;margin-top:2px;font-size:13px;color:var(--ink3)}
+.mwhy{display:inline-flex;align-items:center;margin-left:10px;font-size:13px;font-weight:800;color:#111;background:#bdeebb;border-radius:999px;padding:2px 9px;vertical-align:middle}
+.mwhy svg{width:15px;height:15px;margin-right:4px}
+.cat h4 .cn{margin-left:auto;font-size:14px;color:var(--ink3);font-weight:700}
+.byrow{display:flex;align-items:center;flex-wrap:wrap;padding:0 16px 10px}
+.pavb{border-radius:50%;padding:2px;margin:0 6px 0 0;border:3px solid transparent}
+.pavb .pav{margin:0}
+.pavb.on{border-color:var(--ink)}
+.pav.xs{width:24px;height:24px;font-size:12px;margin-right:6px}
+.sugb{display:flex;flex-wrap:wrap;margin-top:8px}
+.sugb .btn{flex:1 1 220px;margin:0 8px 8px 0}
+.sugb .btn[disabled]{opacity:.45}
+.board.ph{padding:6px 10px}
+.pday{display:flex;border-bottom:1px solid var(--line);padding:8px 0;min-width:0}
+.pday:last-child{border-bottom:0}
+.pday.today{background:rgba(255,255,255,.07);border-radius:12px}
+.pdh{flex:0 0 74px;display:flex;flex-direction:column;padding-left:6px;color:var(--ink)}
+.pdh b{font-size:17px;font-weight:800}
+.pdh span{font-size:13px;color:var(--ink2)}
+.pdh em{font-style:normal;font-size:12px;font-weight:800;color:#111;background:#ffe48a;border-radius:999px;padding:1px 7px;margin-top:3px;align-self:flex-start}
+.pdh.red b{color:#ffb4b4}
+.pdh .hol{font-size:11px;margin-top:3px}
+.pdi{flex:1 1 auto;min-width:0}
+.pdi .bi{-webkit-line-clamp:3}
+.bi.pe{display:flex;align-items:center}
+.bi.pe span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.pdempty{color:var(--ink3);font-size:15px}
+@media (orientation:portrait){.cdt{width:calc(33.33% - 10px)}.place{width:calc(50% - 10px)}}
+body.phone .cdt{width:calc(50% - 8px);margin-right:8px;min-height:150px}
+body.phone .cdt .cn{font-size:38px}
+body.phone .place{width:100%;margin-right:0;min-height:0}
+body.phone .subnav .seg2 button{flex:1 1 30%;font-size:14px;padding:4px 4px;min-height:48px}
+body.phone .seg2 button{white-space:normal;line-height:1.1;text-align:center}
+body.phone .wificard{flex-direction:column;align-items:flex-start}
+body.phone .wt{margin:14px 0 0}
+body.phone ul.cols2{-webkit-column-count:1;column-count:1}
+body.phone .brw.medr{flex-wrap:wrap}
+body.phone .brw .tag{font-size:12px;padding:3px 7px}
+body.phone .brw .amt{font-size:16px}
+body.phone .doses{width:100%;justify-content:flex-start;margin:4px 0 0 50px}
+body.phone .spf #spAmt{flex-basis:100px}
 </style>
 </head>
 <body>
@@ -660,6 +783,7 @@ body.phone .rem{font-size:15px}
     <div class="card wx" id="hWx"></div>
     <button class="card nextc" id="hNext" data-act="go" data-v="vecka"></button>
     <div class="card mealc" id="hMeal"></div>
+    <button class="card cdc" id="hCd" data-act="go" data-v="vardag" data-sub="nedrakning"></button>
     <div class="card" id="hToday"></div>
     <div class="card jv" id="hJarvis"></div>
     <div class="card" id="hShop"></div>
@@ -670,6 +794,7 @@ body.phone .rem{font-size:15px}
   <section class="view" id="v-inkop"></section>
   <section class="view" id="v-sysslor"></section>
   <section class="view" id="v-hemmet"></section>
+  <section class="view" id="v-vardag"></section>
   <section class="view" id="v-lappar"></section>
   <section class="view" id="v-timer"></section>
   <section class="view" id="v-kvall"></section>
@@ -687,7 +812,7 @@ body.phone .rem{font-size:15px}
 (function(){
 'use strict';
 var KEY='hemskarm_v3',KEY_V2='hemskarm_v2',KEY_V1='hemskarm_v1',KEY_WX='hemskarm_wx',KEY_DEV='hemskarm_enhet';
-var APPV=4;
+var APPV=5; // dataformat 5 = hemskärm 4.0
 function $(id){return document.getElementById(id);}
 var params={};
 (location.search||'').replace(/^\?/,'').split('&').forEach(function(p){if(!p)return;var kv=p.split('=');params[decodeURIComponent(kv[0])]=decodeURIComponent(kv[1]||'');});
@@ -778,7 +903,16 @@ var IP={
  card:'<rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6 15h4"/>',
  car:'<path d="M5 16V11l2-5h10l2 5v5M3 16h18v3h-3v-1.5M6 18v1.5H3V16M7 13h.01M17 13h.01M5 11h14"/>',
  phone:'<rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M11 18.5h2"/>',
- tablet:'<rect x="3.5" y="3" width="17" height="18" rx="3"/><path d="M11 18h2"/>'
+ tablet:'<rect x="3.5" y="3" width="17" height="18" rx="3"/><path d="M11 18h2"/>',
+ chart:'<path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/>',
+ leaf:'<path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19l8-8"/>',
+ pill:'<rect x="2.8" y="8.5" width="18.4" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.2 8l5.6 8"/>',
+ wifi:'<path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.6 16a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.3" r="1.3" fill="currentColor"/>',
+ bag:'<rect x="4" y="7" width="16" height="13" rx="3"/><path d="M9 7V5a3 3 0 0 1 6 0v2M4 12h16"/>',
+ hourglass:'<path d="M6 3h12M6 21h12M7 3c0 5 10 6 10 9s-10 4-10 9M17 3c0 5-10 6-10 9s10 4 10 9"/>',
+ key:'<circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l2.5 2.5M14 9l2 2"/>',
+ grid:'<rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/>',
+ cake:'<path d="M4 21h16v-8H4zM4 16c2.7 1.5 5.3 1.5 8 0s5.3-1.5 8 0M12 13V9M12 6.5c-.9-.9-.9-2 0-3.5.9 1.5.9 2.6 0 3.5z"/>'
 };
 function ic(n,sw){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(IP[n]||'')+'</svg>';}
 
@@ -869,7 +1003,7 @@ function guessCat(text){
   }
   return 'ovrigt';
 }
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,9);} // stabilt id (för framtida synk)
 function ymOf(d){return d.getFullYear()+'-'+pad(d.getMonth()+1);}
 /* Startrecept – vardagsklassiker, kan ändras eller tas bort */
 function starterRecipes(){
@@ -897,6 +1031,13 @@ function v3Examples(){
     parcels:[],fridge:[],jarvis:[]
   };
 }
+/* v4.0 (dataformat 5): nya listor. Packlistan får en mall att utgå från. */
+function starterPacks(){
+  var mk=function(t){return {id:uid(),text:t,done:false,who:''};};
+  return [{id:uid(),name:'Helgresa',ex:true,updatedAt:nowMs(),items:['Tandborste & tandkräm','Laddare','Underkläder','Pyjamas','Medicin','Hörlurar','Plånbok & körkort','Snacks till bilen'].map(mk)}];
+}
+var LISTS_V5=['cars','countdowns','spend','meds','plants','places','packs'];
+function defaultBudget(){return {mat:6000,rakningar:0,noje:1500,ovrigt:2500};}
 function defaults(){
   var t=now(),wd=wdIdx(t)+1,menu={};
   for(var i=1;i<=7;i++)menu[i]={dish:'',ingr:[]};
@@ -904,34 +1045,37 @@ function defaults(){
   var x=v3Examples();
   return {v:APPV,people:mkPeople(),
     settings:{me:'Patrik',partner:'Sambo',theme:'auto',semester:false,anim:true,glass:false,night:true,autoClear:true,
-      cd:{mode:'auto',title:'',date:''},saverMin:5,sound:true,city:null,secs:true,namnsdag:true,flagg:true,points:true,eveningFrom:20},
+      cd:{mode:'auto',title:'',date:''},saverMin:5,sound:true,city:null,secs:true,namnsdag:true,flagg:true,points:true,eveningFrom:20,billWarn:3},
     todos:[{id:uid(),text:'Exempel: Vattna blommorna',who:'both',done:false,ex:true}],
     events:[{id:uid(),date:ymd(addDays(t,2)),time:'18:00',text:'Exempel: Middag hos vänner',who:'both',repeat:'none',ex:true}],
-    shop:[{id:uid(),text:'Exempel: Mjölk',cat:'mejeri',done:false,ex:true}],
+    shop:[{id:uid(),text:'Exempel: Mjölk',cat:'mejeri',done:false,ex:true,addedBy:'',createdAt:nowMs(),updatedAt:nowMs()}],
     favs:['Mjölk','Bröd','Ägg','Kaffe','Smör','Bananer','Ost','Toapapper'],
     notes:[{id:uid(),text:'Exempel: Tryck på lappen för att ändra den.',who:'me',color:'gul',ts:nowMs(),ex:true}],
     menu:menu,
     chores:[{id:uid(),text:'Exempel: Dammsuga',mode:'rotate',rot:['me','partner'],start:'me',sw:0,doneWeek:-1,pts:2,ex:true}],
-    pickups:[{id:uid(),text:'Exempel: Soptunnan töms',kind:'sopor',anchor:ymd(addDays(t,(9-t.getDay())%7||7)),every:2,ex:true}],
+    pickups:[{id:uid(),text:'Exempel: Soptunnan töms',kind:'rest',anchor:ymd(addDays(t,(9-t.getDay())%7||7)),every:2,ex:true}],
     dates:[{id:uid(),name:'Exempel: Mormor',date:ymd(new Date(t.getFullYear()-80,addDays(t,9).getMonth(),addDays(t,9).getDate())),kind:'fodelsedag',showAge:true,ex:true}],
     timers:[],dagens:null,lastDay:ymd(t),
     bills:x.bills,service:x.service,parcels:[],fridge:[],jarvis:[],
-    recipes:starterRecipes(),evening:defaultEvening(),choreHist:{},fridgeStats:{},migrated:null};
+    recipes:starterRecipes(),evening:defaultEvening(),choreHist:{},fridgeStats:{},migrated:null,
+    cars:[],countdowns:[],spend:[],meds:[],plants:[],places:[],packs:starterPacks(),
+    budget:defaultBudget(),wifi:{ssid:'',pass:'',sec:'WPA',hidden:false},tomb:{shop:{}}};
 }
 var S;
 var LISTS_V2=['todos','events','shop','favs','notes','chores','pickups','dates','timers'];
 var LISTS_V3=['bills','service','parcels','fridge','jarvis','recipes','evening'];
-/* Läser v1-, v2- och v3-data. Inget i äldre data kastas – nya fält läggs till. */
+/* Läser v1-, v2-, v3- och v4-data (format 1–5). Inget i äldre data kastas – nya fält läggs till. */
 function normalize(o){
   var d=defaults();if(!o||typeof o!=='object')return d;
-  var ver=+o.v||1;
+  var ver=+o.v||1,ts0=nowMs();
   var s=o.settings&&typeof o.settings==='object'?o.settings:{};for(var k in d.settings){if(!(k in s))s[k]=d.settings[k];}
   if(!s.cd||typeof s.cd!=='object')s.cd=d.settings.cd;
+  s.billWarn=Math.max(0,Math.min(14,+s.billWarn||0))||3;
   var r={v:APPV,settings:s};
   LISTS_V2.forEach(function(k){r[k]=Array.isArray(o[k])?o[k]:(ver>=2?[]:d[k]);});
   if(ver<2){r.chores=[];r.pickups=[];r.dates=[];r.timers=[];r.favs=d.favs;} // från v1: inga nya exempel
   r.events.forEach(function(e){if(!e.repeat)e.repeat=e.weekly?'weekly':'none';delete e.weekly;});
-  r.shop.forEach(function(x){if(!x.cat)x.cat=guessCat(x.text);});
+  r.shop.forEach(function(x){if(!x.cat)x.cat=guessCat(x.text);if(!x.id)x.id=uid();if(!x.createdAt)x.createdAt=ts0;if(!x.updatedAt)x.updatedAt=x.createdAt;if(x.addedBy==null)x.addedBy='';});
   r.chores.forEach(function(c){if(!(c.pts>=1))c.pts=1;});
   r.notes.forEach(function(n){if(!n.ts)n.ts=0;});
   r.menu=o.menu&&typeof o.menu==='object'?o.menu:{};for(var i=1;i<=7;i++)if(!r.menu[i])r.menu[i]={dish:'',ingr:[]};
@@ -939,17 +1083,36 @@ function normalize(o){
   // v3-fält
   if(ver<3){var x=v3Examples();r.bills=x.bills;r.service=x.service;r.parcels=[];r.fridge=[];r.jarvis=[];r.recipes=starterRecipes();r.evening=defaultEvening();r.migrated={from:ver,at:ymd(now())};}
   else{LISTS_V3.forEach(function(k){r[k]=Array.isArray(o[k])?o[k]:[];});r.migrated=o.migrated||null;}
-  r.bills.forEach(function(b){if(!b.paid||typeof b.paid!=='object')b.paid={};b.amount=+b.amount||0;b.day=Math.max(1,Math.min(31,+b.day||1));b.every=+b.every||1;});
+  var curKey=ymOf(now());
+  r.bills.forEach(function(b){if(!b.paid||typeof b.paid!=='object')b.paid={};b.amount=+b.amount||0;b.day=Math.max(1,Math.min(31,+b.day||1));
+    b.every=b.every===0||b.every==='0'?0:(+b.every||1);
+    // v5: "since" = första perioden som räknas. Gamla räkningar börjar denna månad, så inga falska förseningar dyker upp.
+    if(!b.since)b.since=b.every===0?String(b.due||'').slice(0,7)||curKey:curKey;
+    if(!b.bcat)b.bcat='rakningar';});
   r.choreHist=o.choreHist&&typeof o.choreHist==='object'?o.choreHist:{};
   r.fridgeStats=o.fridgeStats&&typeof o.fridgeStats==='object'?o.fridgeStats:{};
-  // v4: hushållets personer. Gamla me/partner blir personer med samma id – inget i listorna behöver skrivas om.
+  // format 4: hushållets personer. Gamla me/partner blir personer med samma id – inget i listorna behöver skrivas om.
   r.people=normPeople(o.people,s);
   if(ver<4)r.peopleMigrated={from:ver,at:ymd(now())};else r.peopleMigrated=o.peopleMigrated||null;
   r.chores.forEach(function(c){if(c.mode==='rotate'&&!Array.isArray(c.rot)){c.rot=['me','partner'];c.sw=0;c.start=c.start==='partner'?'partner':'me';}});
+  // format 5 (hemskärm 4.0): bil, nedräkningar, budget, medicin, växter, var är, packlistor, gäst-wifi
+  LISTS_V5.forEach(function(k){r[k]=Array.isArray(o[k])?o[k]:[];});
+  if(ver<5){r.packs=starterPacks();r.v5Migrated={from:ver,at:ymd(now())};
+    if(s.cd&&s.cd.mode==='egen'&&s.cd.date)r.countdowns.push({id:uid(),title:cap(s.cd.title||'Den stora dagen'),date:s.cd.date,emoji:'⭐',yearly:false,who:'',updatedAt:ts0});}
+  else r.v5Migrated=o.v5Migrated||null;
+  var bg=o.budget&&typeof o.budget==='object'?o.budget:defaultBudget(),db=defaultBudget();for(var bk in db)if(!(bk in bg))bg[bk]=db[bk];r.budget=bg;
+  r.wifi=o.wifi&&typeof o.wifi==='object'?o.wifi:{ssid:'',pass:'',sec:'WPA',hidden:false};
+  r.tomb=o.tomb&&typeof o.tomb==='object'?o.tomb:{};if(!r.tomb.shop||typeof r.tomb.shop!=='object')r.tomb.shop={};
+  r.spend.forEach(function(x){x.amount=+x.amount||0;if(!x.cat)x.cat='ovrigt';});
+  r.packs.forEach(function(p){if(!Array.isArray(p.items))p.items=[];});
+  r.meds.forEach(function(m){if(!Array.isArray(m.times)||!m.times.length)m.times=['08:00'];if(!m.done||typeof m.done!=='object')m.done={};});
+  r.pickups.forEach(function(p){if(!Array.isArray(p.months))p.months=[];});
   return r;
 }
 function load(){
-  try{var raw=localStorage.getItem(KEY);if(raw){var o0=JSON.parse(raw);S=normalize(o0);if((+(o0&&o0.v)||1)<APPV)save();return;}
+  try{var raw=localStorage.getItem(KEY);if(raw){var o0=JSON.parse(raw),ov=+(o0&&o0.v)||1;S=normalize(o0);
+        if(ov<APPV){try{localStorage.setItem(KEY+'_reserv_f'+ov,raw);}catch(e){} save();} // gamla formatet sparas orört som reserv
+        return;}
       var v2=localStorage.getItem(KEY_V2);if(v2){S=normalize(JSON.parse(v2));save();return;}   // v2-datan ligger kvar orörd som reserv
       var v1=localStorage.getItem(KEY_V1);if(v1){S=normalize(JSON.parse(v1));save();return;}}catch(e){}
   S=defaults();save();
@@ -984,12 +1147,12 @@ function pavHtml(id,cls){var p=person(id),t=id==='both'?(people().length===2?'2'
 function whoOpts(none){var o=none===false?[]:[['','Ingen']];people().forEach(function(p){o.push([p.id,p.name]);});o.push(['both',allLabel()]);return o;}
 function rotOf(c){var r=Array.isArray(c.rot)?c.rot:humanIds();return r.filter(function(id){return !!person(id);});}
 function newPersonId(){var i=people().length+1,id;do{id='p'+(i++);}while(person(id));return id;}
-function mkPeople(s){return [{id:'me',name:(s&&s.me)||'Patrik',color:'bla',emoji:'',type:'vuxen'},{id:'partner',name:(s&&s.partner)||'Sambo',color:'rosa',emoji:'',type:'vuxen'}];}
+function mkPeople(s){return [{id:'me',name:(s&&s.me)||'Patrik',color:'bla',emoji:'',type:'vuxen',birthday:''},{id:'partner',name:(s&&s.partner)||'Sambo',color:'rosa',emoji:'',type:'vuxen',birthday:''}];}
 function normPeople(a,s){
   var seen={},out=[];
   (Array.isArray(a)?a:[]).forEach(function(p,i){if(!p||typeof p!=='object')return;var id=String(p.id||'');if(!id||seen[id]||id==='both')return;seen[id]=1;
     var c=pcol(p.color)&&PCOL.some(function(x){return x[0]===p.color;})?p.color:PCOL[i%PCOL.length][0];
-    out.push({id:id,name:String(p.name||'Person').slice(0,30),color:c,emoji:String(p.emoji||'').slice(0,4),type:p.type==='barn'||p.type==='annan'?p.type:'vuxen'});});
+    out.push({id:id,name:String(p.name||'Person').slice(0,30),color:c,emoji:String(p.emoji||'').slice(0,4),type:p.type==='barn'||p.type==='annan'?p.type:'vuxen',birthday:/^\d{4}-\d\d-\d\d$/.test(p.birthday||'')?p.birthday:''});});
   return out.length?out:mkPeople(s);
 }
 function exTag(it){return it&&it.ex?'<span class="ex">exempel</span>':'';}
@@ -1187,10 +1350,16 @@ function choreWho(c,d){
 }
 function choreDone(c){return c.doneWeek===weekIndex(now());}
 function pickupNext(p,from){
-  var a=parseYmd(p.anchor);if(!a)return null;var step=(p.every||1)*7;from=startOfDay(from||now());
-  var n=dayDiff(a,from);if(n<=0)return a;var k=Math.ceil(n/step);return addDays(a,k*step);
+  var a=parseYmd(p.anchor);if(!a)return null;var step=(+p.every||1)*7;from=startOfDay(from||now());
+  var n=dayDiff(a,from),d=n<=0?a:addDays(a,Math.ceil(n/step)*step);
+  var ms=Array.isArray(p.months)&&p.months.length&&p.months.length<12?p.months:null; // t.ex. trädgårdsavfall bara apr–nov
+  for(var i=0;ms&&i<80&&ms.indexOf(d.getMonth()+1)<0;i++)d=addDays(d,step);
+  return d;
 }
-var PKIND={sopor:{n:'Sopor',c:'#b8e6a0',i:'bin'},atervinning:{n:'Återvinning',c:'#a9d8ff',i:'cycle'},annat:{n:'Annat',c:'#ffd27a',i:'bell'}};
+var PKIND={rest:{n:'Restavfall',c:'#dfe3e8',i:'bin'},mat:{n:'Matavfall',c:'#bdeebb',i:'leaf'},plast:{n:'Plastförpackningar',c:'#ffe58a',i:'cycle'},papper:{n:'Papper & kartong',c:'#ffcf9e',i:'box'},
+  glas:{n:'Glas & metall',c:'#a6ece4',i:'cycle'},tradgard:{n:'Trädgårdsavfall',c:'#c6f0bd',i:'leaf'},grov:{n:'Grovsopor',c:'#dccbff',i:'tools'},
+  sopor:{n:'Sopor',c:'#b8e6a0',i:'bin'},atervinning:{n:'Återvinning',c:'#a9d8ff',i:'cycle'},annat:{n:'Annat',c:'#ffd27a',i:'bell'}};
+var PKIND_ORDER=['rest','mat','plast','papper','glas','tradgard','grov','annat'];
 /* ================= Viktiga datum ================= */
 var DKIND={fodelsedag:'Födelsedag',arsdag:'Årsdag',annat:'Viktigt datum'};
 function dateNext(x){
@@ -1307,27 +1476,9 @@ function addMonths(d,n){var y=d.getFullYear(),m=d.getMonth()+n,yy=y+Math.floor(m
 function billInPeriod(b,y,m){var e=+b.every||1,sm=((+b.start||1)-1);return (((m-sm)%e)+e)%e===0;}
 function billDueIn(b,y,m){return new Date(y,m,Math.min(+b.day||1,daysInMonth(y,m)));}
 function billKey(y,m){return y+'-'+pad(m+1);}
-function billThis(b){ // den här månadens förfallodag (om räkningen gäller denna månad)
-  var n=now(),y=n.getFullYear(),m=n.getMonth();if(!billInPeriod(b,y,m))return null;
-  var d=billDueIn(b,y,m),k=billKey(y,m),auto=!!b.autogiro&&dayDiff(n,d)<0;
-  return {d:d,key:k,days:dayDiff(n,d),paid:!!b.paid[k]||auto,auto:auto};
-}
-function billNext(b){
-  var n=now(),y=n.getFullYear(),m=n.getMonth();
-  for(var i=0;i<14;i++){var mm=m+i,yy=y+Math.floor(mm/12);mm=mm%12;if(!billInPeriod(b,yy,mm))continue;
-    var d=billDueIn(b,yy,mm),k=billKey(yy,mm);if(b.paid[k])continue;if(b.autogiro&&dayDiff(n,d)<0)continue;
-    return {d:d,key:k,days:dayDiff(n,d)};}
-  return null;
-}
-function perMonth(b){return (+b.amount||0)/(+b.every||1);}
+function perMonth(b){return b.every===0?0:(+b.amount||0)/(+b.every||1);}
 function billsOf(kind){return S.bills.filter(function(b){return (b.kind||'bill')===kind;});}
-function billTotals(){
-  var bills=billsOf('bill'),subs=billsOf('sub'),r={bills:0,subs:0,review:0,leftMonth:0,paidMonth:0};
-  bills.forEach(function(b){r.bills+=perMonth(b);});subs.forEach(function(b){r.subs+=perMonth(b);if(b.review)r.review+=perMonth(b)*12;});
-  S.bills.forEach(function(b){var t=billThis(b);if(!t)return;if(t.paid)r.paidMonth+=+b.amount||0;else r.leftMonth+=+b.amount||0;});
-  return r;
-}
-var EVERY={24:'vartannat år',1:'varje månad',2:'varannan månad',3:'varje kvartal',6:'varje halvår',12:'varje år'};
+var EVERY={0:'engångs',24:'vartannat år',1:'varje månad',2:'varannan månad',3:'varje kvartal',6:'varje halvår',12:'varje år'};
 
 /* ================= v3: Underhåll ================= */
 function serviceNext(x){var l=parseYmd(x.last);if(!l)return null;var nx=addMonths(l,+x.every||12),n=now(),tot=Math.max(1,dayDiff(l,nx)),el=dayDiff(l,n);
@@ -1405,20 +1556,27 @@ function kollItems(){
   var out=[],n=now();
   var push=function(o){out.push(o);};
   S.timers.forEach(function(t){push({p:0,i:ic('timer'),t:esc(t.name),r:'<b class="r" data-tleft="'+t.id+'">'+fmtDur(timerLeft(t))+'</b>',v:'timer'});});
-  pickupsSoon(1).forEach(function(r){var k=PKIND[r.p.kind]||PKIND.annat;push({p:1,i:ic(k.i),bg:k.c,t:esc(r.p.text)+' '+(r.days===0?'idag':'i morgon'),v:'sysslor'});});
-  S.bills.forEach(function(b){var x=billNext(b);if(!x)return;
-    if(!b.autogiro&&x.days<=3)push({p:x.days<0?0:2,hot:x.days<=0,i:ic('card'),t:(x.days<0?'Försenad: ':'Betala: ')+esc(b.name)+' '+fmtKr(b.amount),r:'<b class="r">'+(x.days<0?(-x.days)+' d sen':relDay(x.d))+'</b>',v:'hemmet'});
-    else if(b.autogiro&&x.days>=0&&x.days<=1)push({p:5,i:ic('card'),t:'Dras '+(x.days===0?'idag':'i morgon')+': '+esc(b.name)+' '+fmtKr(b.amount),v:'hemmet'});});
+  pickupsSoon(1).forEach(function(r){var k=PKIND[r.p.kind]||PKIND.annat,w=r.p.who&&whoLabel(r.p.who)?' – '+esc(whoLabel(r.p.who))+(r.p.who==='both'?' hjälps åt':' ställer ut'):'';
+    push({p:1,i:ic(k.i),bg:k.c,t:esc(pickName(r.p))+(r.days===0?' töms idag':' töms i morgon'+(isEvening()?' – ställ ut ikväll':''))+w,v:'vardag',sub:'sopor'});});
+  billDue().forEach(function(o){var b=o.b;
+    push({p:o.days<0?0:o.days===0?1:2,hot:o.days<=0,i:ic('card'),bg:o.days<=0?'#ffc9c9':'#ffe48a',t:(o.days<0?'Försenad: ':'Betala: ')+esc(b.name)+' '+fmtKr(b.amount),r:'<b class="r">'+(o.days<0?(-o.days)+' d sen':cap(relDay(o.d)))+'</b>',v:'hemmet',sub:'rakningar'});});
+  S.bills.forEach(function(b){if(!b.autogiro)return;var x=billNext(b);if(x&&x.days>=0&&x.days<=1)push({p:5,i:ic('card'),t:'Dras '+(x.days===0?'idag':'i morgon')+': '+esc(b.name)+' '+fmtKr(b.amount),v:'hemmet',sub:'rakningar'});});
+  medDoses().forEach(function(x){if(x.done)return;var dm=hmMin(x.t)-nowMin();if(dm>60)return;
+    push({p:dm<-60?0:1,hot:dm<-60,i:ic('pill'),bg:'#dccbff',t:esc(x.m.name)+(x.m.who&&whoLabel(x.m.who)?' – '+esc(whoLabel(x.m.who)):''),r:'<b class="r">'+(dm<-60?'missad '+x.t:'kl. '+x.t)+'</b>',v:'vardag',sub:'paminn'});});
   var fs=fridgeSoon(1);if(fs.length)push({p:2,hot:fridgeDays(fs[0])<=0,i:ic('fridge'),t:'Ät upp: '+fs.slice(0,3).map(function(f){return esc(f.text)+' ('+fridgeState(fridgeDays(f)).t.toLowerCase()+')';}).join(', ')+(fs.length>3?' m.fl.':''),v:'mat',sub:'kylen'});
-  S.parcels.forEach(function(p){if(p.status==='hamta')push({p:2,i:ic('box'),t:'Hämta paket: '+esc(p.text)+(p.where?' – '+esc(p.where):''),r:p.code?'<b class="r">kod '+esc(p.code)+'</b>':'',v:'hemmet'});
-    else if(p.status==='vag'&&p.eta){var d=parseYmd(p.eta),dd=d?dayDiff(n,d):9;if(dd>=0&&dd<=1)push({p:4,i:ic('box'),t:'Paket '+(dd===0?'idag':'i morgon')+': '+esc(p.text),v:'hemmet'});}});
-  S.service.forEach(function(x){var s=serviceNext(x);if(s&&s.days<=14)push({p:s.days<0?2:5,hot:s.days<0,i:ic('tools'),t:esc(x.text),r:'<b class="r">'+(s.days<0?'försenat':s.days===0?'idag':'om '+s.days+' d')+'</b>',v:'hemmet'});});
-  upcomingDates(14).slice(0,2).forEach(function(r){push({p:r.days<=1?1:6,i:ic(r.x.kind==='fodelsedag'?'gift':'star'),t:dateLine(r),v:'vecka'});});
+  S.parcels.forEach(function(p){if(p.status==='hamta')push({p:2,i:ic('box'),t:'Hämta paket: '+esc(p.text)+(p.where?' – '+esc(p.where):''),r:p.code?'<b class="r">kod '+esc(p.code)+'</b>':'',v:'hemmet',sub:'ovrigt'});
+    else if(p.status==='vag'&&p.eta){var d=parseYmd(p.eta),dd=d?dayDiff(n,d):9;if(dd>=0&&dd<=1)push({p:4,i:ic('box'),t:'Paket '+(dd===0?'idag':'i morgon')+': '+esc(p.text),v:'hemmet',sub:'ovrigt'});}});
+  S.cars.forEach(function(c){carAlerts(c).forEach(function(a){push({p:a.hot?1:4,hot:a.hot,i:ic('car'),bg:a.hot?'#ffc9c9':'#bfe3ff',t:a.t,r:'<b class="r">'+esc(a.r)+'</b>',v:'vardag',sub:'sopor'});});});
+  var pd=plantsDue();if(pd.length)push({p:4,i:ic('leaf'),bg:'#c6f0bd',t:'Vattna: '+pd.slice(0,3).map(function(x){return esc(x.name);}).join(', ')+(pd.length>3?' m.fl.':''),v:'vardag',sub:'paminn'});
+  S.service.forEach(function(x){var s=serviceNext(x);if(s&&s.days<=14)push({p:s.days<0?2:5,hot:s.days<0,i:ic('tools'),t:esc(x.text),r:'<b class="r">'+(s.days<0?'försenat':s.days===0?'idag':'om '+s.days+' d')+'</b>',v:'hemmet',sub:'ovrigt'});});
+  var cl=countdownList(),bd=0,other=0;
+  cl.forEach(function(c){
+    if((c.kind==='fodd'||c.kind==='datum')&&c.days<=14&&bd<2){bd++;push({p:c.days<=1?1:6,i:c.kind==='fodd'||/🎂/.test(c.emoji)?ic('gift'):ic('star'),bg:c.who&&person(c.who)?whoColor(c.who):null,t:esc(c.title)+' '+(c.days===0?'idag':c.days===1?'i morgon':'om '+c.days+' dagar'),v:'vardag',sub:'nedrakning'});}
+    else if((c.kind==='egen'||c.kind==='hogtid')&&c.days>=0&&c.days<=60&&other<1){other++;push({p:9,i:c.emoji,t:c.days===0?'Idag: '+esc(c.title)+'!':c.days===1?'I morgon: '+esc(c.title):c.days+' dagar till '+esc(lc1(c.title)),v:'vardag',sub:'nedrakning'});}});
   calUpcoming(6).forEach(function(x){var dd=dayDiff(n,x.d);
     if(x.t==='red'||x.t==='eve'||x.t==='klam'){if(dd>3&&x.t!=='red')return;push({p:dd<=1?3:7,i:ic('flag'),bg:'#ffc9c9',t:(x.t==='klam'?'Klämdag '+relDay(x.d):esc(x.n)+' '+relDay(x.d))+(x.t==='red'&&x.d.getDay()!==0&&x.d.getDay()!==6?' – röd dag':''),v:'vecka'});}
     else if(x.tip&&dd<=3&&/tid börjar/.test(x.n))push({p:2,i:ic('clock'),bg:'#bfe3ff',t:esc(x.n)+' natten mot söndag. '+(x.n.indexOf('Vinter')===0?'Klockan ställs tillbaka en timme.':'Klockan ställs fram en timme.'),v:'vecka'});
     else if(x.tip&&dd<=1&&x.t==='info')push({p:8,i:ic('spark'),t:esc(x.n)+' '+relDay(x.d)+'. '+esc(x.tip),v:'vecka'});});
-  var cd=countdown();if(cd&&cd.n>=0&&cd.n<=60)push({p:9,i:((THEMES[curTheme||'standard']).badge||ic('star')),t:esc(cd.txt),v:'inst'});
   out.sort(function(a,b){return a.p-b.p;});
   return out;
 }
@@ -1429,7 +1587,7 @@ function daySummary(tomorrow){
   var cal=calDay(d),hol=cal.items.filter(function(x){return x.t==='red'||x.t==='eve';})[0];
   if(tomorrow){
     var bits=[];if(ev.length)bits.push(esc(ev[0].text)+(ev[0].time?' kl. '+ev[0].time:'')+(ev.length>1?' (+'+(ev.length-1)+' till)':''));
-    pickupsSoon(1).forEach(function(r){if(r.days===1)bits.push(esc(lc1(r.p.text)));});
+    pickupsSoon(1).forEach(function(r){if(r.days===1)bits.push(esc(lc1(pickName(r.p))));});
     h=hol?esc(hol.n)+' i morgon. ':'';
     h+=bits.length?'I morgon: '+joinSv(bits)+'.':'I morgon är kalendern tom. Misstänkt men välkommet.';
     var m=S.menu[wdIdx(d)+1];if(m&&m.dish)h+=' Middag: '+esc(m.dish)+'.';
@@ -1442,10 +1600,263 @@ function daySummary(tomorrow){
   var left=S.todos.filter(function(t){return !t.done;}).length;if(left)h+=' '+left+' att göra på listan.';
   return h;
 }
+/* ================= v4: Räkningar – förekomster, påminnelse, betald med datum ================= */
+function billWarn(){return +S.settings.billWarn||3;}
+function keyAdd(k,n){var p=String(k).split('-');return ymOf(new Date(+p[0],+p[1]-1+n,1));}
+function fmtD(d){return d?d.getDate()+' '+MON_S[d.getMonth()]:'–';}
+function paidInfo(b,key){var v=b.paid&&b.paid[key];if(!v)return null;if(v===true)return {at:'',amt:+b.amount||0};return {at:v.at||'',amt:v.amt!=null&&isFinite(+v.amt)?+v.amt:(+b.amount||0)};}
+function billOcc(b,key){
+  var d;if(b.every===0){d=parseYmd(b.due);if(!d)return null;}
+  else{var p=String(key).split('-');d=billDueIn(b,+p[0],+p[1]-1);}
+  var days=dayDiff(now(),d),info=paidInfo(b,key),auto=!info&&!!b.autogiro&&days<0;
+  return {b:b,key:key,d:d,days:days,paid:!!info||auto,auto:auto,info:info};
+}
+function billOccsIn(b,key){
+  if(b.every===0){var k=String(b.due||'').slice(0,7);if(k!==key)return [];var o=billOcc(b,k);return o?[o]:[];}
+  if(key<(b.since||key))return [];var p=key.split('-');if(!billInPeriod(b,+p[0],+p[1]-1))return [];
+  return [billOcc(b,key)];
+}
+/* Nästa obetalda förekomst – även försenade från tidigare månader. Återkommande räkningar "skapar" nästa period av sig själva. */
+function billNext(b){
+  if(b.every===0){var o=billOcc(b,String(b.due||'').slice(0,7));return o&&!o.paid?o:null;}
+  var cur=ymOf(now()),k=b.since||cur,end=keyAdd(cur,26),lim=keyAdd(cur,-24);if(k<lim)k=lim;
+  for(var i=0;i<62&&k<=end;i++){var p=k.split('-');if(billInPeriod(b,+p[0],+p[1]-1)){var x=billOcc(b,k);if(!x.paid)return x;}k=keyAdd(k,1);}
+  return null;
+}
+function billThis(b){var os=billOccsIn(b,ymOf(now()));return os.length?os[0]:null;}
+function billSince(b){ // första perioden som ska räknas för en ny räkning: första förfallodag från idag
+  if(b.every===0)return String(b.due||'').slice(0,7)||ymOf(now());
+  var k=ymOf(now()),t=startOfDay(now());
+  for(var i=0;i<26;i++){var p=k.split('-');if(billInPeriod(b,+p[0],+p[1]-1)&&billDueIn(b,+p[0],+p[1]-1)>=t)return k;k=keyAdd(k,1);}
+  return ymOf(now());
+}
+function billDue(){var w=billWarn(),out=[];S.bills.forEach(function(b){if(b.autogiro)return;var o=billNext(b);if(o&&o.days<=w)out.push(o);});return out.sort(function(a,b){return a.days-b.days;});}
+function billStatus(o){
+  if(o.paid)return {c:'t-grn',t:o.auto?'Dragen':'Betald'};
+  if(o.days<0)return {c:'t-red',t:(-o.days)+' d sen'};
+  if(o.days===0)return {c:'t-red',t:'Idag'};
+  if(o.days<=billWarn())return {c:'t-yel',t:o.days===1?'I morgon':'Om '+o.days+' d'};
+  return {c:'t-gry',t:fmtD(o.d)};
+}
+function billMonthList(key,kind){var out=[];S.bills.forEach(function(b){if(kind&&(b.kind||'bill')!==kind)return;billOccsIn(b,key).forEach(function(o){if(o)out.push(o);});});return out.sort(function(a,b){return a.d-b.d;});}
+function billTotals(key){
+  key=key||ymOf(now());var r={bills:0,subs:0,review:0,leftMonth:0,paidMonth:0,totalMonth:0,overdue:0,nOverdue:0};
+  billsOf('bill').forEach(function(b){r.bills+=perMonth(b);});billsOf('sub').forEach(function(b){r.subs+=perMonth(b);if(b.review)r.review+=perMonth(b)*12;});
+  billMonthList(key,'bill').forEach(function(o){var a=o.info?o.info.amt:(+o.b.amount||0);r.totalMonth+=a;if(o.paid)r.paidMonth+=a;else r.leftMonth+=a;});
+  billsOf('bill').forEach(function(b){var o=billNext(b);if(o&&!b.autogiro&&o.days<0&&o.key<key){r.overdue+=+b.amount||0;r.nOverdue++;}});
+  return r;
+}
+function markPaid(b,key,at,amt){if(!b.paid||typeof b.paid!=='object')b.paid={};b.paid[key]={at:at||ymd(now()),amt:amt!=null&&isFinite(amt)&&amt>0?amt:(+b.amount||0)};b.updatedAt=nowMs();b.ex=false;return billNext(b);}
+function unmarkPaid(b,key){if(b.paid)delete b.paid[key];b.updatedAt=nowMs();}
+/* Betalda räkningar som hamnar i budgeten för en månad (betaldatum styr, annars perioden). Autogiro räknas när den dragits. */
+function billSpend(key){
+  var out=[];
+  S.bills.forEach(function(b){
+    for(var k in b.paid){if(!b.paid.hasOwnProperty(k))continue;var inf=paidInfo(b,k);if(!inf)continue;var mk=inf.at?inf.at.slice(0,7):k;if(mk===key)out.push({b:b,amt:inf.amt,date:inf.at||'',key:k});}
+    if(b.autogiro)billOccsIn(b,key).forEach(function(o){if(o&&o.auto)out.push({b:b,amt:+b.amount||0,date:ymd(o.d),key:o.key,auto:true});});
+  });
+  return out;
+}
+
+/* ================= v4: Budget i stora drag ================= */
+var BCATS=[['mat','Mat','#bdeebb','food'],['rakningar','Räkningar','#a9d8ff','card'],['noje','Nöje','#ffc6de','star'],['ovrigt','Övrigt','#ffe58a','dots']];
+function bcat(k){for(var i=0;i<BCATS.length;i++)if(BCATS[i][0]===k)return BCATS[i];return BCATS[3];}
+function budgetFor(k,key){var v=+S.budget[k]||0;if(k==='rakningar'&&!v){var t=billTotals(key);return {v:t.totalMonth+t.subs,auto:true};}return {v:v,auto:false};}
+function budgetMonth(key){
+  var r={cats:{},used:0,budget:0};
+  BCATS.forEach(function(c){var bf=budgetFor(c[0],key);r.cats[c[0]]={used:0,budget:bf.v,auto:bf.auto,items:[]};});
+  S.spend.forEach(function(x){if(String(x.date).slice(0,7)!==key)return;var c=r.cats[x.cat]||r.cats.ovrigt;c.used+=+x.amount||0;c.items.push({x:x,date:x.date,amt:+x.amount||0});});
+  billSpend(key).forEach(function(p){var c=r.cats[p.b.bcat]||r.cats.rakningar;c.used+=p.amt;c.items.push({bill:p,date:p.date,amt:p.amt});});
+  for(var k in r.cats){r.used+=r.cats[k].used;r.budget+=r.cats[k].budget;}
+  return r;
+}
+function parseSpend(text){
+  var t=String(text||''),m=/(\d[\d\s]*(?:[.,]\d{1,2})?)\s*(kr|kronor|:-)?/i.exec(t),amt=m?num(m[1]):0;
+  var rest=m?t.replace(m[0],' '):t;rest=rest.replace(/\s+/g,' ').replace(/^[\s,–-]+|[\s,–-]+$/g,'');
+  return {amount:amt,text:cap(rest)};
+}
+var SPENDWORDS={mat:'ica coop willys lidl hemköp citygross city gross mathem matsmart netto livs bageri mat lunch',noje:'bio restaurang krog pizzeria pub konsert biljett spel bowling glass café cafe fika teater museum nöjespark',rakningar:'el hyra försäkring bredband avgift räkning parkering'};
+function guessSpendCat(t){t=' '+String(t||'').toLowerCase()+' ';for(var k in SPENDWORDS){var ws=SPENDWORDS[k].split(' ');for(var i=0;i<ws.length;i++)if(ws[i]&&t.indexOf(' '+ws[i])>=0)return k;}return 'ovrigt';}
+function addSpend(o){var t0=nowMs(),x={id:uid(),date:o.date||ymd(now()),amount:Math.round((+o.amount||0)*100)/100,cat:o.cat||guessSpendCat(o.text),text:o.text||'',who:o.who!=null?o.who:devWho(),createdAt:t0,updatedAt:t0};S.spend.push(x);return x;}
+
+/* ================= v4: Veckomeny – förslag för hela veckan ================= */
+function isRecent(r,days){var l=parseYmd(r.last);if(!l)return false;var dd=dayDiff(l,now());return dd>=0&&dd<days;}
+function suggestWeek(mode){
+  var today=wdIdx(now())+1,days=[],used={},i;
+  for(i=1;i<=7;i++){var m=S.menu[i]||{},keep=i<today||(mode==='empty'&&!!m.dish);
+    if(keep&&m.dish){if(m.rid)used[m.rid]=1;S.recipes.forEach(function(r){if(r.name.toLowerCase()===String(m.dish).toLowerCase())used[r.id]=1;});}
+    if(!keep)days.push(i);}
+  if(!days.length||!S.recipes.length)return {n:0,uses:[]};
+  var free=days.slice(),plan={},why={},soon=fridgeSoon(5);
+  // 1) Det som snart går ut i kylen: en rätt som använder det, senast den dag det går ut.
+  soon.forEach(function(f){if(!free.length)return;var best=null;
+    S.recipes.forEach(function(r){if(used[r.id]||!recipeUses(r,[f]).length)return;var sc=(r.fav?1:0)+recipeUses(r,soon).length+Math.random()*0.5-(isRecent(r,10)?2:0);if(!best||sc>best.sc)best={r:r,sc:sc};});
+    if(!best)return;var lim=Math.max(0,fridgeDays(f)),pick=null;
+    free.forEach(function(dd){if(pick==null&&dd-today<=lim)pick=dd;});if(pick==null)pick=free[0];
+    plan[pick]=best.r;why[pick]=recipeUses(best.r,soon);used[best.r.id]=1;free.splice(free.indexOf(pick),1);});
+  // 2) Resten: inga upprepningar, inget ni åt nyss, snabbt på vardagar, favoriter lite oftare.
+  free.forEach(function(dd){var best=null;
+    S.recipes.forEach(function(r){if(used[r.id])return;var sc=Math.random()*3+(r.fav?1.5:0);if(isRecent(r,10))sc-=4;if(dd<=4&&r.mins>40)sc-=2;if(dd>=5&&r.mins>=45)sc+=1;if(!best||sc>best.sc)best={r:r,sc:sc};});
+    if(!best)best={r:S.recipes.slice().sort(function(a,b){return String(a.last).localeCompare(String(b.last));})[0]}; // slut på recept: det som lagades längst sedan
+    plan[dd]=best.r;used[best.r.id]=1;});
+  var n=0,uses=[];
+  days.forEach(function(dd){var r=plan[dd];if(!r)return;menuSetRecipe(dd,r);S.menu[dd].auto=true;if(why[dd]&&why[dd].length){S.menu[dd].why=why[dd].join(', ').toLowerCase();uses=uses.concat(why[dd]);}n++;});
+  return {n:n,uses:uses,days:days};
+}
+function inFridge(x){var b=stem(x);if(b.length<3)return false;return S.fridge.some(function(f){var a=stem(f.text);return a.length>=3&&(a.indexOf(b)>=0||b.indexOf(a)>=0);});}
+
+/* ================= v4: Inköpslista – redo för synk ================= */
+// Varje vara: id (stabilt), text, cat, done, addedBy, src, createdAt, updatedAt, doneBy, doneAt. Borttagna sparas som gravsten (tomb) i 60 dagar.
+var shopBy=null;
+function shopWho(){return shopBy!=null?shopBy:devWho();}
+function addShop(arr,o){
+  o=o||{};var by=o.by!=null?o.by:shopWho(),n=0,t0=nowMs();
+  arr.forEach(function(t){t=String(t||'').trim();if(!t)return;
+    var dup=S.shop.some(function(x){return !x.done&&x.text.toLowerCase()===t.toLowerCase();});if(dup)return;
+    var it={id:uid(),text:cap(t),cat:guessCat(t),done:false,who:o.who||'',addedBy:by||'',src:o.src||'',createdAt:t0,updatedAt:t0};S.shop.push(it);newId=it.id;n++;});
+  save();return n;
+}
+function tombstone(kind,id){if(!S.tomb[kind])S.tomb[kind]={};S.tomb[kind][id]=nowMs();}
+function pruneTomb(){var lim=nowMs()-60*864e5;for(var k in S.tomb){if(!S.tomb.hasOwnProperty(k))continue;for(var id in S.tomb[k])if(S.tomb[k][id]<lim)delete S.tomb[k][id];}}
+
+/* ================= v4: Avfallskalender ================= */
+function pickName(p){return p.text||(PKIND[p.kind]||PKIND.annat).n;}
+function pickupDates(p,count){var out=[],d=pickupNext(p);for(var i=0;d&&i<count;i++){out.push(d);d=pickupNext(p,addDays(d,1));}return out;}
+function monthsLabel(ms){if(!ms||!ms.length||ms.length===12)return '';var a=ms.slice().sort(function(x,y){return x-y;});
+  // sammanhängande period, t.ex. apr–nov
+  var run=true;for(var i=1;i<a.length;i++)if(a[i]!==a[i-1]+1)run=false;
+  return run?MON_S[a[0]-1]+'–'+MON_S[a[a.length-1]-1]:a.map(function(m){return MON_S[m-1];}).join(', ');}
+
+/* ================= v4: Bilen – besiktning, service, däck ================= */
+var TIRES=[['sommar','Sommardäck'],['vinter','Vinterdäck (friktion)'],['dubb','Dubbdäck']];
+function tireName(k){for(var i=0;i<TIRES.length;i++)if(TIRES[i][0]===k)return TIRES[i][1];return 'Sommardäck';}
+function tireAdvice(c){
+  var n=now(),m=n.getMonth(),d=n.getDate(),nm=esc(c.name||'Bilen'),t=c.tires||'sommar';
+  if((m===9||m===10)&&t==='sommar')return {k:'dack',hot:m===10&&d>=20,t:'Dags för vinterdäck på '+nm+'. Krav 1 dec–31 mars vid vinterväglag.',r:m===10?'före 1 dec':'okt–nov'};
+  if((m===11||m<=1)&&t==='sommar')return {k:'dack',hot:true,t:nm+' har sommardäck – vinterdäck krävs vid vinterväglag.',r:'nu'};
+  if(m===3&&d>15&&t==='dubb')return {k:'dack',hot:true,t:nm+' har kvar dubbdäcken. De får bara användas efter 15 april om det är vinterväglag.',r:'nu'};
+  if((m===2||m===3)&&t!=='sommar')return {k:'dack',hot:t==='dubb'&&m===3&&d>=8,t:'Dags för sommardäck på '+nm+(t==='dubb'?'. Dubbdäcken får sitta på till 15 april.':'.'),r:t==='dubb'?'senast 15 apr':'mars–apr'};
+  return null;
+}
+function carAlerts(c){
+  var out=[],n=now(),nm=esc(c.name||'Bilen');
+  var bd=parseYmd(c.besikt);if(bd){var dd=dayDiff(n,bd);if(dd<=30)out.push({k:'besikt',days:dd,hot:dd<=7,t:(dd<0?'Besiktningen är försenad: ':'Besiktning: ')+nm+(dd<0?'':' senast '+fmtD(bd)),r:dd<0?(-dd)+' d sen':dd===0?'idag':'om '+dd+' d'});}
+  var sd=parseYmd(c.service);if(sd){var ds=dayDiff(n,sd);if(ds<=14)out.push({k:'service',days:ds,hot:ds<0,t:'Service: '+nm+(c.serviceNote?' – '+esc(c.serviceNote):''),r:ds<0?'försenad':ds===0?'idag':'om '+ds+' d'});}
+  var tz=tireAdvice(c);if(tz)out.push(tz);
+  return out;
+}
+function dueTag(d,warn){if(!d)return '<span class="tag t-gry">Inget datum</span>';var dd=dayDiff(now(),d);
+  if(dd<0)return '<span class="tag t-red">'+(-dd)+' d sen</span>';if(dd<=7)return '<span class="tag t-red">'+(dd===0?'Idag':'Om '+dd+' d')+'</span>';
+  if(dd<=(warn||30))return '<span class="tag t-yel">Om '+dd+' d</span>';return '<span class="tag t-gry">'+fmtD(d)+' '+d.getFullYear()+'</span>';}
+
+/* ================= v4: Nedräkningar ================= */
+function nextYearly(s){var a=parseYmd(s);if(!a)return null;var n=now(),t=new Date(n.getFullYear(),a.getMonth(),a.getDate());if(dayDiff(n,t)<0)t=new Date(n.getFullYear()+1,a.getMonth(),a.getDate());return t;}
+function countdownList(){
+  var n=now(),out=[],seen={};
+  S.countdowns.forEach(function(c){var d=c.yearly?nextYearly(c.date):parseYmd(c.date);if(!d)return;var dd=dayDiff(n,d);if(dd<0)return;
+    out.push({id:c.id,kind:'egen',title:c.title||'Nedräkning',emoji:c.emoji||'⭐',d:d,days:dd,who:c.who||'',it:c});});
+  people().forEach(function(p){if(!p.birthday)return;var d=nextYearly(p.birthday),b=parseYmd(p.birthday);if(!d)return;var age=d.getFullYear()-b.getFullYear();
+    seen[p.id+'|'+d.getMonth()+'-'+d.getDate()]=1;
+    out.push({kind:'fodd',title:p.name+(age>0&&age<130?' fyller '+age:' fyller år'),emoji:p.type==='annan'?'🐾':'🎂',d:d,days:dayDiff(n,d),who:p.id,pid:p.id});});
+  S.dates.forEach(function(x){var r=dateNext(x);if(!r)return;if(x.who&&seen[x.who+'|'+r.d.getMonth()+'-'+r.d.getDate()])return;
+    out.push({kind:'datum',title:x.kind==='fodelsedag'?x.name+(r.age!=null?' fyller '+r.age:' fyller år'):x.name+(r.age!=null&&x.showAge?' – '+r.age+' år':''),emoji:x.kind==='fodelsedag'?'🎂':x.kind==='arsdag'?'💍':'⭐',d:r.d,days:r.days,who:x.who||'',did:x.id});});
+  var cd=S.settings.cd||{},mode=cd.mode||'auto';
+  if(mode!=='av'){var jul=nextDate(HOLI.jul.f,n);out.push({kind:'hogtid',title:'Julafton',emoji:'🎄',d:jul,days:dayDiff(n,jul)});
+    var hk=HOLI[mode]&&mode!=='jul'?mode:null;
+    if(mode==='auto'||mode==='egen'){var best=null;for(var k in HOLI){if(k==='jul'||!HOLI.hasOwnProperty(k))continue;var x2=nextDate(HOLI[k].f,n);if(!best||x2<best.d)best={d:x2,k:k};}if(best)hk=best.k;}
+    if(hk){var hd=nextDate(HOLI[hk].f,n);out.push({kind:'hogtid',title:cap(HOLI[hk].t),emoji:(THEMES[hk]||{}).badge||'⭐',d:hd,days:dayDiff(n,hd)});}}
+  return out.sort(function(a,b){return a.days-b.days;});
+}
+function cdDaysTxt(c){return c.days===0?'Idag!':c.days===1?'I morgon':c.days+' dagar';}
+
+/* ================= v4: Medicin & vitaminer ================= */
+function hmMin(s){var p=String(s||'').split(':');return (+p[0]||0)*60+(+p[1]||0);}
+function nowMin(){var d=now();return d.getHours()*60+d.getMinutes();}
+function parseTimes(s){var out=[];String(s||'').split(/[\s,;]+/).forEach(function(t){var m=/^(\d{1,2})[:.]?(\d{2})?$/.exec(t);if(!m)return;var h=+m[1],mi=+(m[2]||0);if(h>23||mi>59)return;var x=pad(h)+':'+pad(mi);if(out.indexOf(x)<0)out.push(x);});return out.sort();}
+function medDoses(d){var key=ymd(d||now()),out=[];S.meds.forEach(function(m){if(m.paused)return;(m.times||[]).forEach(function(t){out.push({m:m,t:t,done:((m.done||{})[key]||[]).indexOf(t)>=0,key:key});});});
+  return out.sort(function(a,b){return a.t.localeCompare(b.t)||String(a.m.name).localeCompare(String(b.m.name),'sv');});}
+function medToggle(m,t){if(!m.done)m.done={};var k=ymd(now()),a=m.done[k]||(m.done[k]=[]),i=a.indexOf(t);if(i>=0)a.splice(i,1);else a.push(t);m.updatedAt=nowMs();return i<0;}
+function medsLeft(){return medDoses().filter(function(x){return !x.done;}).length;}
+
+/* ================= v4: Växter ================= */
+function plantNext(p){var l=parseYmd(p.last);if(!l)return {d:startOfDay(now()),days:0};var d=addDays(l,+p.every||7);return {d:d,days:dayDiff(now(),d)};}
+function plantsDue(){return S.plants.filter(function(p){return plantNext(p).days<=0;});}
+
+/* ================= v4: Packlistor ================= */
+var PACK_TMPL={
+  helg:['Tandborste & tandkräm','Laddare','Underkläder','Pyjamas','Medicin','Hörlurar','Plånbok & körkort','Snacks till bilen'],
+  semester:['Pass','Biljetter / bokningar','Laddare & adapter','Solkräm','Badkläder','Solglasögon','Medicin & plåster','Underkläder','Strumpor','Shorts & t-shirts','Necessär','Böcker / surfplatta','Vattenflaska'],
+  skid:['Skidor/bräda & pjäxor','Hjälm','Skidglasögon','Underställ','Mössa & vantar','Halsduk/buff','Värmeljus till stugan','Skavsårsplåster','Liftkort','Termos'],
+  flyg:['Pass / id-kort','Boardingkort','Laddare & powerbank','Hörlurar','Nackkudde','Vätskor i påse (max 1 dl)','Snacks','Penna'],
+  barn:['Blöjor & våtservetter','Extra ombyte','Gosedjur','Napp','Mellanmål','Vattenflaska','Solhatt / mössa','Leksaker till resan']
+};
+var PACK_NAMES=[['tom','Tom lista'],['helg','Helgresa'],['semester','Semester'],['skid','Skidresa'],['flyg','Flyg'],['barn','Barnen']];
+function packById(id){return byId(S.packs,id);}
+function packProgress(p){var d=p.items.filter(function(x){return x.done;}).length;return {d:d,n:p.items.length};}
+
+/* ================= v4: Gäst-wifi ================= */
+function wifiEsc(s){return String(s||'').replace(/([\\;,:"])/g,'\\$1');}
+function wifiString(w){var sec=w.sec==='nopass'?'nopass':(w.sec||'WPA');return 'WIFI:T:'+sec+';S:'+wifiEsc(w.ssid)+';'+(sec==='nopass'?'':'P:'+wifiEsc(w.pass)+';')+(w.hidden?'H:true;':'')+';';}
+/* ================= v4: QR-kod (för gäst-wifi) – egen liten kodare, byte-läge, felkorrigering M, version 1–10 ================= */
+var QR=(function(){
+  var ECC=[0,10,16,26,18,24,16,18,22,22,26],BLK=[0,1,1,1,2,2,4,4,4,5,5];
+  function rawModules(v){var r=(16*v+128)*v+64;if(v>=2){var na=Math.floor(v/7)+2;r-=(25*na-10)*na-55;if(v>=7)r-=36;}return r;}
+  function dataCw(v){return Math.floor(rawModules(v)/8)-ECC[v]*BLK[v];}
+  function gmul(x,y){var z=0;for(var i=7;i>=0;i--){z=(z<<1)^((z>>>7)*0x11D);z^=((y>>>i)&1)*x;}return z&255;}
+  function rsDiv(deg){var r=[],i,j;for(i=0;i<deg-1;i++)r.push(0);r.push(1);var root=1;
+    for(i=0;i<deg;i++){for(j=0;j<r.length;j++){r[j]=gmul(r[j],root);if(j+1<r.length)r[j]^=r[j+1];}root=gmul(root,2);}return r;}
+  function rsRem(data,div){var r=div.map(function(){return 0;});data.forEach(function(b){var f=b^r.shift();r.push(0);for(var i=0;i<div.length;i++)r[i]^=gmul(div[i],f);});return r;}
+  function utf8(s){var out=[],t=unescape(encodeURIComponent(s));for(var i=0;i<t.length;i++)out.push(t.charCodeAt(i));return out;}
+  function alignPos(v){if(v===1)return [];var na=Math.floor(v/7)+2,step=Math.ceil((v*4+4)/(na*2-2))*2,res=[6];for(var pos=v*4+10;res.length<na;pos-=step)res.splice(1,0,pos);return res;}
+  function encode(text){
+    var bytes=utf8(text),v,i,j;
+    for(v=1;v<=10;v++){var cap=dataCw(v)*8,need=4+(v<10?8:16)+bytes.length*8;if(need<=cap)break;}
+    if(v>10)return null;
+    var bits=[];function put(val,len){for(var k=len-1;k>=0;k--)bits.push((val>>>k)&1);}
+    put(4,4);put(bytes.length,v<10?8:16);bytes.forEach(function(b){put(b,8);});
+    var capb=dataCw(v)*8;put(0,Math.min(4,capb-bits.length));put(0,(8-bits.length%8)%8);
+    for(var pb=0xEC;bits.length<capb;pb^=0xEC^0x11)put(pb,8);
+    var data=[];for(i=0;i<bits.length;i+=8){var x=0;for(j=0;j<8;j++)x=(x<<1)|bits[i+j];data.push(x);}
+    // block och felkorrigering
+    var nb=BLK[v],el=ECC[v],raw=Math.floor(rawModules(v)/8),nShort=nb-raw%nb,shortLen=Math.floor(raw/nb),div=rsDiv(el),blocks=[],k=0;
+    for(i=0;i<nb;i++){var dat=data.slice(k,k+shortLen-el+(i<nShort?0:1));k+=dat.length;var ec=rsRem(dat,div);if(i<nShort)dat.push(0);blocks.push(dat.concat(ec));}
+    var cw=[];for(i=0;i<blocks[0].length;i++)for(j=0;j<blocks.length;j++)if(i!==shortLen-el||j>=nShort)cw.push(blocks[j][i]);
+    // matris
+    var size=v*4+17,M=[],F=[];for(i=0;i<size;i++){M.push([]);F.push([]);for(j=0;j<size;j++){M[i].push(false);F[i].push(false);}}
+    function setF(x,y,d){M[y][x]=d;F[y][x]=true;}
+    for(i=0;i<size;i++){setF(6,i,i%2===0);setF(i,6,i%2===0);}
+    [[3,3],[size-4,3],[3,size-4]].forEach(function(c){for(var dy=-4;dy<=4;dy++)for(var dx=-4;dx<=4;dx++){var xx=c[0]+dx,yy=c[1]+dy;if(xx<0||yy<0||xx>=size||yy>=size)continue;var dd=Math.max(Math.abs(dx),Math.abs(dy));setF(xx,yy,dd!==2&&dd!==4);}});
+    var ap=alignPos(v),na=ap.length;
+    for(i=0;i<na;i++)for(j=0;j<na;j++){if((i===0&&j===0)||(i===0&&j===na-1)||(i===na-1&&j===0))continue;for(var ay=-2;ay<=2;ay++)for(var ax=-2;ax<=2;ax++)setF(ap[i]+ax,ap[j]+ay,Math.max(Math.abs(ax),Math.abs(ay))!==1);}
+    function drawFormat(mask){var d=(0<<3)|mask,rem=d;for(var q=0;q<10;q++)rem=(rem<<1)^((rem>>>9)*0x537);var b=((d<<10)|rem)^0x5412;
+      function g(n){return ((b>>>n)&1)!==0;}
+      for(var q2=0;q2<=5;q2++)setF(8,q2,g(q2));setF(8,7,g(6));setF(8,8,g(7));setF(7,8,g(8));for(q2=9;q2<15;q2++)setF(14-q2,8,g(q2));
+      for(q2=0;q2<8;q2++)setF(size-1-q2,8,g(q2));for(q2=8;q2<15;q2++)setF(8,size-15+q2,g(q2));setF(8,size-8,true);}
+    drawFormat(0);
+    if(v>=7){var rv=v;for(i=0;i<12;i++)rv=(rv<<1)^((rv>>>11)*0x1F25);var vb=(v<<12)|rv;for(i=0;i<18;i++){var bt=((vb>>>i)&1)!==0,a1=size-11+i%3,b1=Math.floor(i/3);setF(a1,b1,bt);setF(b1,a1,bt);}}
+    // data i sicksack
+    var bi=0;for(var right=size-1;right>=1;right-=2){if(right===6)right=5;for(var vert=0;vert<size;vert++)for(j=0;j<2;j++){var xx2=right-j,up=((right+1)&2)===0,yy2=up?size-1-vert:vert;
+      if(!F[yy2][xx2]&&bi<cw.length*8){M[yy2][xx2]=((cw[bi>>>3]>>>(7-(bi&7)))&1)!==0;bi++;}}}
+    function maskFn(m,x,y){switch(m){case 0:return (x+y)%2===0;case 1:return y%2===0;case 2:return x%3===0;case 3:return (x+y)%3===0;case 4:return (Math.floor(x/3)+Math.floor(y/2))%2===0;case 5:return x*y%2+x*y%3===0;case 6:return (x*y%2+x*y%3)%2===0;default:return ((x+y)%2+x*y%3)%2===0;}}
+    function applyMask(m){for(var y=0;y<size;y++)for(var x=0;x<size;x++)if(!F[y][x]&&maskFn(m,x,y))M[y][x]=!M[y][x];}
+    function penalty(){var p=0,x,y,run,c;
+      for(y=0;y<size;y++){run=1;for(x=1;x<size;x++){if(M[y][x]===M[y][x-1]){run++;if(run===5)p+=3;else if(run>5)p++;}else run=1;}}
+      for(x=0;x<size;x++){run=1;for(y=1;y<size;y++){if(M[y][x]===M[y-1][x]){run++;if(run===5)p+=3;else if(run>5)p++;}else run=1;}}
+      for(y=0;y<size-1;y++)for(x=0;x<size-1;x++){c=M[y][x];if(c===M[y][x+1]&&c===M[y+1][x]&&c===M[y+1][x+1])p+=3;}
+      var dark=0;for(y=0;y<size;y++)for(x=0;x<size;x++)if(M[y][x])dark++;p+=Math.floor(Math.abs(dark*20-size*size*10)/(size*size))*10;return p;}
+    var best=0,bestP=1e9;for(var m=0;m<8;m++){applyMask(m);drawFormat(m);var pp=penalty();if(pp<bestP){bestP=pp;best=m;}applyMask(m);}
+    applyMask(best);drawFormat(best);
+    return {size:size,m:M,version:v,mask:best};
+  }
+  function svg(text,px){var q=encode(text);if(!q)return '';var n=q.size+8,d='';
+    for(var y=0;y<q.size;y++)for(var x=0;x<q.size;x++)if(q.m[y][x])d+='M'+(x+4)+' '+(y+4)+'h1v1h-1z';
+    return '<svg class="qrsvg" viewBox="0 0 '+n+' '+n+'" width="'+(px||240)+'" height="'+(px||240)+'" shape-rendering="crispEdges" role="img" aria-label="QR-kod"><rect width="'+n+'" height="'+n+'" fill="#ffffff"/><path d="'+d+'" fill="#111111"/></svg>';}
+  return {encode:encode,svg:svg};
+})();
 /* ================= Rendering ================= */
-var TABS=[['home','Hem','home'],['idag','Idag','today'],['vecka','Vecka','week'],['mat','Mat','food'],['inkop','Inköp','cart'],['sysslor','Sysslor','chores'],['hemmet','Hemmet','house'],['lappar','Lappar','note'],['timer','Timer','timer'],['inst','Inställn.','gear']];
+var TABS=[['home','Hem','home'],['idag','Idag','today'],['vecka','Vecka','week'],['mat','Mat','food'],['inkop','Inköp','cart'],['sysslor','Sysslor','chores'],['hemmet','Hemmet','house'],['vardag','Vardag','grid'],['lappar','Lappar','note'],['timer','Timer','timer'],['inst','Inställn.','gear']];
 var PHONE_TABS=['home','idag','inkop','mat'];
-var cur='home',popId=null,newId=null,weekOff=0,weekMode='kal',matSub='meny';
+var cur='home',popId=null,newId=null,weekOff=0,weekMode='kal',matSub='meny',hemSub='rakningar',varSub='sopor';
 function isPhone(){return document.body.classList.contains('phone');}
 function applyLayout(){
   var ph=DEV.layout==='phone'||(DEV.layout==='auto'&&Math.min(window.innerWidth,screen.width||9999)<=600)||(DEV.layout==='auto'&&window.innerWidth<=600);
@@ -1454,7 +1865,8 @@ function applyLayout(){
   if(was!==ph&&S&&curTheme){renderRail();renderView();}
 }
 function railBadge(v){
-  if(v==='hemmet'){var n=0;S.bills.forEach(function(b){var x=billNext(b);if(x&&!b.autogiro&&x.days<=3)n++;});S.parcels.forEach(function(p){if(p.status==='hamta')n++;});S.service.forEach(function(x){var s=serviceNext(x);if(s&&s.days<0)n++;});return n;}
+  if(v==='hemmet'){var n=billDue().length;S.parcels.forEach(function(p){if(p.status==='hamta')n++;});S.service.forEach(function(x){var s=serviceNext(x);if(s&&s.days<0)n++;});return n;}
+  if(v==='vardag'){var c=plantsDue().length;S.cars.forEach(function(x){carAlerts(x).forEach(function(a){if(a.hot)c++;});});medDoses().forEach(function(x){if(!x.done&&hmMin(x.t)<nowMin()-60)c++;});return c;}
   if(v==='mat'){return fridgeSoon(0).length;}
   return 0;
 }
@@ -1524,11 +1936,12 @@ function renderHome(){
   else{h='<button class="tt" data-act="editMenu" data-d="'+wd+'"><div class="lbl">Ikväll äter vi</div><span class="dish'+(m.dish?'':' none')+'">'+(m.dish?esc(m.dish)+exTag(m):'Inget planerat – vad sägs om att slå en tärning?')+'</span></button>'+
     (m.dish&&m.ingr&&m.ingr.length?'<button class="ibtn ghost" data-act="menuToShop" data-d="'+wd+'" aria-label="Ingredienser till inköp">'+ic('cart',2)+'</button>':'')+'<button class="ibtn" data-act="pickFood" data-d="'+wd+'" aria-label="Vad ska vi äta?">'+ic('dice',2)+'</button>';}
   $('hMeal').innerHTML=h;
+  $('hCd').innerHTML=cdCardHtml();
   // Idag
   var ev=eventsOn(d),todos=sortDone(S.todos),left=S.todos.filter(function(t){return !t.done;}).length;
   h=cardHead('today','Idag',left?left+' kvar':'',moreBtn('idag'))+'<div class="cb">';
   ev.forEach(function(e){h+=evHtml(e);});
-  pickupsSoon(0).forEach(function(r){h+='<div class="ev"><span class="tm">'+ic('bin')+'</span><span class="et">'+esc(r.p.text)+' idag</span></div>';});
+  pickupsSoon(0).forEach(function(r){h+='<div class="ev"><span class="tm">'+ic('bin')+'</span><span class="et">'+esc(pickName(r.p))+' töms idag</span></div>';});
   h+='<ul>'+todos.map(function(t){return liHtml(t,'todos');}).join('')+'</ul>';
   if(!todos.length&&!ev.length)h+='<div class="empty">Inget att göra. Jag misstänker ett misstag, men njut.</div>';
   var cl=choresLeft().length;if(cl)h+='<button class="mini" data-act="go" data-v="sysslor"><span class="d">'+ic('chores')+'</span><span class="t">'+cl+' syssl'+(cl===1?'a':'or')+' kvar denna vecka</span></button>';
@@ -1585,7 +1998,8 @@ function renderIdag(){
   h+='</div></div><div class="card">'+cardHead('week','Schema',null,plusBtn('add','events','Ny händelse',' data-date="'+ymd(d)+'"'))+'<div class="cb">';
   var ev=eventsOn(d);ev.forEach(function(e){h+=evHtml(e);});
   if(!ev.length)h+='<div class="empty">Inget i kalendern idag. Misstänkt lugnt.</div>';
-  var ps=pickupsSoon(1);if(ps.length){h+='<div class="sec">Hämtning</div>';ps.forEach(function(r){h+=pickHtml(r.p,r.d);});}
+  var ps=pickupsSoon(1);if(ps.length){h+='<div class="sec">Sopor & hämtning</div>';ps.forEach(function(r){h+=pickHtml(r.p,r.d);});}
+  h+=todayExtrasHtml();
   var cl=S.chores;if(cl.length){h+='<div class="sec">Veckans sysslor</div><ul>';cl.forEach(function(c){h+=choreLi(c);});h+='</ul>';}
   h+='</div></div><div class="card">'+cardHead('note','Lappar',null,plusBtn('add','notes','Ny lapp'))+'<div class="cb"><div class="notes">';
   h+=S.notes.map(noteHtml).join('');
@@ -1599,11 +2013,12 @@ function choreLi(c,noWho){
   var small=(c.mode==='rotate'?'<span class="rot" style="margin:0">'+ic('cycle')+'Växlar</span>':'');
   return liHtml(it,'chores',small,S.settings.points?'<span class="pts">+'+chorePts(c)+'p</span>':'');
 }
-function pickHtml(p,d){
-  var k=PKIND[p.kind]||PKIND.annat,n=dayDiff(now(),d);
-  return '<button class="pick" data-act="edit" data-kind="pickups" data-id="'+p.id+'"><span class="pi" style="background:'+k.c+'">'+ic(k.i)+'</span><span class="pt">'+esc(p.text)+exTag(p)+'<span class="pn">'+(n===0?'Idag':n===1?'I morgon':DAYS_S[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1))+'</span>'+'<small>'+cap(DAYS[d.getDay()])+'ar'+(p.every===2?', varannan vecka':p.every===4?', var fjärde vecka':'')+'</small></span></button>';
+function pickHtml(p,d,more){
+  var k=PKIND[p.kind]||PKIND.annat,n=dayDiff(now(),d),ml=monthsLabel(p.months),w=p.who&&whoLabel(p.who)?whoLabel(p.who):'';
+  var nx=more?pickupDates(p,4).slice(1).map(function(x){return '<span class="pdc">'+DAYS_S[x.getDay()]+' '+x.getDate()+'/'+(x.getMonth()+1)+'</span>';}).join(''):'';
+  return '<button class="pick" data-act="edit" data-kind="pickups" data-id="'+p.id+'"><span class="pi" style="background:'+k.c+'">'+ic(k.i)+'</span><span class="pt">'+esc(pickName(p))+exTag(p)+'<span class="pn">'+(n===0?'Idag':n===1?'I morgon':DAYS_S[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1))+'</span>'+
+    '<small>'+cap(DAYS[d.getDay()])+'ar'+(+p.every===1?', varje vecka':+p.every===2?', varannan vecka':', var '+p.every+':e vecka')+(ml?' · '+ml:'')+(w?' · '+esc(w)+(p.who==='both'?'':' ställer ut'):'')+'</small>'+(nx?'<span class="pdl">Sedan '+nx+'</span>':'')+'</span></button>';
 }
-
 /* ---------- Vecka ---------- */
 function weekHeadAct(){
   return seg2('weekMode',weekMode,[['kal','Kalender','week'],['tavla','Familjetavla','users']])+
@@ -1634,7 +2049,10 @@ function renderVecka(){
   });
   $('v-vecka').innerHTML=h+'</div></div>';
 }
+function bdaysOn(d,pid){ // födelsedagar på personens rad (personens eget födelsedatum)
+  var x='';people().forEach(function(p){if(pid!=null&&p.id!==pid)return;var b=parseYmd(p.birthday);if(b&&b.getMonth()===d.getMonth()&&b.getDate()===d.getDate())x+='<span class="bi misc">🎂 '+esc(p.name)+' '+(d.getFullYear()-b.getFullYear())+' år</span>';});return x;}
 function boardHtml(mon){
+  if(isPhone())return boardPhoneHtml(mon);
   var t=now(),days=[],i;for(i=0;i<7;i++)days.push(addDays(mon,i));
   var h='<div class="card board"><div class="brow2 hd"><div class="bl">'+ic('users')+'Vecka '+isoWeek(mon)+'</div>';
   days.forEach(function(d){var cd=calDay(d);h+='<div class="bc bhd'+(dayDiff(t,d)===0?' today':'')+(cd.red?' red':'')+'"><b>'+DAYS_S[d.getDay()]+'</b><span>'+d.getDate()+'</span></div>';});
@@ -1650,6 +2068,7 @@ function boardHtml(mon){
       var ev=eventsOn(d).filter(function(e){return all?(e.who==='both'||!person(e.who)):e.who===p[0];}),x='';
       ev.forEach(function(e){x+='<button class="bi" style="background:'+bg+'" data-act="edit" data-kind="events" data-id="'+e.id+'">'+(e.time?'<b>'+esc(e.time)+'</b> ':'')+esc(e.text)+'</button>';});
       S.dates.forEach(function(dt){var a=parseYmd(dt.date);if(!(a&&a.getMonth()===d.getMonth()&&a.getDate()===d.getDate()))return;if(all?!person(dt.who):dt.who===p[0])x+='<span class="bi misc">🎁 '+esc(dt.name)+'</span>';});
+      if(!all)x+=bdaysOn(d,p[0]);
       if(all){
         S.bills.forEach(function(b){var bn=billNext(b);if(bn&&dayDiff(bn.d,d)===0&&!b.autogiro)x+='<span class="bi misc">💳 '+esc(b.name)+'</span>';});
         S.parcels.forEach(function(pc){if(pc.status==='vag'&&pc.eta===ymd(d))x+='<span class="bi misc">📦 '+esc(pc.text)+'</span>';});}
@@ -1658,7 +2077,7 @@ function boardHtml(mon){
     h+='</div>';
   });
   h+='<div class="brow2 pickr"><div class="bl">'+ic('bin')+'Hämtning</div>';
-  days.forEach(function(d){var x='';S.pickups.forEach(function(p){var nd=pickupNext(p,d);if(nd&&dayDiff(nd,d)===0)x+='<span class="bi pick">'+esc(p.text)+'</span>';});h+='<div class="bc'+(dayDiff(t,d)===0?' today':'')+'">'+x+'</div>';});
+  days.forEach(function(d){var x='';S.pickups.forEach(function(p){var nd=pickupNext(p,d);if(nd&&dayDiff(nd,d)===0)x+='<span class="bi pick" style="background:'+(PKIND[p.kind]||PKIND.annat).c+'">'+esc(pickName(p))+'</span>';});h+='<div class="bc'+(dayDiff(t,d)===0?' today':'')+'">'+x+'</div>';});
   return h+'</div></div>';
 }
 
@@ -1693,13 +2112,13 @@ function renderMat(){
     $('v-mat').innerHTML=h+'</div></div></div>';return;
   }
   h=vhead('Veckomeny',planned?planned+' av 7 middagar planerade. Resten improviserar vi, med stil.':'Inget planerat. Jag föreslår, som alltid, pannkakor.',
-    tabs+'<button class="gbtn" data-act="pickFood">'+ic('dice')+'Förslag</button><button class="pbtn" data-act="menuAllToShop">'+ic('cart')+'Veckan till inköp</button>');
+    tabs+'<button class="gbtn" data-act="suggestWeek">'+ic('dice')+'Föreslå veckan</button><button class="pbtn" data-act="menuAllToShop">'+ic('cart')+'Veckan till inköp</button>');
   h+='<div class="mrows">';
   for(var i=1;i<=7;i++){
     var m=S.menu[i]||{},d=addDays(monday(t),i-1);
     h+='<div class="card mrow'+(i===tw?' today':'')+'"><div class="md"><b>'+cap(DAYS[d.getDay()])+'</b><span>'+(i===tw?'ikväll':d.getDate()+' '+MON_S[d.getMonth()])+'</span></div>'+
-      '<button class="mm" data-act="editMenu" data-d="'+i+'">'+(m.dish?'<span class="mn">'+esc(m.dish)+exTag(m)+'</span>'+(m.ingr&&m.ingr.length?'<span class="mi">'+esc(m.ingr.join(', '))+'</span>':'<span class="mi">Inga ingredienser angivna</span>'):'<span class="mn none">Inget planerat – tryck för att välja</span>')+'</button>'+
-      (m.dish?'':'<button class="ibtn ghost" data-act="pickFood" data-d="'+i+'" aria-label="Föreslå">'+ic('dice')+'</button>')+
+      '<button class="mm" data-act="editMenu" data-d="'+i+'">'+(m.dish?'<span class="mn">'+esc(m.dish)+exTag(m)+(m.why?'<span class="mwhy">'+ic('fridge')+'använder '+esc(m.why)+'</span>':'')+'</span>'+(m.ingr&&m.ingr.length?'<span class="mi">'+esc(m.ingr.join(', '))+'</span>':'<span class="mi">Inga ingredienser angivna</span>'):'<span class="mn none">Inget planerat – tryck för att välja</span>')+'</button>'+
+      '<button class="ibtn ghost" data-act="pickFood" data-d="'+i+'" aria-label="'+(m.dish?'Byt rätt':'Föreslå')+'">'+ic('dice')+'</button>'+
       (m.ingr&&m.ingr.length?'<button class="gbtn" data-act="menuToShop" data-d="'+i+'">'+ic('cart')+'Till inköp</button>':'')+'</div>';
   }
   h+='</div><div style="flex:0 0 auto;margin-top:10px;text-align:right"><button class="gbtn sm" data-act="menuClear">'+ic('trash')+'Töm veckan</button></div>';
@@ -1714,23 +2133,17 @@ function renderInkop(){
   h+='<div class="shopwrap"><div class="card shopmain"><div class="cb" style="padding-top:12px"><div class="cats">';
   CATS.forEach(function(c){
     var items=sortDone(S.shop.filter(function(x){return (x.cat||'ovrigt')===c.k;}));if(!items.length)return;
-    h+='<div class="cat"><h4><i style="background:'+c.c+'"></i>'+c.n+'</h4><ul>'+items.map(function(x){return liHtml(x,'shop');}).join('')+'</ul></div>';
+    h+='<div class="cat"><h4><i style="background:'+c.c+'"></i>'+c.n+'<span class="cn">'+items.filter(function(x){return !x.done;}).length+'</span></h4><ul>'+items.map(function(x){return liHtml(x,'shop',shopMeta(x));}).join('')+'</ul></div>';
   });
   h+='</div>'+(S.shop.length?'':'<div class="empty">Inköpslistan är tom. Kylskåpet håller sannolikt inte med.</div>')+'</div></div>';
   h+='<div class="card shopside"><form class="qadd" id="shopForm" autocomplete="off"><input id="shopInput" type="text" placeholder="Lägg till vara…" enterkeyhint="done" autocapitalize="sentences"><button class="ibtn" type="submit" aria-label="Lägg till">'+ic('plus',2.6)+'</button></form>';
   h+='<div class="hint" style="padding:0 16px 8px;margin:0">Flera på en gång: <b>ägg, bröd, kaffe</b>. Jag sorterar dem i rätt avdelning.</div>';
+  h+='<div class="byrow"><span class="fl" style="margin:0 8px 0 0">Läggs till av</span>'+people().filter(function(p){return p.type!=='annan';}).map(function(p){return '<button class="pavb'+(shopWho()===p.id?' on':'')+'" data-act="shopBy" data-v="'+esc(p.id)+'" aria-label="'+esc(p.name)+'">'+pavHtml(p.id)+'</button>';}).join('')+'</div>';
   h+=cardHead('star','Favoriter',null,'<button class="gbtn sm" data-act="editFavs">'+ic('edit')+'Ändra</button>')+'<div class="favs">';
-  h+=S.favs.map(function(f,i){return '<button class="fav" data-act="fav" data-i="'+i+'"><b>+</b>'+esc(f)+'</button>';}).join('')+'</div></div></div>';
+  h+=S.favs.map(function(f,i){return '<button class="fav" data-act="fav" data-i="'+i+'"><b>+</b>'+esc(f)+'</button>';}).join('')+'</div><div class="hint" style="padding:4px 16px 12px;margin:0">Redo för synk: varje vara har eget id, vem som lade till den och när den ändrades senast.</div></div></div>';
   $('v-inkop').innerHTML=h;
   $('shopForm').addEventListener('submit',function(ev){ev.preventDefault();var inp=$('shopInput'),v=inp.value.trim();if(!v)return;var n=addShop(v.split(/\s*,\s*/));inp.value='';toast(n===1?'Tillagd.':n+' varor tillagda.');renderInkop();var i2=$('shopInput');if(i2)i2.focus();});
 }
-function addShop(arr){
-  var n=0;arr.forEach(function(t){t=String(t||'').trim();if(!t)return;
-    var dup=S.shop.some(function(x){return !x.done&&x.text.toLowerCase()===t.toLowerCase();});if(dup)return;
-    var it={id:uid(),text:cap(t),cat:guessCat(t),done:false};S.shop.push(it);newId=it.id;n++;});
-  save();return n;
-}
-
 /* ---------- Sysslor ---------- */
 function renderSysslor(){
   var wk=isoWeek(now());
@@ -1815,14 +2228,14 @@ function renderInst(){
   h+='</select><div class="hint">Just nu enligt kalendern: '+THEMES[autoTheme(now())].name+'.</div>'+tg('semester','Semesterläge 🏖️','Går före alla andra teman')+tg('anim','Rörelse och animationer','Stäng av om plattan känns seg')+tg('glass','Glaseffekt på kort','Snyggare men tyngre för äldre iPad')+tg('secs','Visa sekunder')+'</div></div>';
   h+='<div class="card">'+cardHead('flag','Kalender')+'<div class="cb">'+tg('namnsdag','Visa namnsdag','Svenska Akademiens namnlängd')+tg('flagg','Visa flaggdagar')+tg('points','Poäng för sysslor','Lite vänlig tävling, och en svit när allt blir klart')+
     '<label class="fl">Kvällsläge från kl.</label>'+dseg('eveFrom',s.eveningFrom,[[19,'19'],[20,'20'],[21,'21'],[22,'22']])+'</div></div>';
-  h+='<div class="card">'+cardHead('star','Nedräkning')+'<div class="cb"><select class="fi" id="sCd" data-set="cd.mode">';
-  [['auto','Nästa högtid (automatiskt)'],['jul','Julafton'],['midsommar','Midsommarafton'],['nyar','Nyårsafton'],['egen','Egen nedräkning'],['av','Av']].forEach(function(o){h+='<option value="'+o[0]+'"'+(s.cd.mode===o[0]?' selected':'')+'>'+o[1]+'</option>';});
-  h+='</select><label class="fl" for="sCdT">Egen: vad?</label><input class="fi" id="sCdT" data-set="cd.title" placeholder="t.ex. semestern" value="'+esc(s.cd.title)+'"><label class="fl" for="sCdD">Datum</label><input class="fi" type="date" id="sCdD" data-set="cd.date" value="'+esc(s.cd.date)+'"></div></div></div><div class="scol">';
+  h+='<div class="card">'+cardHead('hourglass','Nedräkning – högtider')+'<div class="cb"><div class="hint">Egna nedräkningar (semester, resor) och födelsedagar finns under <b>Vardag → Nedräkning</b>. Här väljer du vilken högtid som räknas ner automatiskt, utöver julafton.</div><select class="fi" id="sCd" data-set="cd.mode">';
+  [['auto','Närmaste högtid (automatiskt)'],['midsommar','Midsommarafton'],['nyar','Nyårsafton'],['pask','Påskafton'],['jul','Bara julafton'],['av','Av – inga högtider']].forEach(function(o){h+='<option value="'+o[0]+'"'+(s.cd.mode===o[0]||(o[0]==='auto'&&s.cd.mode==='egen')?' selected':'')+'>'+o[1]+'</option>';});
+  h+='</select><div class="brow" style="margin-top:10px"><button class="gbtn" data-act="go" data-v="vardag" data-sub="nedrakning">'+ic('hourglass')+'Öppna nedräkningar</button></div></div></div></div><div class="scol">';
   h+='<div class="card">'+cardHead('clock','Skärm & ljud')+'<div class="cb"><label class="fl" for="sSaver">Skärmsläckare med stor klocka</label><select class="fi" id="sSaver" data-set="saverMin">';
   [[0,'Av'],[2,'Efter 2 minuter'],[5,'Efter 5 minuter'],[10,'Efter 10 minuter'],[15,'Efter 15 minuter'],[30,'Efter 30 minuter']].forEach(function(o){h+='<option value="'+o[0]+'"'+(+s.saverMin===o[0]?' selected':'')+'>'+o[1]+'</option>';});
   h+='</select>'+tg('night','Dämpa skärmen 23–06')+tg('sound','Ljud för timers')+tg('autoClear','Rensa avbockat i Idag varje natt')+'<div class="brow"><button class="gbtn" data-act="testSound">'+ic('bell')+'Testa ljud</button><button class="gbtn" data-act="saverNow">'+ic('clock')+'Skärmsläckare</button></div></div></div>';
   h+='<div class="card">'+cardHead('down','Säkerhetskopia')+'<div class="cb"><div class="hint">Allt sparas bara på den här enheten tills synken finns. Exportera då och då.</div><div class="brow"><button class="gbtn" data-act="export">'+ic('down')+'Exportera fil</button><button class="gbtn" data-act="showJson">Visa som text</button><button class="gbtn" data-act="importFile">'+ic('up')+'Importera fil</button><button class="gbtn" data-act="importText">Importera text</button></div><textarea class="fi" id="exportBox" style="display:none" placeholder="Klistra in en säkerhetskopia här och tryck Importera text igen"></textarea><div class="brow" style="margin-top:10px"><button class="gbtn" data-act="removeExamples">Ta bort alla exempel</button><button class="gbtn" data-act="wipe">Töm allt…</button></div></div></div>';
-  h+='<div class="card">'+cardHead('heart','Om Jarvis')+'<div class="cb"><div class="hint">Jarvis hemskärm 3.0'+(S.migrated?' · flyttad från v'+S.migrated.from+' '+esc(S.migrated.at):'')+'. Sätt <b>Automatisk låsning → Aldrig</b> i iPadens inställningar så håller jag mig vaken. Synk mellan plattan och telefonerna kommer i en senare version.</div></div></div>';
+  h+='<div class="card">'+cardHead('heart','Om Jarvis')+'<div class="cb"><div class="hint">Jarvis hemskärm 4.0 · dataformat '+S.v+(S.v5Migrated?' (uppgraderad från format '+S.v5Migrated.from+' '+esc(S.v5Migrated.at)+')':'')+'. Sätt <b>Automatisk låsning → Aldrig</b> i iPadens inställningar så håller jag mig vaken. Synk mellan plattan och telefonerna kommer i en senare version.</div></div></div>';
   var sg=$('v-inst').querySelector('.setgrid'),st0=sg?sg.scrollTop:0,mt0=$('main').scrollTop;
   $('v-inst').innerHTML=h+'</div></div>';
   sg=$('v-inst').querySelector('.setgrid');if(sg&&st0)sg.scrollTop=st0;if(mt0)$('main').scrollTop=mt0; // behåll läget när något ändras
@@ -1838,46 +2251,6 @@ function renderSaver(){
   $('saverIn').innerHTML=h;
 }
 /* ================= v3-vyer ================= */
-/* ---------- Hemmet: räkningar, prenumerationer, underhåll, paket ---------- */
-function renderHemmet(){
-  var t=now(),tot=billTotals();
-  var h=vhead('Hemmet','Räkningar, prenumerationer, underhåll och paket. Det tråkiga, prydligt samlat.');
-  h+='<div class="hmgrid">';
-  // Räkningar
-  var bills=billsOf('bill').map(function(b){return {b:b,t:billThis(b),n:billNext(b)};}).sort(function(a,b){return (a.n?a.n.d:9e15)-(b.n?b.n.d:9e15);});
-  h+='<div class="card">'+cardHead('card','Räkningar – '+MONTHS[t.getMonth()],null,plusBtn('add','bills','Ny räkning'))+'<div class="tot"><span><b>'+fmtKr(tot.leftMonth)+'</b>kvar att betala</span><span>'+fmtKr(tot.paidMonth)+' betalt</span></div><div class="cb">';
-  bills.forEach(function(x){var b=x.b,th=x.t,paid=th&&th.paid,nx=x.n;
-    var st=!th?'<span class="tag t-gry">'+(nx?'Nästa '+nx.d.getDate()+' '+MON_S[nx.d.getMonth()]:'–')+'</span>':paid?'<span class="tag t-grn">'+(th.auto?'Dragen':'Betald')+'</span>':th.days<0?'<span class="tag t-red">'+(-th.days)+' d sen</span>':th.days<=3?'<span class="tag t-yel">'+cap(relDay(th.d))+'</span>':'<span class="tag t-gry">'+th.d.getDate()+' '+MON_S[th.d.getMonth()]+'</span>';
-    h+='<div class="brw'+(paid?' paid done':'')+'">'+(th&&!b.autogiro?'<button class="ck" data-act="billPaid" data-id="'+b.id+'" aria-label="Betald"><i>'+ic('check',3.2)+'</i></button>':'<span class="ck"><i style="border-style:dashed;opacity:.6">'+ic('cycle',2)+'</i></span>')+
-      '<button class="bt" data-act="edit" data-kind="bills" data-id="'+b.id+'">'+esc(b.name)+exTag(b)+'<small>Den '+b.day+':e · '+EVERY[b.every||1]+(b.autogiro?' · autogiro':'')+'</small></button><span class="amt">'+fmtKr(b.amount)+'</span>'+st+'</div>';});
-  if(!bills.length)h+='<div class="empty">Lägg in fasta räkningar – hyra, el, försäkring – så påminner jag innan de förfaller.</div>';
-  h+='</div></div>';
-  // Prenumerationer
-  var subs=billsOf('sub').sort(function(a,b){return perMonth(b)-perMonth(a);});
-  h+='<div class="card">'+cardHead('wallet','Prenumerationer',subs.length?subs.length+' st':'',plusBtn('add','subs','Ny prenumeration'))+'<div class="tot"><span><b>'+fmtKr(tot.subs)+'</b>per månad</span><span>'+fmtKr(tot.subs*12)+' per år</span></div><div class="cb">';
-  if(tot.review>0)h+='<div class="save">Markerade att se över: <b>'+fmtKr(tot.review)+' per år</b>. '+(tot.review>=1000?'Det är många semlor, sir.':'Små summor blir stora, ser jag.')+'</div>';
-  subs.forEach(function(b){h+='<div class="brw"><button class="bt" data-act="edit" data-kind="bills" data-id="'+b.id+'">'+esc(b.name)+exTag(b)+'<small>'+fmtKr(b.amount)+' '+EVERY[b.every||1]+' · dras den '+b.day+':e</small></button><span class="amt">'+fmtKr(perMonth(b))+'/mån</span>'+(b.review?'<span class="tag t-yel">Se över</span>':'')+'</div>';});
-  if(!subs.length)h+='<div class="empty">Streaming, appar, kameramoln, gym… Lägg in dem så ser ni vad det faktiskt kostar per år.</div>';
-  h+='</div></div>';
-  // Underhåll
-  var sv=S.service.map(function(x){return {x:x,s:serviceNext(x)};}).filter(function(r){return r.s;}).sort(function(a,b){return a.s.days-b.s.days;});
-  h+='<div class="card">'+cardHead('tools','Underhåll',null,plusBtn('add','service','Nytt underhåll'))+'<div class="cb">';
-  sv.forEach(function(r){var s=r.s,late=s.days<0;
-    h+='<div class="brw"><button class="bt" data-act="edit" data-kind="service" data-id="'+r.x.id+'">'+esc(r.x.text)+exTag(r.x)+'<small>'+(late?'Försenat sedan '+s.d.getDate()+' '+MON_S[s.d.getMonth()]:s.days===0?'Idag':'Om '+s.days+' dagar · '+s.d.getDate()+' '+MON_S[s.d.getMonth()]+' '+s.d.getFullYear())+' · '+EVERY[r.x.every]+'</small><div class="bar'+(late?' late':'')+'"><i style="width:'+Math.round(s.frac*100)+'%"></i></div></button>'+
-      (s.days<=30?'<button class="gbtn sm" data-act="svcDone" data-id="'+r.x.id+'">'+ic('check')+'Gjort</button>':'')+'</div>';});
-  if(!sv.length)h+='<div class="empty">Brandvarnare, fläktfilter, däckbyte, besiktning – jag håller räkningen så att ni slipper.</div>';
-  h+='</div></div>';
-  // Paket
-  var pa=parcelsActive(),done=S.parcels.filter(function(p){return p.status==='klar';});
-  h+='<div class="card">'+cardHead('box','Paket & leveranser',pa.length?pa.length+' aktiva':'',plusBtn('add','parcels','Nytt paket'))+'<div class="cb">';
-  pa.concat(done).forEach(function(p){var st=PSTAT[p.status]||PSTAT.vag,eta=parseYmd(p.eta);
-    h+='<div class="brw'+(p.status==='klar'?' paid':'')+'"><button class="bt" data-act="edit" data-kind="parcels" data-id="'+p.id+'">'+esc(p.text)+(p.from?' <span style="color:var(--ink3)">från '+esc(p.from)+'</span>':'')+'<small>'+(p.where?esc(p.where):'')+(p.code?(p.where?' · ':'')+'kod '+esc(p.code):'')+(eta&&p.status==='vag'?((p.where||p.code)?' · ':'')+'väntas '+relDay(eta):'')+'</small></button>'+whoChip(p.who)+
-      '<button class="tag '+st.c+'" data-act="parcelNext" data-id="'+p.id+'" style="min-height:44px;margin-left:8px;font-size:14px">'+st.n+' ›</button></div>';});
-  if(!pa.length&&!done.length)h+='<div class="empty">Inga paket på väg. Lägg in dem med hämtkod, så slipper ni leta i mejlen vid kassan.</div>';
-  h+='</div></div></div>';
-  $('v-hemmet').innerHTML=h;
-}
-
 /* ---------- Lappar & Till Jarvis ---------- */
 function renderLappar(){
   var h=vhead('Lappar','Kylskåpsdörren, fast digital. Ingen magnet behövs.',plusBtn('add','notes','Ny lapp'));
@@ -1901,7 +2274,8 @@ function renderKvall(){
   if(w)h+='<div class="tmbig">'+wxSvg(w.code,1)+'<div class="tv"><b>'+Math.round(w.max)+'° <span style="font-size:22px;color:var(--ink2)">/ '+Math.round(w.min)+'°</span></b><span>'+(WXDESC[w.code]||'')+(w.pp!=null?' · '+w.pp+'% regn':'')+'</span></div></div>';
   var cc=calChips(tm);if(cc)h+='<div class="calline" style="padding:0 6px 6px">'+cc+'</div>';
   ev.forEach(function(e){h+=evHtml(e);});
-  pickupsSoon(1).forEach(function(r){if(r.days===1)h+='<div class="ev"><span class="tm">'+ic('bin')+'</span><span class="et">'+esc(r.p.text)+' – ställ ut ikväll</span></div>';});
+  pickupsSoon(1).forEach(function(r){if(r.days===1)h+='<div class="ev"><span class="tm">'+ic('bin')+'</span><span class="et">'+esc(pickName(r.p))+' – ställ ut ikväll'+(r.p.who&&person(r.p.who)?' ('+esc(whoLabel(r.p.who))+')':'')+'</span></div>';});
+  medDoses(tm).forEach(function(x){if(hmMin(x.t)<=hmMin('10:00'))h+='<div class="ev"><span class="tm">'+ic('pill')+'</span><span class="et">'+esc(x.m.name)+' kl. '+x.t+(x.m.who&&whoLabel(x.m.who)?' – '+esc(whoLabel(x.m.who)):'')+'</span></div>';});
   if(m.dish)h+='<button class="ev" data-act="editMenu" data-d="'+(wdIdx(tm)+1)+'"><span class="tm">'+ic('food')+'</span><span class="et">Middag: '+esc(m.dish)+'</span></button>';
   if(!ev.length&&!m.dish)h+='<div class="empty">Inget inbokat i morgon. Sovmorgon? Jag säger inget.</div>';
   h+='</div></div><div class="card">'+cardHead('moon','Kvällsrutin',null,plusBtn('add','evening','Ny kvällssyssla'))+'<div class="cb"><ul>';
@@ -1918,14 +2292,14 @@ function renderKvall(){
 }
 
 /* ---------- Snabbtillägg ---------- */
-var QT=[['shop','Inköp','cart'],['todos','Att göra','today'],['notes','Lapp','note'],['fridge','Kylen','fridge'],['events','Händelse','week'],['parcels','Paket','box'],['jarvis','Till Jarvis','mail'],['recipes','Recept','book']];
+var QT=[['shop','Inköp','cart'],['todos','Att göra','today'],['notes','Lapp','note'],['fridge','Kylen','fridge'],['events','Händelse','week'],['spend','Utgift','chart'],['parcels','Paket','box'],['places','Var är…?','key'],['jarvis','Till Jarvis','mail'],['recipes','Recept','book']];
 var qTarget='shop';
 function openQuick(target){
   if(target)qTarget=target;
   var h='<h2>Snabbtillägg</h2><input class="fi2" type="text" id="qText" placeholder="Skriv här… (flera varor: ägg, bröd)" enterkeyhint="done" autocapitalize="sentences"><label>Var ska det hamna?</label><div class="qtargets">';
   QT.forEach(function(q){h+='<button type="button" data-act="qt" data-v="'+q[0]+'" class="'+(qTarget===q[0]?'on':'')+'">'+ic(q[2])+q[1]+'</button>';});
   h+='</div><div id="qExtra"></div><div class="sbtns"><div></div><div><button class="btn cancel" data-act="fCancel">Avbryt</button><button class="btn pri" data-act="qSave">Lägg till</button></div></div>';
-  F={quick:true,vals:{qd:'3'},fields:[],onSave:function(){}};
+  F={quick:true,vals:{qd:'3',qcat:''},fields:[],onSave:function(){}};
   $('edSheet').innerHTML=h;$('editor').className='ov open';qExtra();
   var inp=$('qText');setTimeout(function(){try{inp.focus();}catch(e){}},60);
   inp.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();quickSave();}});
@@ -1935,6 +2309,8 @@ function qExtra(){
   if(qTarget==='fridge')x='<label>Äts före</label><div class="seg">'+[['0','Idag'],['1','I morgon'],['3','3 dagar'],['7','En vecka']].map(function(o){return '<button type="button" data-seg="qd" data-v="'+o[0]+'" class="'+(F.vals.qd===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</div>';
   if(qTarget==='events')x='<p class="hint">Jag öppnar händelseformuläret så att du kan välja dag och tid.</p>';
   if(qTarget==='jarvis')x='<p class="hint">Till Jarvis kommer med synken. Tills dess sparas meddelandet på enheten.</p>';
+  if(qTarget==='spend')x='<label>Kategori</label><div class="seg">'+[['','Gissa']].concat(BCATS.map(function(c){return [c[0],c[1]];})).map(function(o){return '<button type="button" data-seg="qcat" data-v="'+o[0]+'" class="'+((F.vals.qcat||'')===o[0]?'on':'')+'">'+o[1]+'</button>';}).join('')+'</div><p class="hint">Skriv t.ex. <b>ICA 456</b> eller <b>Bio 240</b>. Det hamnar i budgeten för den här månaden.</p>';
+  if(qTarget==='places')x='<p class="hint">Skriv <b>sak: plats</b>, t.ex. <b>Reservnyckeln: översta lådan i hallen</b>.</p>';
   $('qExtra').innerHTML=x;
 }
 function quickSave(){
@@ -1949,6 +2325,10 @@ function quickSave(){
     case 'jarvis':S.jarvis.push({id:uid(),text:v,who:me,ts:nowMs()});msg='Mottaget. Jag läser det när synken är på plats.';break;
     case 'recipes':S.recipes.push({id:uid(),name:cap(v),ingr:[],mins:0,fav:false,last:''});msg='Receptet är sparat. Lägg till ingredienser när du har tid.';break;
     case 'events':closeForm();editDate=null;editItem('events',null);var ft=$('f_text');if(ft)ft.value=cap(v);return;
+    case 'spend':var sp=parseSpend(v);if(!(sp.amount>0)){toast('Skriv ett belopp också, t.ex. "ICA 456".');return;}
+      var sx=addSpend({amount:sp.amount,text:sp.text,cat:F.vals.qcat||guessSpendCat(sp.text),who:me});msg=fmtKr(sx.amount)+' på '+bcat(sx.cat)[1].toLowerCase()+'. Budgeten är uppdaterad.';break;
+    case 'places':var pp=v.split(/\s*(?::| – | - )\s*/);if(pp.length<2||!pp[1]){closeForm();editItem('places',null);var fw=$('f_what');if(fw)fw.value=cap(v);return;}
+      S.places.push({id:uid(),what:cap(pp[0]),where:pp.slice(1).join(' – '),who:me,updatedAt:nowMs()});msg='Noterat. Nu vet vi var '+lc1(pp[0])+' finns.';break;
   }
   closeForm();save();renderAll();toast(msg);
 }
@@ -1975,6 +2355,230 @@ function openPicker(day,excl){
   h+='<div class="sbtns"><button class="btn alt" data-act="pickAgain" data-id="'+r.id+'">'+ic('dice')+' Nytt förslag</button><div><button class="btn cancel" data-act="fCancel">Avbryt</button><button class="btn pri" data-act="pickUse" data-id="'+r.id+'">Välj</button></div></div>';
   F={picker:true,vals:{pday:pickDay},fields:[]};$('edSheet').innerHTML=h;$('editor').className='ov open';
   var ab=$('edSheet').querySelector('[data-act=pickAgain]');if(ab){ab.innerHTML=ic('dice',2)+'Nytt förslag';ab.style.display='inline-flex';ab.style.alignItems='center';var sv=ab.querySelector('svg');if(sv){sv.style.width='22px';sv.style.height='22px';sv.style.marginRight='8px';}}
+}
+/* ================= v4-vyer ================= */
+function shopMeta(x){var by=x.addedBy&&person(x.addedBy)?whoLabel(x.addedBy):'';var bits=[];if(by)bits.push('Lagt till av '+esc(by));if(x.src==='meny')bits.push('från veckomenyn');return bits.join(' · ');}
+/* ---------- Hem: nedräkningskort ---------- */
+function cdCardHtml(){
+  var l=countdownList();
+  if(!l.length)return '<div class="lbl">Nedräkning</div><div class="cdnone">Inget att räkna ner till. Semestern, kanske?</div>';
+  var c=l[0],rest=l.slice(1,3);
+  return '<div class="lbl">Nedräkning</div><div class="cdtop"><span class="ce">'+c.emoji+'</span><b>'+(c.days===0?'Idag':c.days)+'</b><span>'+(c.days===0?'':c.days===1?'dag':'dagar')+'</span></div><div class="cdt1">'+esc(c.title)+'</div>'+
+    (rest.length?'<div class="cdt2">'+rest.map(function(x){return x.emoji+' '+esc(x.title)+' <b>'+(x.days===0?'idag':x.days+' d')+'</b>';}).join('<br>')+'</div>':'');
+}
+/* ---------- Idag: det som gäller idag (medicin, växter, bilen, räkningar) ---------- */
+function todayExtrasHtml(){
+  var h='',doses=medDoses(),pd=plantsDue(),bd=billDue(),ca=[];
+  S.cars.forEach(function(c){carAlerts(c).forEach(function(a){ca.push(a);});});
+  if(doses.length){h+='<div class="sec">Medicin & vitaminer</div><ul>';doses.forEach(function(x){h+=liHtml({id:x.m.id+'|'+x.t,text:x.m.name,done:x.done,who:x.m.who},'meds','kl. '+x.t+(x.m.note?' · '+esc(x.m.note):''));});h+='</ul>';}
+  if(pd.length){h+='<div class="sec">Vattna idag</div>';pd.forEach(function(p){var n=plantNext(p);h+='<div class="brw"><span class="pi2" style="background:#c6f0bd">'+ic('leaf')+'</span><button class="bt" data-act="edit" data-kind="plants" data-id="'+p.id+'">'+esc(p.name)+'<small>'+(n.days<0?(-n.days)+' dagar sen':'idag')+(p.where?' · '+esc(p.where):'')+'</small></button><button class="gbtn sm" data-act="plantDone" data-id="'+p.id+'">'+ic('drop')+'Vattnat</button></div>';});}
+  if(ca.length){h+='<div class="sec">Bilen</div>';ca.forEach(function(a){h+='<button class="kr'+(a.hot?' hot':'')+'" data-act="go" data-v="vardag" data-sub="sopor"><i style="background:'+(a.hot?'#ffc9c9':'#bfe3ff')+'">'+ic('car')+'</i><span>'+a.t+'</span><b class="r">'+esc(a.r)+'</b></button>';});}
+  if(bd.length){h+='<div class="sec">Räkningar</div>';bd.forEach(function(o){h+='<button class="kr'+(o.days<=0?' hot':'')+'" data-act="go" data-v="hemmet" data-sub="rakningar"><i style="background:'+(o.days<=0?'#ffc9c9':'#ffe48a')+'">'+ic('card')+'</i><span>'+esc(o.b.name)+' '+fmtKr(o.b.amount)+'</span><b class="r">'+(o.days<0?(-o.days)+' d sen':cap(relDay(o.d)))+'</b></button>';});}
+  return h;
+}
+/* ---------- Familjetavlan i telefonen: en dag i taget, inget sidledsscroll ---------- */
+function boardPhoneHtml(mon){
+  var t=now(),h='<div class="card board ph">';
+  for(var i=0;i<7;i++){
+    var d=addDays(mon,i),cd=calDay(d),m=S.menu[i+1]||{},x='',isT=dayDiff(t,d)===0;
+    if(weekOff===0&&m.dish)x+='<button class="bi meal" data-act="editMenu" data-d="'+(i+1)+'">🍽 '+esc(m.dish)+'</button>';
+    eventsOn(d).forEach(function(e){var w=person(e.who)?e.who:'both';x+='<button class="bi pe" data-who="'+esc(w)+'" style="background:'+whoColor(w)+'" data-act="edit" data-kind="events" data-id="'+e.id+'">'+pavHtml(w,'xs')+'<span>'+(e.time?'<b>'+esc(e.time)+'</b> ':'')+esc(e.text)+'</span></button>';});
+    x+=bdaysOn(d);
+    S.dates.forEach(function(dt){var a=parseYmd(dt.date);if(a&&a.getMonth()===d.getMonth()&&a.getDate()===d.getDate())x+='<span class="bi misc" data-who="'+esc(dt.who||'both')+'">🎁 '+esc(dt.name)+'</span>';});
+    S.bills.forEach(function(b){var bn=billNext(b);if(bn&&dayDiff(bn.d,d)===0&&!b.autogiro)x+='<span class="bi misc">💳 '+esc(b.name)+'</span>';});
+    S.pickups.forEach(function(p){var nd=pickupNext(p,d);if(nd&&dayDiff(nd,d)===0)x+='<span class="bi pick" style="background:'+(PKIND[p.kind]||PKIND.annat).c+'">'+esc(pickName(p))+'</span>';});
+    h+='<div class="pday'+(isT?' today':'')+'"><div class="pdh'+(cd.red?' red':'')+'"><b>'+DAYS_S[d.getDay()]+'</b><span>'+d.getDate()+' '+MON_S[d.getMonth()]+'</span>'+(isT?'<em>idag</em>':'')+holTag(d)+'</div><div class="pdi">'+(x||'<span class="pdempty">–</span>')+'</div></div>';
+  }
+  return h+'</div>';
+}
+
+/* ---------- Hemmet ---------- */
+function hemTabs(){return seg2('hemSub',hemSub,[['rakningar','Räkningar','card'],['budget','Budget','chart'],['ovrigt','Underhåll & paket','tools']]);}
+function billRow(o){
+  var b=o.b,st=billStatus(o),inf=o.info,nx=o.paid&&b.every?billNext(b):null,sm;
+  if(o.paid)sm=(o.auto?'Dragen '+fmtD(o.d):'Betald'+(inf&&inf.at?' '+fmtD(parseYmd(inf.at)):''))+(inf&&inf.amt!==(+b.amount||0)?' · '+fmtKr(inf.amt):'')+(nx?' · nästa '+fmtD(nx.d)+' ligger klar':'');
+  else sm='Förfaller '+fmtD(o.d)+(o.d.getFullYear()!==now().getFullYear()?' '+o.d.getFullYear():'')+' · '+(b.every===0?'engångs':EVERY[b.every||1])+(b.autogiro?' · autogiro':'');
+  var ck=b.autogiro&&!inf?'<span class="ck"><i style="border-style:dashed;opacity:.6">'+ic('cycle',2)+'</i></span>':'<button class="ck" data-act="billPaid" data-id="'+b.id+'" data-key="'+o.key+'" aria-label="'+(o.paid?'Ångra betald':'Markera betald')+'"><i>'+ic('check',3.2)+'</i></button>';
+  return '<div class="brw'+(o.paid?' paid done':'')+(b.id===popId?' pop':'')+'">'+ck+'<button class="bt" data-act="edit" data-kind="bills" data-id="'+b.id+'">'+esc(b.name)+exTag(b)+'<small>'+sm+'</small></button><span class="amt">'+fmtKr(inf?inf.amt:b.amount)+'</span><span class="tag '+st.c+'">'+st.t+'</span></div>';
+}
+function renderHemmet(){
+  var t=now(),h;
+  if(hemSub==='budget'){renderBudget();return;}
+  if(hemSub==='ovrigt'){
+    h=vhead('Underhåll & paket','Brandvarnare, filter och leveranser. Det tråkiga, prydligt samlat.',hemTabs());
+    var sv=S.service.map(function(x){return {x:x,s:serviceNext(x)};}).filter(function(r){return r.s;}).sort(function(a,b){return a.s.days-b.s.days;});
+    h+='<div class="tdwrap"><div class="card">'+cardHead('tools','Underhåll',null,plusBtn('add','service','Nytt underhåll'))+'<div class="cb">';
+    sv.forEach(function(r){var s=r.s,late=s.days<0;
+      h+='<div class="brw"><button class="bt" data-act="edit" data-kind="service" data-id="'+r.x.id+'">'+esc(r.x.text)+exTag(r.x)+'<small>'+(late?'Försenat sedan '+fmtD(s.d):s.days===0?'Idag':'Om '+s.days+' dagar · '+fmtD(s.d)+' '+s.d.getFullYear())+' · '+EVERY[r.x.every]+'</small><div class="bar'+(late?' late':'')+'"><i style="width:'+Math.round(s.frac*100)+'%"></i></div></button>'+
+        (s.days<=30?'<button class="gbtn sm" data-act="svcDone" data-id="'+r.x.id+'">'+ic('check')+'Gjort</button>':'')+'</div>';});
+    if(!sv.length)h+='<div class="empty">Brandvarnare, fläktfilter, golvbrunn – jag håller räkningen så att ni slipper. Bilen har en egen plats under Vardag.</div>';
+    var pa=parcelsActive(),done=S.parcels.filter(function(p){return p.status==='klar';});
+    h+='</div></div><div class="card">'+cardHead('box','Paket & leveranser',pa.length?pa.length+' aktiva':'',plusBtn('add','parcels','Nytt paket'))+'<div class="cb">';
+    pa.concat(done).forEach(function(p){var st=PSTAT[p.status]||PSTAT.vag,eta=parseYmd(p.eta);
+      h+='<div class="brw'+(p.status==='klar'?' paid':'')+'"><button class="bt" data-act="edit" data-kind="parcels" data-id="'+p.id+'">'+esc(p.text)+(p.from?' <span style="color:var(--ink3)">från '+esc(p.from)+'</span>':'')+'<small>'+(p.where?esc(p.where):'')+(p.code?(p.where?' · ':'')+'kod '+esc(p.code):'')+(eta&&p.status==='vag'?((p.where||p.code)?' · ':'')+'väntas '+relDay(eta):'')+'</small></button>'+whoChip(p.who)+
+        '<button class="tag '+st.c+'" data-act="parcelNext" data-id="'+p.id+'" style="min-height:44px;margin-left:8px;font-size:14px">'+st.n+' ›</button></div>';});
+    if(!pa.length&&!done.length)h+='<div class="empty">Inga paket på väg. Lägg in dem med hämtkod, så slipper ni leta i mejlen vid kassan.</div>';
+    $('v-hemmet').innerHTML=h+'</div></div></div>';return;
+  }
+  // Räkningar
+  var key=ymOf(t),tot=billTotals(key),w=billWarn();
+  h=vhead('Räkningar','Jag varnar '+w+(w===1?' dag':' dagar')+' innan förfallodagen. Betalda räknas in i budgeten.',hemTabs());
+  var month=billMonthList(key,'bill'),ids={};month.forEach(function(o){ids[o.b.id]=1;});
+  var late=[],later=[];billsOf('bill').forEach(function(b){var o=billNext(b);if(!o)return;if(o.key<key&&!b.autogiro&&o.days<0)late.push(o);else if(!ids[b.id])later.push(o);});
+  later.sort(function(a,b){return a.d-b.d;});
+  var pct=tot.totalMonth?Math.round(tot.paidMonth/tot.totalMonth*100):0;
+  h+='<div class="tdwrap"><div class="card">'+cardHead('card','Räkningar – '+MONTHS[t.getMonth()],null,plusBtn('add','bills','Ny räkning'))+
+    '<div class="tot"><span><b>'+fmtKr(tot.leftMonth)+'</b>kvar att betala</span><span>'+fmtKr(tot.paidMonth)+' betalt av '+fmtKr(tot.totalMonth)+'</span></div><div class="pbar" title="Betalt '+pct+'%"><i style="width:'+pct+'%"></i></div><div class="cb">';
+  if(late.length){h+='<div class="sec" style="color:#ffc9c9">Försenade</div>';late.forEach(function(o){h+=billRow(o);});}
+  if(month.length){h+='<div class="sec">'+cap(MONTHS[t.getMonth()])+'</div>';month.forEach(function(o){h+=billRow(o);});}
+  if(later.length){h+='<div class="sec">Senare</div>';later.slice(0,8).forEach(function(o){h+=billRow(o);});}
+  if(!billsOf('bill').length)h+='<div class="empty">Lägg in fasta räkningar – hyra, el, försäkring – så påminner jag innan de förfaller.</div>';
+  h+='<label class="fl" style="margin-top:14px">Påminn innan förfallodagen</label>'+dseg('billWarn',w,[[1,'1 dag'],[3,'3 dagar'],[5,'5 dagar'],[7,'7 dagar']])+'</div></div>';
+  var subs=billsOf('sub').sort(function(a,b){return perMonth(b)-perMonth(a);});
+  h+='<div class="card">'+cardHead('wallet','Prenumerationer',subs.length?subs.length+' st':'',plusBtn('add','subs','Ny prenumeration'))+'<div class="tot"><span><b>'+fmtKr(tot.subs)+'</b>per månad</span><span>'+fmtKr(tot.subs*12)+' per år</span></div><div class="cb">';
+  if(tot.review>0)h+='<div class="save">Markerade att se över: <b>'+fmtKr(tot.review)+' per år</b>. '+(tot.review>=1000?'Det är många semlor, sir.':'Små summor blir stora, ser jag.')+'</div>';
+  subs.forEach(function(b){h+='<div class="brw"><button class="bt" data-act="edit" data-kind="bills" data-id="'+b.id+'">'+esc(b.name)+exTag(b)+'<small>'+fmtKr(b.amount)+' '+EVERY[b.every||1]+' · dras den '+b.day+':e</small></button><span class="amt">'+fmtKr(perMonth(b))+'/mån</span>'+(b.review?'<span class="tag t-yel">Se över</span>':'')+'</div>';});
+  if(!subs.length)h+='<div class="empty">Streaming, appar, kameramoln, gym… Lägg in dem så ser ni vad det faktiskt kostar per år.</div>';
+  $('v-hemmet').innerHTML=h+'</div></div></div>';
+}
+function openPaySheet(b,key){
+  var o=billOcc(b,key);if(!o)return;
+  openForm({title:'Markera betald – '+b.name,values:{at:ymd(now()),amt:String(b.amount)},saveLabel:'Markera betald',
+    fields:[{t:'row',fields:[{k:'at',l:'Betald den',t:'date'},{k:'amt',l:'Belopp (kr)',t:'number'}]}],
+    hint:'Förföll '+fmtD(o.d)+'. '+(b.every?'Nästa period läggs upp automatiskt.':'Engångsräkning – den försvinner från listan när den är betald.')+' Betalda räkningar räknas in i budgeten för den månad de betalas.',
+    onSave:function(v){var nx=markPaid(b,key,v.at||ymd(now()),num(v.amt));popId=b.id;
+      setTimeout(function(){toast(b.name+' betald. '+(nx?'Nästa ('+fmtD(nx.d)+') ligger redan klar.':'Plånboken suckar, jag noterar.'));},30);}});
+}
+/* ---------- Budget ---------- */
+var budKey=null,spCat='mat',spCatSet=false;
+function renderBudget(){
+  var key=budKey||ymOf(now()),bm=budgetMonth(key),p=key.split('-'),isCur=key===ymOf(now()),y=+p[0],mo=+p[1]-1;
+  var dl=isCur?daysInMonth(y,mo)-now().getDate()+1:0,left=bm.budget-bm.used;
+  var h=vhead('Budget i stora drag',isCur?(left>=0?'Kvar i månaden: '+fmtKr(left)+'. Jag räknar, ni spenderar – med måtta.':'Över budget med '+fmtKr(-left)+'. Jag säger inget. Jag bara noterar.'):cap(MONTHS[mo])+' '+y+'.',hemTabs());
+  h+='<div class="tdwrap"><div class="card" style="flex:3 1 0">'+cardHead('chart',cap(MONTHS[mo])+' '+y,null,'<button class="ibtn ghost" data-act="budM" data-o="-1" aria-label="Förra månaden">'+ic('chevL')+'</button><button class="ibtn ghost" data-act="budM" data-o="1" aria-label="Nästa månad">'+ic('chev')+'</button><button class="gbtn sm" data-act="budEdit">'+ic('edit')+'Ändra</button>')+
+    '<div class="tot"><span><b>'+fmtKr(bm.used)+'</b>använt</span><span>av '+fmtKr(bm.budget)+'</span></div><div class="cb">';
+  BCATS.forEach(function(c){var x=bm.cats[c[0]],pct=x.budget?Math.min(100,x.used/x.budget*100):(x.used?100:0),over=x.budget?x.used>x.budget:x.used>0,lf=x.budget-x.used;
+    h+='<div class="bud" data-cat="'+c[0]+'"><div class="bh"><span class="bdot" style="background:'+c[2]+'">'+ic(c[3])+'</span><b>'+c[1]+'</b>'+(x.auto?'<span class="tag t-gry" style="margin-left:8px">auto</span>':'')+'<span class="bv">'+fmtKr(x.used)+'<small> av '+(x.budget?fmtKr(x.budget):'–')+'</small></span></div>'+
+      '<div class="bbar'+(over?' over':'')+'"><i style="width:'+pct.toFixed(1)+'%;background:'+(over?'#ff9e9e':c[2])+'"></i></div>'+
+      '<div class="bs">'+(over?'<span class="tag t-red">Över med '+fmtKr(-lf)+'</span>':(x.budget?'Kvar '+fmtKr(lf)+(isCur&&c[0]==='mat'&&dl>0?' · ca '+fmtKr(lf/dl)+' per dag':''):'Ingen budget satt'))+(c[0]==='rakningar'?' · betalda räkningar räknas automatiskt':'')+'</div></div>';});
+  h+='</div></div><div class="card" style="flex:2 1 0">'+cardHead('plus','Ny utgift')+'<div class="cb"><form id="spForm" autocomplete="off" class="spf"><input class="fi" id="spAmt" type="text" inputmode="decimal" placeholder="Belopp, kr" enterkeyhint="next"><input class="fi" id="spText" type="text" placeholder="Vad? (t.ex. ICA, bio)" enterkeyhint="done"></form>'+
+    '<div class="dseg" style="margin-top:8px">'+BCATS.map(function(c){return '<button data-act="spCat" data-v="'+c[0]+'" class="'+(spCat===c[0]?'on':'')+'">'+c[1]+'</button>';}).join('')+'</div><button class="pbtn" data-act="spAdd" style="width:100%;margin-top:4px">'+ic('plus',2.6)+'Lägg till</button>';
+  var items=[];BCATS.forEach(function(c){bm.cats[c[0]].items.forEach(function(it){items.push(it);});});
+  items.sort(function(a,b){return String(b.date).localeCompare(String(a.date))||((b.x&&b.x.createdAt)||0)-((a.x&&a.x.createdAt)||0);});
+  h+='<div class="sec">'+(isCur?'Senaste i månaden':'I '+MONTHS[mo])+'</div>';
+  items.slice(0,30).forEach(function(it){var dd=parseYmd(it.date);
+    if(it.x)h+='<div class="brw"><span class="pi2" style="background:'+bcat(it.x.cat)[2]+'">'+ic(bcat(it.x.cat)[3])+'</span><button class="bt" data-act="edit" data-kind="spend" data-id="'+it.x.id+'">'+esc(it.x.text||bcat(it.x.cat)[1])+'<small>'+fmtD(dd)+(it.x.who&&whoLabel(it.x.who)?' · '+esc(whoLabel(it.x.who)):'')+'</small></button><span class="amt">'+fmtKr(it.amt)+'</span></div>';
+    else h+='<div class="brw"><span class="pi2" style="background:#a9d8ff">'+ic('card')+'</span><span class="bt">'+esc(it.bill.b.name)+'<small>'+(it.bill.auto?'Autogiro ':'Betald ')+(dd?fmtD(dd):'')+' · räknas automatiskt</small></span><span class="amt">'+fmtKr(it.amt)+'</span></div>';});
+  if(!items.length)h+='<div class="empty">Inga utgifter ännu. Skriv in matkassen, så ser ni vart pengarna tar vägen.</div>';
+  $('v-hemmet').innerHTML=h+'</div></div></div>';
+  var sa=$('spAmt'),st=$('spText');
+  st.addEventListener('input',function(){if(!spCatSet){var g=guessSpendCat(st.value);if(g!=='ovrigt'||!st.value){spCat=g==='ovrigt'&&!st.value?spCat:g;[].forEach.call(document.querySelectorAll('[data-act=spCat]'),function(b){b.classList.toggle('on',b.getAttribute('data-v')===spCat);});}}});
+  [sa,st].forEach(function(inp){inp.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();if(inp===sa)st.focus();else spendSubmit();}});});
+}
+function spendSubmit(){
+  var sa=$('spAmt'),st=$('spText');if(!sa)return;var a=num(sa.value),tx=(st.value||'').trim();
+  if(!(a>0)){var ps=parseSpend(tx);if(ps.amount>0){a=ps.amount;tx=ps.text;}}
+  if(!(a>0)){toast('Skriv ett belopp först.');return;}
+  var key=budKey||ymOf(now()),dt=key===ymOf(now())?ymd(now()):key+'-01';
+  var x=addSpend({amount:a,text:cap(tx),cat:spCat,date:dt});newId=x.id;spCatSet=false;save();renderAll();
+  var bm=budgetMonth(key),c=bm.cats[x.cat];toast(fmtKr(a)+' på '+bcat(x.cat)[1].toLowerCase()+'. '+(c.budget?(c.used>c.budget?'Över budget nu, sir.':'Kvar: '+fmtKr(c.budget-c.used)+'.'):''));
+}
+
+/* ---------- Vardag ---------- */
+var VSUBS=[['sopor','Sopor & bil','bin'],['nedrakning','Nedräkning','hourglass'],['paminn','Medicin & växter','pill'],['varar','Var är…?','key'],['pack','Packlista','bag'],['wifi','Gäst-wifi','wifi']];
+var packSel=null;
+function renderVardag(){
+  var h='',t=now(),sub='',act='';
+  switch(varSub){
+    case 'sopor':sub='Tömningar per kärl, och bilens besiktning, service och däck.';act=plusBtn('add','pickups','Ny tömning');break;
+    case 'nedrakning':sub='Semester, jul, födelsedagar. Väntan blir roligare med siffror.';act=plusBtn('add','countdowns','Ny nedräkning');break;
+    case 'paminn':sub='Mediciner, vitaminer och växter som vill ha vatten.';break;
+    case 'varar':sub='Reservnyckeln, passen, julpyntet. Skriv ner det en gång.';act=plusBtn('add','places','Ny sak');break;
+    case 'pack':sub='Packlistor att bocka av – och återanvända.';act='<button class="gbtn" data-act="add" data-kind="packs">'+ic('plus',2.6)+'Ny lista</button>';break;
+    case 'wifi':sub='Låt gästerna skanna i stället för att stava lösenordet.';act='<button class="gbtn" data-act="editWifi">'+ic('edit')+'Ändra</button>';break;
+  }
+  h=vhead('Vardag',sub,act)+'<div class="subnav">'+seg2('varSub',varSub,VSUBS)+'</div>';
+  if(varSub==='sopor'){
+    var ps=S.pickups.map(function(p){return {p:p,d:pickupNext(p)};}).filter(function(r){return r.d;}).sort(function(a,b){return a.d-b.d;});
+    h+='<div class="tdwrap"><div class="card">'+cardHead('bin','Avfallskalender',ps.length?ps.length+' kärl':'')+'<div class="cb">';
+    ps.forEach(function(r){h+=pickHtml(r.p,r.d,true);});
+    if(!ps.length)h+='<div class="empty">Lägg in tömningsdagarna för varje kärl – restavfall, matavfall, plast – så påminner jag kvällen innan.</div>';
+    h+='</div></div><div class="card">'+cardHead('car','Bilen',null,plusBtn('add','cars','Ny bil'))+'<div class="cb">';
+    S.cars.forEach(function(c){var tz=tireAdvice(c);
+      h+='<div class="carb"><button class="carh" data-act="edit" data-kind="cars" data-id="'+c.id+'"><b>'+esc(c.name||'Bilen')+'</b>'+(c.reg?'<span class="reg">'+esc(c.reg)+'</span>':'')+(c.who&&whoLabel(c.who)?whoChip(c.who):'')+'</button>'+
+        '<div class="brw"><span class="pi2" style="background:#bfe3ff">'+ic('flag')+'</span><span class="bt">Besiktning<small>'+(c.besikt?'Senast '+fmtD(parseYmd(c.besikt))+' '+parseYmd(c.besikt).getFullYear():'Inget datum')+(c.besiktDone?' · gjord '+fmtD(parseYmd(c.besiktDone)):'')+'</small></span>'+dueTag(parseYmd(c.besikt),30)+'<button class="gbtn sm" data-act="carDone" data-k="besikt" data-id="'+c.id+'">'+ic('check')+'Klar</button></div>'+
+        '<div class="brw"><span class="pi2" style="background:#ffcf9e">'+ic('tools')+'</span><span class="bt">Service<small>'+(c.service?fmtD(parseYmd(c.service))+' '+parseYmd(c.service).getFullYear():'Inget datum')+(c.serviceNote?' · '+esc(c.serviceNote):'')+'</small></span>'+dueTag(parseYmd(c.service),14)+'<button class="gbtn sm" data-act="carDone" data-k="service" data-id="'+c.id+'">'+ic('check')+'Klar</button></div>'+
+        '<div class="brw"><span class="pi2" style="background:#dfe3e8">'+ic('cycle')+'</span><span class="bt">'+tireName(c.tires)+'<small>'+(tz?tz.t:'Rätt däck för säsongen.')+(c.tiresAt?' Bytta '+fmtD(parseYmd(c.tiresAt))+'.':'')+'</small></span>'+(tz?'<span class="tag '+(tz.hot?'t-red':'t-yel')+'">'+esc(tz.r)+'</span>':'<span class="tag t-grn">OK</span>')+'<button class="gbtn sm" data-act="carTires" data-id="'+c.id+'">'+ic('cycle')+'Bytt</button></div></div>';});
+    if(!S.cars.length)h+='<div class="empty">Lägg in bilen så håller jag koll på besiktning, service och däckbyte (vinterdäck okt–nov, sommardäck mars–april).</div>';
+    $('v-vardag').innerHTML=h+'</div></div></div>';return;
+  }
+  if(varSub==='nedrakning'){
+    var cl=countdownList();
+    h+='<div class="card" style="flex:1 1 auto"><div class="cb" style="padding-top:12px"><div class="cdgrid">';
+    cl.forEach(function(c){var attr=c.kind==='egen'?' data-act="edit" data-kind="countdowns" data-id="'+c.id+'"':c.kind==='fodd'?' data-act="pEdit" data-id="'+esc(c.pid)+'"':c.kind==='datum'?' data-act="edit" data-kind="dates" data-id="'+c.did+'"':' data-act="go" data-v="inst"';
+      h+='<button class="cdt'+(c.days<=7?' soon':'')+'"'+attr+'><span class="ce">'+c.emoji+'</span><b class="cn">'+(c.days===0?'Idag!':c.days)+'</b><span class="cu">'+(c.days===0?'':c.days===1?'dag kvar':'dagar kvar')+'</span><span class="ctt">'+esc(c.title)+'</span><span class="cdd">'+cap(DAYS[c.d.getDay()])+' '+fmtD(c.d)+(c.d.getFullYear()!==t.getFullYear()?' '+c.d.getFullYear():'')+'</span>'+(c.who&&person(c.who)?whoChip(c.who):'')+'</button>';});
+    h+='</div>'+(cl.length?'':'<div class="empty">Inget att räkna ner till ännu.</div>')+'<div class="hint" style="margin-top:6px">Födelsedagar kommer från hushållets personer (Inställningar → Hushållet) och viktiga datum. Julafton räknas alltid.</div></div></div>';
+    $('v-vardag').innerHTML=h;return;
+  }
+  if(varSub==='paminn'){
+    var doses=medDoses();
+    h+='<div class="tdwrap"><div class="card">'+cardHead('pill','Medicin & vitaminer',doses.length?medsLeft()+' kvar idag':'',plusBtn('add','meds','Ny medicin'))+'<div class="cb">';
+    S.meds.forEach(function(m){var dn=(m.done||{})[ymd(t)]||[];
+      h+='<div class="brw medr">'+pavHtml(m.who||'both')+'<button class="bt" data-act="edit" data-kind="meds" data-id="'+m.id+'">'+esc(m.name)+exTag(m)+'<small>'+(m.who&&whoLabel(m.who)?esc(whoLabel(m.who))+' · ':'')+(m.note?esc(m.note):(m.times.length===1?'en gång om dagen':m.times.length+' gånger om dagen'))+'</small></button><span class="doses">'+
+        m.times.map(function(x){var on=dn.indexOf(x)>=0;return '<button class="dose'+(on?' on':'')+'" data-act="medTake" data-id="'+m.id+'" data-t="'+x+'" aria-label="Tagen '+x+'">'+(on?'✓ ':'')+x+'</button>';}).join('')+'</span></div>';});
+    if(!S.meds.length)h+='<div class="empty">Vitamin D, allergitabletter, hjärtmedicin … Lägg in dem med tider så bockar ni av varje dag.</div>';
+    h+='</div></div><div class="card">'+cardHead('leaf','Växter',S.plants.length?plantsDue().length+' törstiga':'',plusBtn('add','plants','Ny växt'))+'<div class="cb">';
+    S.plants.slice().sort(function(a,b){return plantNext(a).days-plantNext(b).days;}).forEach(function(p){var n=plantNext(p);
+      h+='<div class="brw"><span class="pi2" style="background:#c6f0bd">'+ic('leaf')+'</span><button class="bt" data-act="edit" data-kind="plants" data-id="'+p.id+'">'+esc(p.name)+exTag(p)+'<small>Var '+p.every+':e dag'+(p.where?' · '+esc(p.where):'')+(p.last?' · senast '+relDay(parseYmd(p.last)):'')+'</small></button>'+
+        (n.days<0?'<span class="tag t-red">'+(-n.days)+' d sen</span>':n.days===0?'<span class="tag t-yel">Idag</span>':'<span class="tag t-gry">Om '+n.days+' d</span>')+'<button class="gbtn sm" data-act="plantDone" data-id="'+p.id+'">'+ic('drop')+'Vattnat</button></div>';});
+    if(!S.plants.length)h+='<div class="empty">Lägg in växterna och hur ofta de vill ha vatten. Jag påminner, de tackar.</div>';
+    $('v-vardag').innerHTML=h+'</div></div></div>';return;
+  }
+  if(varSub==='varar'){
+    h+='<div class="card" style="flex:1 1 auto">'+'<div class="srch" style="padding:14px 14px 4px"><input class="fi" id="placeQ" type="text" placeholder="Sök – t.ex. nyckel, pass, pynt" enterkeyhint="search"></div><div class="cb"><div class="plgrid">';
+    S.places.slice().sort(function(a,b){return String(a.what).localeCompare(String(b.what),'sv');}).forEach(function(x){
+      h+='<button class="place'+(x.id===newId?' new':'')+'" data-act="edit" data-kind="places" data-id="'+x.id+'" data-s="'+esc((x.what+' '+x.where).toLowerCase())+'"><span class="pw">'+esc(x.what)+exTag(x)+'</span><span class="pl">'+ic('pin')+esc(x.where)+'</span>'+(x.who&&whoLabel(x.who)?'<span class="pb">'+esc(whoLabel(x.who))+' vet</span>':'')+'</button>';});
+    h+='</div>'+(S.places.length?'<div class="empty" id="placeNone" style="display:none">Hittar inget sådant. Kanske dags att leta – och sedan skriva in det här.</div>':'<div class="empty">Var ligger reservnyckeln? Passen? Julpyntet? Skriv in det en gång, så slipper ni fråga.</div>')+'</div></div>';
+    $('v-vardag').innerHTML=h;
+    var pq=$('placeQ');pq.addEventListener('input',function(){var q=pq.value.toLowerCase().trim(),n=0;[].forEach.call(document.querySelectorAll('#v-vardag .place'),function(b){var on=!q||b.getAttribute('data-s').indexOf(q)>=0;b.style.display=on?'':'none';if(on)n++;});var pn=$('placeNone');if(pn)pn.style.display=n?'none':'block';});
+    return;
+  }
+  if(varSub==='pack'){
+    if(!packById(packSel))packSel=S.packs.length?S.packs[0].id:null;var cp=packById(packSel);
+    h+='<div class="tdwrap"><div class="card" style="flex:0 0 300px">'+cardHead('bag','Listor')+'<div class="cb">';
+    S.packs.forEach(function(p){var pr=packProgress(p);h+='<button class="packb'+(p.id===packSel?' on':'')+'" data-act="packSel" data-id="'+p.id+'"><span>'+esc(p.name)+exTag(p)+'</span><b>'+pr.d+'/'+pr.n+'</b></button>';});
+    if(!S.packs.length)h+='<div class="empty">Inga listor. Börja med en mall: helg, semester, skidresa …</div>';
+    h+='</div></div><div class="card" style="flex:1 1 0">';
+    if(cp){var pr2=packProgress(cp);
+      h+=cardHead('check',esc(cp.name),pr2.d+' av '+pr2.n+' packat','<button class="gbtn sm" data-act="packReset" data-id="'+cp.id+'">'+ic('cycle')+'Börja om</button><button class="ibtn ghost" data-act="edit" data-kind="packs" data-id="'+cp.id+'" aria-label="Ändra lista">'+ic('edit')+'</button>')+
+        '<div class="pbar" style="margin:0 16px 8px"><i style="width:'+(pr2.n?Math.round(pr2.d/pr2.n*100):0)+'%"></i></div><form class="qadd" id="packForm" autocomplete="off" style="padding:4px 14px 8px"><input id="packInput" type="text" placeholder="Lägg till sak… (flera med komma)" enterkeyhint="done"><button class="ibtn" type="submit" aria-label="Lägg till">'+ic('plus',2.6)+'</button></form><div class="cb"><ul class="cols2">';
+      sortDone(cp.items).forEach(function(it){h+=liHtml({id:cp.id+'|'+it.id,text:it.text,done:it.done,who:it.who},'packitem');});
+      h+='</ul>'+(cp.items.length?'':'<div class="empty">Tom lista. Skriv vad som ska med.</div>')+(pr2.n&&pr2.d===pr2.n?'<div class="empty">Allt packat. Trevlig resa – jag vaktar huset.</div>':'')+'</div>';}
+    else h+='<div class="cb"><div class="empty">Välj eller skapa en lista.</div></div>';
+    $('v-vardag').innerHTML=h+'</div></div>';
+    var pf=$('packForm');if(pf)pf.addEventListener('submit',function(ev){ev.preventDefault();var inp=$('packInput'),v=(inp.value||'').trim();if(!v||!cp)return;
+      v.split(/\s*,\s*/).forEach(function(x){if(x)cp.items.push({id:uid(),text:cap(x),done:false,who:''});});cp.updatedAt=nowMs();save();renderVardag();var i2=$('packInput');if(i2)i2.focus();});
+    return;
+  }
+  if(varSub==='wifi'){
+    var w=S.wifi||{};
+    h+='<div class="tdwrap"><div class="card wificard" style="flex:0 0 auto">';
+    if(w.ssid)h+='<div class="wq">'+QR.svg(wifiString(w),isPhone()?230:250)+'</div><div class="wt"><b>Välkommen!</b><span>Skanna med kameran för att ansluta.</span><dl><dt>Nätverk</dt><dd>'+esc(w.ssid)+'</dd>'+(w.sec!=='nopass'?'<dt>Lösenord</dt><dd>'+esc(w.pass)+'</dd>':'<dt>Lösenord</dt><dd>Inget</dd>')+'</dl></div>';
+    else h+='<div class="wt" style="padding:24px"><b>Inget wifi inlagt</b><span>Fyll i gästnätverkets namn och lösenord, så gör jag en QR-kod som gästerna kan skanna.</span></div>';
+    h+='</div><div class="card" style="flex:1 1 0">'+cardHead('wifi','Gäst-wifi')+'<div class="cb"><div class="hint">QR-koden fungerar med kameran på iPhone och de flesta Android-telefoner. Lösenordet visas på skärmen – använd gärna routerns gästnätverk.</div><div class="brow"><button class="pbtn" data-act="editWifi">'+ic('edit')+(w.ssid?'Ändra':'Fyll i')+'</button>'+(w.ssid?'<button class="gbtn" data-act="wifiBig">'+ic('wifi')+'Visa stort för gäster</button>':'')+'</div></div></div></div>';
+    $('v-vardag').innerHTML=h;return;
+  }
+}
+function openWifiBig(){var w=S.wifi||{};if(!w.ssid)return;
+  $('edSheet').innerHTML='<h2>Välkommen – skanna för wifi</h2><div class="wbig">'+QR.svg(wifiString(w),isPhone()?270:340)+'<div><div class="lblk">Nätverk</div><div class="wv">'+esc(w.ssid)+'</div>'+(w.sec!=='nopass'?'<div class="lblk">Lösenord</div><div class="wv">'+esc(w.pass)+'</div>':'')+'</div></div><div class="sbtns"><div></div><button class="btn cancel" data-act="fCancel">Stäng</button></div>';
+  F={more:true,vals:{},fields:[]};$('editor').className='ov open';}
+function openSuggest(){
+  var empty=0;for(var i=wdIdx(now())+1;i<=7;i++)if(!(S.menu[i]&&S.menu[i].dish))empty++;
+  var soon=fridgeSoon(5);
+  $('edSheet').innerHTML='<h2>Föreslå veckans middagar</h2><p class="hint">Jag väljer ur receptbanken, upprepar inget i veckan, undviker det ni åt nyss och lägger rätter med det som snart går ut i kylen först'+(soon.length?' (<b>'+esc(soon.slice(0,4).map(function(f){return f.text;}).join(', ').toLowerCase())+'</b>)':'')+'. Vardagar blir snabbare rätter.</p>'+
+    '<div class="sugb"><button class="btn pri" data-act="sugDo" data-v="empty"'+(empty?'':' disabled')+'>Fyll '+empty+' tomma dagar</button><button class="btn alt" data-act="sugDo" data-v="all">Planera om resten av veckan</button></div>'+
+    '<label style="display:flex;align-items:center;font-size:17px;margin-top:12px"><input type="checkbox" id="sugShop" style="width:26px;height:26px;margin:0 10px 0 0">Lägg ingredienserna i inköpslistan direkt</label><div class="sbtns"><div></div><button class="btn cancel" data-act="fCancel">Avbryt</button></div>';
+  F={picker:true,vals:{},fields:[]};$('editor').className='ov open';
 }
 /* ================= Editor ================= */
 var F=null;
@@ -2017,11 +2621,13 @@ function closeForm(){$('editor').className='ov';F=null;if(document.activeElement
 function formSave(){if(!F)return;var v=collectForm();if(F.onSave(v)!==false){closeForm();save();renderAll();}}
 
 /* ---------- Hushållet: lägg till / ändra / ta bort / flytta ---------- */
-var PEOPLE_KEYS=['todos','events','shop','notes','parcels','fridge','jarvis','dates'];
+var PEOPLE_KEYS=['todos','events','shop','notes','parcels','fridge','jarvis','dates','pickups','cars','countdowns','spend','meds','places'];
 function personRefs(id){var n=0;PEOPLE_KEYS.forEach(function(k){S[k].forEach(function(x){if(x.who===id)n++;});});
   S.chores.forEach(function(c){if(c.mode===id||(c.mode==='rotate'&&rotOf(c).indexOf(id)>=0))n++;});return n;}
 function reassignPerson(from,to){
   PEOPLE_KEYS.forEach(function(k){S[k].forEach(function(x){if(x.who===from)x.who=to;});});
+  S.shop.forEach(function(x){if(x.addedBy===from)x.addedBy=to==='both'?'':to;if(x.doneBy===from)x.doneBy=to==='both'?'':to;});
+  S.packs.forEach(function(p){p.items.forEach(function(x){if(x.who===from)x.who=to;});});
   S.chores.forEach(function(c){
     if(c.doneBy===from)c.doneBy=to;
     if(c.mode===from)c.mode=to;
@@ -2043,13 +2649,13 @@ function movePerson(id,o){var a=people(),i=-1;a.forEach(function(p,j){if(p.id===
 function editPerson(id){
   var p=id?person(id):null,isNew=!p,used={};people().forEach(function(x){used[x.color]=1;});
   var freeCol=PCOL.filter(function(c){return !used[c[0]];})[0]||PCOL[people().length%PCOL.length];
-  openForm({title:isNew?'Ny person i hushållet':'Ändra '+p.name,values:p?{name:p.name,emoji:p.emoji,type:p.type,color:p.color}:{type:'vuxen',color:freeCol[0]},
+  openForm({title:isNew?'Ny person i hushållet':'Ändra '+p.name,values:p?{name:p.name,emoji:p.emoji,type:p.type,color:p.color,birthday:p.birthday||''}:{type:'vuxen',color:freeCol[0],birthday:''},
     onDelete:isNew?null:function(){askRemove(p.id);},
     fields:[{k:'name',l:'Namn',t:'text',ph:'t.ex. Saga'},{k:'type',l:'Typ',t:'seg',o:PTYPE},{k:'color',l:'Färg',t:'swatch',o:PCOL},
-      {k:'emoji',l:'Emoji eller bokstav (valfritt)',t:'text',ph:'t.ex. 🐶 – annars används första bokstaven'}],
+      {k:'emoji',l:'Emoji eller bokstav (valfritt)',t:'text',ph:'t.ex. 🐶 – annars används första bokstaven'},{k:'birthday',l:'Födelsedag (valfri – visas i nedräkningen och familjetavlan)',t:'date'}],
     hint:'Färgen syns på taggar, i sysslorna och i familjetavlan. Alla färger är ljusa med mörk text, så de syns i alla teman.',
     onSave:function(v){var nm=(v.name||'').trim();if(!nm){toast('Personen behöver ett namn.');return false;}
-      var o=p||{id:newPersonId()};o.name=nm.slice(0,30);o.type=v.type||'vuxen';o.color=v.color||freeCol[0];o.emoji=(v.emoji||'').trim().slice(0,4);
+      var o=p||{id:newPersonId()};o.name=nm.slice(0,30);o.type=v.type||'vuxen';o.color=v.color||freeCol[0];o.emoji=(v.emoji||'').trim().slice(0,4);o.birthday=/^\d{4}-\d{2}-\d{2}$/.test(v.birthday||'')?v.birthday:'';
       if(isNew){S.people.push(o);
         // nya vuxna/barn får vara med i sysslor som redan växlar mellan alla
         if(o.type!=='annan')S.chores.forEach(function(c){if(c.mode==='rotate'){var r=rotOf(c);if(r.length&&humanIds().filter(function(x){return x!==o.id;}).every(function(x){return r.indexOf(x)>=0;})){var cur=choreWho(c);c.rot=r.concat([o.id]);c.start=cur;c.sw=weekIndex(now());}}});
@@ -2069,9 +2675,9 @@ function num(v){var n=parseFloat(String(v||'').replace(/\s/g,'').replace(',','.'
 function editItem(kind,id){
   var lk=kind==='subs'?'bills':kind,list=S[lk],it=id?byId(list,id):null,isNew=!it,base=it||{};
   if(kind==='bills'&&it&&it.kind==='sub')kind='subs';
-  var del=isNew?null:function(){if(!confirm('Ta bort "'+(base.text||base.name)+'"?'))return;list.splice(findIn(list,base.id),1);save();closeForm();renderAll();toast('Borttaget. Jag låtsas att det aldrig fanns.');};
+  var del=isNew?null:function(){if(!confirm('Ta bort "'+(base.text||base.name||base.what||base.title||pickName(base))+'"?'))return;list.splice(findIn(list,base.id),1);if(lk==='shop')tombstone('shop',base.id);save();closeForm();renderAll();toast('Borttaget. Jag låtsas att det aldrig fanns.');};
   var req=function(v,k){if(!String(v[k]||'').trim()){toast('Skriv något först – jag är bra, men inte tankeläsare.');return false;}return true;};
-  var commit=function(o){o.ex=false;if(isNew){o.id=uid();list.push(o);newId=o.id;}return o;};
+  var commit=function(o){o.ex=false;o.updatedAt=nowMs();if(isNew){o.id=uid();if(!o.createdAt)o.createdAt=o.updatedAt;list.push(o);newId=o.id;}return o;};
   if(kind==='todos')openForm({title:isNew?'Ny uppgift':'Ändra uppgift',values:it,onDelete:del,
     fields:[{k:'text',l:'Vad ska göras?',t:'text',ph:'t.ex. Ringa elfirman'},{k:'who',l:'Vem?',t:'seg',o:WHO_OPTS()}],
     onSave:function(v){if(!req(v,'text'))return false;var o=it||{done:false};o.text=v.text.trim();o.who=v.who;commit(o);}});
@@ -2081,7 +2687,7 @@ function editItem(kind,id){
     onSave:function(v){if(!req(v,'text'))return false;var o=it||{};o.text=v.text.trim();o.date=v.date||ymd(now());o.time=v.time||'';o.repeat=v.repeat||'none';o.who=v.who;commit(o);}});
   else if(kind==='shop')openForm({title:isNew?'Ny vara':'Ändra vara',values:it,onDelete:del,
     fields:[{k:'text',l:'Vara',t:'text'},{k:'cat',l:'Avdelning',t:'seg',o:CATS.map(function(c){return [c.k,c.n];})},{k:'who',l:'Önskad av',t:'seg',o:WHO_OPTS()}],
-    onSave:function(v){if(!req(v,'text'))return false;var o=it||{done:false};o.text=v.text.trim();o.cat=v.cat||guessCat(o.text);o.who=v.who;commit(o);}});
+    onSave:function(v){if(!req(v,'text'))return false;var o=it||{done:false,addedBy:shopWho()};o.text=v.text.trim();o.cat=v.cat||guessCat(o.text);o.who=v.who;commit(o);}});
   else if(kind==='notes')openForm({title:isNew?'Ny lapp':'Ändra lapp',values:it||{color:'gul',who:devWho()},onDelete:del,
     fields:[{k:'text',l:'Text på lappen',t:'area',ph:'Något snällt, eller praktiskt.'},{k:'color',l:'Färg',t:'seg',o:[['gul','Gul','n-gul'],['rosa','Rosa','n-rosa'],['gron','Grön','n-gron'],['bla','Blå','n-bla'],['vit','Vit','n-vit']]},{k:'who',l:'Från',t:'seg',o:WHO_OPTS()}],
     onSave:function(v){if(!req(v,'text'))return false;var o=it||{ts:nowMs()};o.text=v.text.trim();o.color=v.color||'gul';o.who=v.who;commit(o);}});
@@ -2095,25 +2701,31 @@ function editItem(kind,id){
       var rot=(v.rot||[]).filter(function(id){return !!person(id);});rot=people().map(function(p){return p.id;}).filter(function(id){return rot.indexOf(id)>=0;});
       if(o.mode==='rotate'){if(!rot.length){toast('Välj minst en person som turas om.');return false;}o.rot=rot;o.start=rot.indexOf(v.start)>=0?v.start:rot[0];o.sw=weekIndex(now());}
       o.pts=+v.pts||1;commit(o);}});
-  else if(kind==='pickups'){var nd=it?pickupNext(it):null;openForm({title:isNew?'Ny hämtning':'Ändra hämtning',values:it?{text:it.text,kind:it.kind,every:it.every,anchor:ymd(nd||parseYmd(it.anchor))}:{kind:'sopor',every:2},onDelete:del,
-    fields:[{k:'text',l:'Vad hämtas?',t:'text',ph:'t.ex. Soptunnan, Plast & papper'},{k:'kind',l:'Typ',t:'seg',o:[['sopor','Sopor'],['atervinning','Återvinning'],['annat','Annat']]},
-      {k:'anchor',l:'Nästa hämtning',t:'date'},{k:'every',l:'Hur ofta?',t:'seg',o:[['1','Varje vecka'],['2','Varannan vecka'],['4','Var 4:e vecka']]}],
-    hint:'Jag visar en påminnelse dagen innan och samma dag.',
-    onSave:function(v){if(!req(v,'text'))return false;if(!v.anchor){toast('Välj datum för nästa hämtning.');return false;}var o=it||{};o.text=v.text.trim();o.kind=v.kind||'sopor';o.anchor=v.anchor;o.every=+v.every||1;commit(o);}});}
+  else if(kind==='pickups'){var nd=it?pickupNext(it):null,allM=['1','2','3','4','5','6','7','8','9','10','11','12'];
+    openForm({title:isNew?'Ny tömning':'Ändra tömning',values:it?{text:it.text,kind:PKIND[it.kind]?it.kind:'annat',every:String(it.every),anchor:ymd(nd||parseYmd(it.anchor)),months:it.months&&it.months.length?it.months.map(String):allM,who:it.who||''}:{kind:'rest',every:'2',months:allM,who:''},onDelete:del,
+    fields:[{k:'kind',l:'Kärl',t:'seg',o:PKIND_ORDER.map(function(k){return [k,PKIND[k].n];})},{k:'text',l:'Eget namn (valfritt)',t:'text',ph:'t.ex. Kärl 1 (mat + rest)'},
+      {t:'row',fields:[{k:'anchor',l:'Nästa tömning',t:'date'},{k:'who',l:'Vem ställer ut?',t:'select',o:whoOpts()}]},{k:'every',l:'Hur ofta?',t:'seg',o:[['1','Varje vecka'],['2','Varannan vecka'],['4','Var 4:e vecka'],['8','Var 8:e vecka']]},
+      {k:'months',l:'Vilka månader? (t.ex. trädgårdsavfall bara april–november)',t:'multi',o:MON_S.map(function(m,i){return [String(i+1),cap(m)];})}],
+    hint:'Jag påminner kvällen innan och samma morgon. Under månader som inte är valda hoppar jag över tömningen.',
+    onSave:function(v){if(!v.anchor){toast('Välj datum för nästa tömning.');return false;}var o=it||{};o.kind=v.kind||'rest';o.text=(v.text||'').trim();o.anchor=v.anchor;o.every=+v.every||1;o.who=v.who||'';
+      var ms=(v.months||[]).map(Number).filter(function(x){return x>=1&&x<=12;}).sort(function(x,y){return x-y;});if(!ms.length){toast('Välj minst en månad.');return false;}o.months=ms.length===12?[]:ms;commit(o);}});}
   else if(kind==='dates')openForm({title:isNew?'Nytt viktigt datum':'Ändra datum',values:it||{kind:'fodelsedag',showAge:false},onDelete:del,
     fields:[{k:'name',l:'Vem eller vad?',t:'text',ph:'t.ex. Mormor, Bröllopsdag'},{k:'kind',l:'Typ',t:'seg',o:[['fodelsedag','Födelsedag'],['arsdag','Årsdag'],['annat','Annat']]},
       {k:'date',l:'Datum (året används för att räkna ålder)',t:'date'},{k:'who',l:'Gäller någon i hushållet? (visas på deras rad i familjetavlan)',t:'seg',o:whoOpts().filter(function(x){return x[0]!=='both';})},{k:'showAge',l:'Visa ålder / antal år',t:'check'}],
     onSave:function(v){if(!req(v,'name'))return false;if(!v.date){toast('Välj ett datum.');return false;}var o=it||{};o.name=v.name.trim();o.kind=v.kind;o.date=v.date;o.who=v.who||'';o.showAge=v.showAge;commit(o);}});
   else if(kind==='bills'||kind==='subs'){var isSub=kind==='subs';
     openForm({title:isNew?(isSub?'Ny prenumeration':'Ny räkning'):(isSub?'Ändra prenumeration':'Ändra räkning'),
-      values:it?{name:it.name,amount:String(it.amount),day:String(it.day),every:String(it.every||1),start:String(it.start||1),autogiro:!!it.autogiro,review:!!it.review}:{every:'1',day:isSub?'1':'28',start:String(now().getMonth()+1),autogiro:isSub},onDelete:del,
+      values:it?{name:it.name,amount:String(it.amount),day:String(it.day),every:String(it.every===0?0:(it.every||1)),start:String(it.start||1),autogiro:!!it.autogiro,review:!!it.review,due:it.due||'',bcat:it.bcat||'rakningar'}:{every:'1',day:isSub?'1':'28',start:String(now().getMonth()+1),autogiro:isSub,due:ymd(addDays(now(),14)),bcat:isSub?'noje':'rakningar'},onDelete:del,
       fields:[{k:'name',l:isSub?'Vad är det?':'Räkning',t:'text',ph:isSub?'t.ex. Streaming, Kameramoln, Gym':'t.ex. Hyra, El, Hemförsäkring'},
         {t:'row',fields:[{k:'amount',l:'Belopp (kr)',t:'number',ph:'t.ex. 129'},{k:'day',l:'Förfaller dag (1–31)',t:'number',ph:'28'}]},
-        {k:'every',l:'Hur ofta?',t:'seg',o:[['1','Varje månad'],['3','Kvartal'],['6','Halvår'],['12','Varje år']]},
+        {k:'every',l:'Hur ofta?',t:'seg',o:(isSub?[]:[['0','En gång']]).concat([['1','Varje månad'],['3','Kvartal'],['6','Halvår'],['12','Varje år']])},
+        {k:'due',l:'Om en gång: förfallodatum',t:'date'},
         {k:'start',l:'Om inte varje månad: vilken månad dras den?',t:'select',o:MONTHS.map(function(m,i){return [String(i+1),cap(m)];})},
-        {k:'autogiro',l:'Dras automatiskt (autogiro/kort)',t:'check'}].concat(isSub?[{k:'review',l:'Värd att se över – kanske säga upp?',t:'check'}]:[]),
-      hint:isSub?'Jag räknar om allt till kostnad per månad och per år.':'Jag påminner tre dagar innan, om den inte dras automatiskt.',
-      onSave:function(v){if(!req(v,'name'))return false;var o=it||{paid:{}};o.name=v.name.trim();o.amount=num(v.amount);o.day=Math.max(1,Math.min(31,Math.round(num(v.day))||1));o.every=+v.every||1;o.start=+v.start||1;o.autogiro=!!v.autogiro;o.kind=isSub?'sub':'bill';o.review=isSub?!!v.review:false;commit(o);}});}
+        {k:'bcat',l:'Räknas i budgeten som',t:'seg',o:BCATS.map(function(c){return [c[0],c[1]];})},{k:'autogiro',l:'Dras automatiskt (autogiro/kort)',t:'check'}].concat(isSub?[{k:'review',l:'Värd att se över – kanske säga upp?',t:'check'}]:[]),
+      hint:isSub?'Jag räknar om allt till kostnad per månad och per år.':'Jag påminner '+billWarn()+' dagar innan (ändras under Räkningar), om den inte dras automatiskt. Återkommande räkningar lägger upp nästa period av sig själva.',
+      onSave:function(v){if(!req(v,'name'))return false;var o=it||{paid:{}};o.name=v.name.trim();o.amount=num(v.amount);o.day=Math.max(1,Math.min(31,Math.round(num(v.day))||1));o.every=+v.every||1;o.start=+v.start||1;o.autogiro=!!v.autogiro;o.kind=isSub?'sub':'bill';o.review=isSub?!!v.review:false;o.bcat=v.bcat||'rakningar';
+        if(!isSub&&String(v.every)==='0'){if(!v.due){toast('Välj förfallodatum.');return false;}o.every=0;o.due=v.due;var dd0=parseYmd(v.due);if(dd0)o.day=dd0.getDate();}else delete o.due;
+        if(isNew||o.since==null)o.since=billSince(o);commit(o);}});}
   else if(kind==='service'){
     var chips='<label>Snabbval</label><div class="tsug" style="padding:0">'+SERVICE_PRESETS.map(function(p,i){return '<button type="button" class="gbtn sm" style="background:#fff;color:#111;border:2px solid #9aa4a8;margin:0 6px 6px 0" data-act="svcPreset" data-i="'+i+'">'+esc(p[0])+'</button>';}).join('')+'</div>';
     openForm({title:isNew?'Nytt underhåll':'Ändra underhåll',values:it?{text:it.text,every:String(it.every),last:it.last}:{every:'12',last:ymd(now())},onDelete:del,
@@ -2136,11 +2748,52 @@ function editItem(kind,id){
   else if(kind==='evening')openForm({title:isNew?'Ny kvällssyssla':'Ändra kvällssyssla',values:it,onDelete:del,
     fields:[{k:'text',l:'Vad ska göras innan ni lägger er?',t:'text',ph:'t.ex. Låsa ytterdörren'}],hint:'Bockas av varje kväll och nollställs till nästa.',
     onSave:function(v){if(!req(v,'text'))return false;var o=it||{doneDay:''};o.text=v.text.trim();commit(o);}});
+  else if(kind==='cars')openForm({title:isNew?'Ny bil':'Ändra bil',values:it||{tires:'sommar',who:''},onDelete:del,
+    fields:[{t:'row',fields:[{k:'name',l:'Namn',t:'text',ph:'t.ex. Volvon'},{k:'reg',l:'Reg.nr (valfritt)',t:'text',ph:'ABC 123'}]},
+      {t:'row',fields:[{k:'besikt',l:'Nästa besiktning (senast)',t:'date'},{k:'service',l:'Nästa service',t:'date'}]},{k:'serviceNote',l:'Service – anteckning',t:'text',ph:'t.ex. Oljebyte, Bilverkstan'},
+      {k:'tires',l:'Däck på nu',t:'seg',o:TIRES},{k:'who',l:'Ansvarig',t:'select',o:whoOpts()}],
+    hint:'Påminnelser: besiktning 30 dagar innan, service 14 dagar innan, och däckbyte i oktober–november och mars–april. Vinterdäck krävs 1 dec–31 mars vid vinterväglag. Dubbdäck får användas till 15 april.',
+    onSave:function(v){if(!req(v,'name'))return false;var o=it||{};o.name=cap(v.name.trim());o.reg=(v.reg||'').trim().toUpperCase();o.besikt=v.besikt||'';o.service=v.service||'';o.serviceNote=(v.serviceNote||'').trim();o.tires=v.tires||'sommar';o.who=v.who||'';commit(o);}});
+  else if(kind==='countdowns')openForm({title:isNew?'Ny nedräkning':'Ändra nedräkning',values:it?{title:it.title,date:it.date,emoji:it.emoji,emo2:CD_EMO.indexOf(it.emoji)<0?it.emoji:'',yearly:!!it.yearly,who:it.who||''}:{date:ymd(addDays(now(),30)),emoji:'🏖',yearly:false,who:''},onDelete:del,
+    fields:[{k:'title',l:'Till vad?',t:'text',ph:'t.ex. Semester i Grekland'},{t:'row',fields:[{k:'date',l:'Datum',t:'date'},{k:'emo2',l:'Egen emoji (valfri)',t:'text',ph:'t.ex. 🐣'}]},
+      {k:'emoji',l:'Symbol',t:'seg',o:CD_EMO.map(function(e){return [e,e];})},{k:'who',l:'Gäller',t:'select',o:whoOpts()},{k:'yearly',l:'Återkommer varje år',t:'check'}],
+    hint:'Syns på startskärmen när den är närmast.',
+    onSave:function(v){if(!req(v,'title'))return false;if(!v.date){toast('Välj ett datum.');return false;}var o=it||{};o.title=cap(v.title.trim());o.date=v.date;o.emoji=(v.emo2||'').trim().slice(0,4)||v.emoji||'⭐';o.yearly=!!v.yearly;o.who=v.who||'';commit(o);}});
+  else if(kind==='spend')openForm({title:isNew?'Ny utgift':'Ändra utgift',values:it?{amount:String(it.amount),text:it.text,cat:it.cat,date:it.date,who:it.who||''}:{cat:'mat',date:ymd(now()),who:devWho()},onDelete:del,
+    fields:[{t:'row',fields:[{k:'amount',l:'Belopp (kr)',t:'number'},{k:'date',l:'Datum',t:'date'}]},{k:'text',l:'Vad?',t:'text',ph:'t.ex. ICA, bio'},{k:'cat',l:'Kategori',t:'seg',o:BCATS.map(function(c){return [c[0],c[1]];})},{k:'who',l:'Vem?',t:'select',o:whoOpts()}],
+    onSave:function(v){var a=num(v.amount);if(!(a>0)){toast('Skriv ett belopp.');return false;}var o=it||{};o.amount=Math.round(a*100)/100;o.text=cap((v.text||'').trim());o.cat=v.cat||'ovrigt';o.date=v.date||ymd(now());o.who=v.who||'';commit(o);}});
+  else if(kind==='meds')openForm({title:isNew?'Ny medicin eller vitamin':'Ändra '+it.name,values:it?{name:it.name,times:(it.times||[]).join(', '),note:it.note||'',who:it.who||'',paused:!!it.paused}:{times:'08:00',who:devWho()},onDelete:del,
+    fields:[{k:'name',l:'Namn',t:'text',ph:'t.ex. D-vitamin, Allergitablett'},{k:'times',l:'Tider (komma emellan)',t:'text',ph:'08:00, 20:00'},{k:'note',l:'Anteckning (valfri)',t:'text',ph:'t.ex. 1 tablett med mat'},{k:'who',l:'Vem?',t:'seg',o:whoOpts()},{k:'paused',l:'Pausad (visas inte i dag-vyn)',t:'check'}],
+    hint:'Bocka av varje dos i Vardag eller Idag. Jag ersätter inte läkaren – jag håller bara räkningen.',
+    onSave:function(v){if(!req(v,'name'))return false;var tm=parseTimes(v.times);if(!tm.length){toast('Skriv minst en tid, t.ex. 08:00.');return false;}var o=it||{done:{}};o.name=cap(v.name.trim());o.times=tm;o.note=(v.note||'').trim();o.who=v.who||'';o.paused=!!v.paused;commit(o);}});
+  else if(kind==='plants')openForm({title:isNew?'Ny växt':'Ändra '+it.name,values:it?{name:it.name,every:String(it.every),where:it.where||'',last:it.last||''}:{every:'7',last:ymd(now())},onDelete:del,
+    fields:[{k:'name',l:'Växt',t:'text',ph:'t.ex. Monstera'},{k:'where',l:'Var står den?',t:'text',ph:'t.ex. Vardagsrummet'},{k:'every',l:'Vattna var',t:'seg',o:[['2','2:a dag'],['3','3:e dag'],['5','5:e dag'],['7','vecka'],['10','10:e dag'],['14','2:a vecka'],['21','3:e vecka']]},{k:'last',l:'Senast vattnad',t:'date'}],
+    onSave:function(v){if(!req(v,'name'))return false;var o=it||{};o.name=cap(v.name.trim());o.where=(v.where||'').trim();o.every=+v.every||7;o.last=v.last||ymd(now());commit(o);}});
+  else if(kind==='places')openForm({title:isNew?'Var är…?':'Ändra',values:it?{what:it.what,where:it.where,who:it.who||''}:{who:devWho()},onDelete:del,
+    fields:[{k:'what',l:'Sak',t:'text',ph:'t.ex. Reservnyckeln'},{k:'where',l:'Ligger var?',t:'text',ph:'t.ex. Översta lådan i hallen'},{k:'who',l:'Vem vet mest?',t:'select',o:whoOpts()}],
+    onSave:function(v){if(!req(v,'what')||!req(v,'where'))return false;var o=it||{};o.what=cap(v.what.trim());o.where=v.where.trim();o.who=v.who||'';commit(o);}});
+  else if(kind==='packs'){if(it)openForm({title:'Ändra packlista',values:{name:it.name},onDelete:del,fields:[{k:'name',l:'Namn',t:'text'}],
+      onSave:function(v){if(!req(v,'name'))return false;it.name=cap(v.name.trim());commit(it);}});
+    else openForm({title:'Ny packlista',values:{name:'',tmpl:'helg'},saveLabel:'Skapa',
+      fields:[{k:'name',l:'Namn',t:'text',ph:'t.ex. Fjällen, februari'},{k:'tmpl',l:'Börja från',t:'seg',o:PACK_NAMES}],hint:'Mallen fyller i vanliga saker. Ta bort det som inte behövs, lägg till resten.',
+      onSave:function(v){var tp=v.tmpl||'tom',nm=(v.name||'').trim()||(tp==='tom'?'Packlista':PACK_NAMES.filter(function(x){return x[0]===tp;})[0][1]);
+        var o={name:cap(nm),items:(PACK_TMPL[tp]||[]).map(function(t){return {id:uid(),text:t,done:false,who:''};})};commit(o);packSel=o.id;}});}
+  else if(kind==='packitem'){var pk=packById(String(id).split('|')[0]),pi=pk?byId(pk.items,String(id).split('|')[1]):null;if(!pi)return;
+    openForm({title:'Ändra sak',values:{text:pi.text,who:pi.who||''},onDelete:function(){pk.items.splice(findIn(pk.items,pi.id),1);pk.updatedAt=nowMs();save();closeForm();renderAll();},
+      fields:[{k:'text',l:'Sak',t:'text'},{k:'who',l:'Vems?',t:'seg',o:whoOpts()}],onSave:function(v){if(!req(v,'text'))return false;pi.text=cap(v.text.trim());pi.who=v.who||'';pk.updatedAt=nowMs();}});}
+  else if(kind==='wifi')editWifi();
   else if(kind==='jarvis')openForm({title:isNew?'Till Jarvis':'Meddelande till Jarvis',values:it||{who:devWho()},onDelete:del,
     fields:[{k:'text',l:'Vad ska jag fixa?',t:'area',ph:'t.ex. Lägg in tandläkaren på torsdag kl. 9'},{k:'who',l:'Från',t:'seg',o:WHO_OPTS()}],hint:'Kommer med synken. Tills dess sparas meddelandet bara på den här enheten.',
     onSave:function(v){if(!req(v,'text'))return false;var o=it||{ts:nowMs()};o.text=v.text.trim();o.who=v.who;commit(o);}});
 }
-var editDate=null;
+var editDate=null,CD_EMO=['🏖','✈️','🎉','🏠','🎿','💍','🎓','⭐'];
+function editWifi(){var w=S.wifi||{};
+  openForm({title:'Gäst-wifi',values:{ssid:w.ssid||'',pass:w.pass||'',sec:w.sec||'WPA',hidden:!!w.hidden},
+    fields:[{k:'ssid',l:'Nätverksnamn (SSID)',t:'text',ph:'t.ex. Hemma-Gäst'},{k:'pass',l:'Lösenord',t:'text'},{k:'sec',l:'Säkerhet',t:'seg',o:[['WPA','WPA/WPA2/WPA3'],['WEP','WEP'],['nopass','Öppet nät']]},{k:'hidden',l:'Dolt nätverk',t:'check'}],
+    hint:'Sparas bara på den här enheten (och i säkerhetskopian). Skriv exakt som i routern – stora och små bokstäver spelar roll.',
+    onSave:function(v){var ss=(v.ssid||'').trim();if(!ss){toast('Skriv nätverkets namn.');return false;}if(v.sec!=='nopass'&&!v.pass){toast('Skriv lösenordet – eller välj Öppet nät.');return false;}
+      S.wifi={ssid:ss,pass:v.pass||'',sec:v.sec||'WPA',hidden:!!v.hidden,updatedAt:nowMs()};if(utf8Len(wifiString(S.wifi))>210){toast('Namn och lösenord är för långa för QR-koden.');return false;}varSub='wifi';}});}
+function utf8Len(s){return unescape(encodeURIComponent(s)).length;}
 function editMenu(d){
   var m=S.menu[d]||{dish:'',ingr:[]},dn=cap(DAYS[(+d)%7]),inBank=S.recipes.some(function(r){return r.name.toLowerCase()===String(m.dish||'').toLowerCase();});
   var opts=[['','– välj ur receptbanken –']].concat(S.recipes.slice().sort(function(a,b){return (b.fav?1:0)-(a.fav?1:0)||a.name.localeCompare(b.name,'sv');}).map(function(r){return [r.id,(r.fav?'★ ':'')+r.name];}));
@@ -2153,12 +2806,14 @@ function editMenu(d){
   var sel=$('f_rid');if(sel)sel.addEventListener('change',function(){var r=byId(S.recipes,sel.value);if(r){$('f_dish').value=r.name;$('f_ingr').value=(r.ingr||[]).join(', ');}});
 }
 function menuToShop(days){
-  var all=[];days.forEach(function(d){var m=S.menu[d];if(m&&m.ingr)all=all.concat(m.ingr);});
-  if(!all.length){toast('Inga ingredienser att lägga till.');return;}
-  var n=addShop(all);renderAll();
-  if(!n)toast('Allt fanns redan på listan. Jag är imponerad.');
-  else if(n===all.length)toast(n+(n===1?' vara':' varor')+' i inköpslistan. Bon appétit.');
-  else toast(n+' varor i inköpslistan – resten fanns redan.');
+  var all=[],seen={},skip=[];days.forEach(function(d){var m=S.menu[d];if(m&&m.ingr)m.ingr.forEach(function(x){var k=String(x).toLowerCase().trim();if(!k||seen[k])return;seen[k]=1;if(inFridge(x))skip.push(x);else all.push(x);});});
+  if(!all.length&&!skip.length){toast('Inga ingredienser att lägga till.');return 0;}
+  var n=addShop(all,{src:'meny'});renderAll();
+  var sk=skip.length?' '+cap(skip.slice(0,3).join(', ').toLowerCase())+' finns redan i kylen.':'';
+  if(!n)toast((all.length?'Allt fanns redan på listan.':'Inget behövs.')+sk);
+  else if(n===all.length)toast(n+(n===1?' vara':' varor')+' i inköpslistan. Bon appétit.'+sk);
+  else toast(n+' varor i inköpslistan – resten fanns redan.'+sk);
+  return n;
 }
 
 /* ================= Ljud & larm ================= */
@@ -2218,7 +2873,7 @@ function go(v){
 function renderView(){
   switch(cur){case 'home':renderHome();break;case 'idag':renderIdag();break;case 'vecka':renderVecka();break;case 'mat':renderMat();break;
     case 'inkop':renderInkop();break;case 'sysslor':renderSysslor();break;case 'timer':renderTimer();break;case 'inst':renderInst();break;
-    case 'hemmet':renderHemmet();break;case 'lappar':renderLappar();break;case 'kvall':renderKvall();break;}
+    case 'hemmet':renderHemmet();break;case 'vardag':renderVardag();break;case 'lappar':renderLappar();break;case 'kvall':renderKvall();break;}
 }
 function renderAll(){renderView();if(cur!=='home')renderHome();renderPills();renderRail();popId=null;newId=null;}
 
@@ -2238,13 +2893,42 @@ document.addEventListener('click',function(ev){
   if(seg&&F){F.vals[seg]=el.getAttribute('data-v');[].forEach.call(el.parentNode.children,function(b){b.classList.toggle('on',b===el);});return;}
   var a=el.getAttribute('data-act'),id=el.getAttribute('data-id'),kind=el.getAttribute('data-kind'),it,i;
   switch(a){
-    case 'go':if(F)closeForm();var sub=el.getAttribute('data-sub');if(sub)matSub=sub;go(el.getAttribute('data-v'));break;
+    case 'go':if(F)closeForm();var gv=el.getAttribute('data-v'),sub=el.getAttribute('data-sub');if(sub)setSub(gv,sub);go(gv);break;
     case 'quick':openQuick();break;
     case 'qt':qTarget=el.getAttribute('data-v');[].forEach.call(el.parentNode.children,function(b){b.classList.toggle('on',b===el);});qExtra();break;
     case 'qSave':quickSave();break;
     case 'more':openMore();break;
     case 'weekMode':weekMode=el.getAttribute('data-v');renderVecka();break;
     case 'matSub':matSub=el.getAttribute('data-v');renderMat();break;
+    case 'hemSub':hemSub=el.getAttribute('data-v');budKey=null;renderHemmet();$('main').scrollTop=0;break;
+    case 'varSub':varSub=el.getAttribute('data-v');renderVardag();$('main').scrollTop=0;break;
+    case 'billWarn':S.settings.billWarn=+el.getAttribute('data-v');save();renderAll();toast('Jag påminner '+billWarn()+(billWarn()===1?' dag':' dagar')+' innan förfallodagen.');break;
+    case 'budM':budKey=keyAdd(budKey||ymOf(now()),+el.getAttribute('data-o'));renderHemmet();break;
+    case 'budEdit':openForm({title:'Budget per månad',values:{mat:String(S.budget.mat||''),rakningar:String(S.budget.rakningar||''),noje:String(S.budget.noje||''),ovrigt:String(S.budget.ovrigt||'')},
+      fields:[{t:'row',fields:[{k:'mat',l:'Mat (kr)',t:'number'},{k:'noje',l:'Nöje (kr)',t:'number'}]},{t:'row',fields:[{k:'rakningar',l:'Räkningar (0 = automatiskt)',t:'number'},{k:'ovrigt',l:'Övrigt (kr)',t:'number'}]}],
+      hint:'Räkningar på 0 betyder att budgeten blir summan av månadens räkningar och prenumerationer. Betalda räkningar räknas in automatiskt.',
+      onSave:function(v){['mat','rakningar','noje','ovrigt'].forEach(function(k){S.budget[k]=Math.max(0,Math.round(num(v[k])));});S.budget.updatedAt=nowMs();}});break;
+    case 'spCat':spCat=el.getAttribute('data-v');spCatSet=true;[].forEach.call(el.parentNode.children,function(b){b.classList.toggle('on',b===el);});break;
+    case 'spAdd':spendSubmit();break;
+    case 'suggestWeek':if(!S.recipes.length){toast('Receptbanken är tom. Lägg in några rätter först.');break;}openSuggest();break;
+    case 'sugDo':var wantS=$('sugShop')&&$('sugShop').checked;closeForm();var sr=suggestWeek(el.getAttribute('data-v'));save();renderAll();
+      if(!sr.n){toast('Inga dagar att planera.');break;}
+      var smsg=sr.n+(sr.n===1?' middag':' middagar')+' planerade'+(sr.uses.length?', med '+sr.uses.slice(0,3).join(', ').toLowerCase()+' från kylen':'')+'.';
+      if(wantS){var sn2=menuToShop(sr.days);if(sn2)smsg+=' '+sn2+' varor i listan.';}
+      setTimeout(function(){toast(smsg);},wantS?2600:0);break;
+    case 'carDone':it=byId(S.cars,id);if(it){var ck=el.getAttribute('data-k');
+      if(ck==='besikt'){it.besiktDone=ymd(now());it.besikt=ymd(new Date(now().getFullYear()+1,now().getMonth(),now().getDate()));toast('Besiktning klar. Nästa senast '+fmtD(parseYmd(it.besikt))+' '+parseYmd(it.besikt).getFullYear()+' – kolla exakt datum hos Transportstyrelsen.');}
+      else{var sd0=parseYmd(it.service);it.service=ymd(new Date(now().getFullYear()+1,now().getMonth(),now().getDate()));toast('Service klar. Nästa satt till '+fmtD(parseYmd(it.service))+' '+parseYmd(it.service).getFullYear()+'.');}
+      it.ex=false;it.updatedAt=nowMs();save();renderAll();}break;
+    case 'carTires':it=byId(S.cars,id);if(it){var m0=now().getMonth(),win=m0>=8||m0<=1;openForm({title:'Däckbyte – '+(it.name||'bilen'),values:{tires:win?(it.tires==='sommar'?'vinter':it.tires):'sommar'},saveLabel:'Spara',
+      fields:[{k:'tires',l:'Vilka däck sitter på nu?',t:'seg',o:TIRES}],onSave:function(v){it.tires=v.tires||'sommar';it.tiresAt=ymd(now());it.ex=false;it.updatedAt=nowMs();setTimeout(function(){toast(tireName(it.tires)+' på. Kör försiktigt.');},30);}});}break;
+    case 'medTake':it=byId(S.meds,id);if(it){var on2=medToggle(it,el.getAttribute('data-t'));save();renderAll();if(on2)toast(it.name+' kl. '+el.getAttribute('data-t')+' – tagen. '+(medsLeft()?medsLeft()+' kvar idag.':'Alla doser för idag klara.'));}break;
+    case 'plantDone':it=byId(S.plants,id);if(it){it.last=ymd(now());it.ex=false;it.updatedAt=nowMs();save();renderAll();toast(it.name+' vattnad. Nästa gång '+relDay(plantNext(it).d)+'.');}break;
+    case 'packSel':packSel=id;renderVardag();break;
+    case 'packReset':it=packById(id);if(it){it.items.forEach(function(x){x.done=false;});it.updatedAt=nowMs();save();renderVardag();toast('Listan är nollställd. Ny resa, nya möjligheter.');}break;
+    case 'editWifi':editWifi();break;
+    case 'wifiBig':openWifiBig();break;
+    case 'shopBy':shopBy=el.getAttribute('data-v');if(shopBy===devWho())shopBy=null;renderInkop();break;
     case 'pickFood':openPicker(el.getAttribute('data-d'));break;
     case 'pickAgain':openPicker(F&&F.vals.pday,id);break;
     case 'pickUse':it=byId(S.recipes,id);if(it&&F){var pd=F.vals.pday||String(wdIdx(now())+1),wantShop=$('pShop')&&$('pShop').checked;pickDay=null;menuSetRecipe(pd,it);closeForm();save();
@@ -2254,7 +2938,8 @@ document.addEventListener('click',function(ev){
       h+='</div><label style="display:flex;align-items:center;font-size:17px;margin-top:12px"><input type="checkbox" id="pShop" checked style="width:26px;height:26px;margin:0 10px 0 0">Lägg ingredienserna i inköpslistan</label><div class="sbtns"><div></div><div><button class="btn cancel" data-act="fCancel">Avbryt</button><button class="btn pri" data-act="pickUse" data-id="'+r.id+'">Lägg på menyn</button></div></div>';
       F={picker:true,vals:{pday:String(wdIdx(now())+1)},fields:[]};$('edSheet').innerHTML=h;$('editor').className='ov open';})(it);}break;
     case 'fEat':case 'fThrow':i=findIn(S.fridge,id);if(i>=0){var fx=S.fridge.splice(i,1)[0];fridgeStat(a==='fEat'?'eaten':'thrown');save();renderAll();toast(a==='fEat'?fx.text+': uppätet. Utmärkt hushållning.':fx.text+': slängt. Vi talar inte mer om det.');}break;
-    case 'billPaid':it=byId(S.bills,id);if(it){var th=billThis(it);if(th){if(it.paid[th.key])delete it.paid[th.key];else{it.paid[th.key]=true;popId=id;}save();renderAll();if(it.paid[th.key])toast(it.name+' betald. Plånboken suckar, jag noterar.');}}break;
+    case 'billPaid':it=byId(S.bills,id);if(it){var bk=el.getAttribute('data-key')||(billNext(it)||{}).key;if(!bk)break;
+      if(paidInfo(it,bk)){unmarkPaid(it,bk);save();renderAll();toast(it.name+': markerad som obetald igen.');}else openPaySheet(it,bk);}break;
     case 'svcDone':it=byId(S.service,id);if(it){it.last=ymd(now());it.ex=false;save();renderAll();var sn=serviceNext(it);toast('Bra jobbat. Nästa gång: '+sn.d.getDate()+' '+MONTHS[sn.d.getMonth()]+' '+sn.d.getFullYear()+'.');}break;
     case 'svcPreset':var pr=SERVICE_PRESETS[+el.getAttribute('data-i')];if(pr&&F){$('f_text').value=pr[0];F.vals.every=String(pr[1]);[].forEach.call($('edSheet').querySelectorAll('[data-seg=every]'),function(b){b.classList.toggle('on',b.getAttribute('data-v')===String(pr[1]));});}break;
     case 'parcelNext':it=byId(S.parcels,id);if(it){it.status=it.status==='vag'?'hamta':it.status==='hamta'?'klar':'vag';if(it.status==='klar')it.doneAt=ymd(now());save();renderAll();toast(PSTAT[it.status].n+': '+it.text);}break;
@@ -2265,11 +2950,13 @@ document.addEventListener('click',function(ev){
     case 'tick':
       if(kind==='chores'){it=byId(S.chores,id);if(it){it.doneWeek=choreDone(it)?-1:weekIndex(now());if(choreDone(it)){popId=id;var cw=choreWho(it);it.doneBy=cw==='both'&&devWho()?devWho():cw;if(S.settings.points&&allChoresDone())setTimeout(function(){toast('Alla veckans sysslor klara! Svit: '+choreStreak()+'. Jag applåderar, diskret.');},400);}}}
       else if(kind==='evening'){it=byId(S.evening,id);if(it){it.doneDay=eveningDone(it)?'':eveningKey();if(eveningDone(it))popId=id;}}
-      else{it=byId(S[kind],id);if(it){it.done=!it.done;if(it.done)popId=id;}}
+      else if(kind==='meds'){var mp=String(id).split('|');it=byId(S.meds,mp[0]);if(it){if(medToggle(it,mp[1]))popId=id;}}
+      else if(kind==='packitem'){var pp2=String(id).split('|'),pk2=packById(pp2[0]),px=pk2?byId(pk2.items,pp2[1]):null;if(px){px.done=!px.done;pk2.updatedAt=nowMs();if(px.done)popId=id;save();renderAll();var pg=packProgress(pk2);if(px.done&&pg.d===pg.n)toast('Allt packat! Trevlig resa.');}break;}
+      else{it=byId(S[kind],id);if(it){it.done=!it.done;it.updatedAt=nowMs();if(kind==='shop'){if(it.done){it.doneBy=devWho()||'';it.doneAt=nowMs();}else{delete it.doneBy;delete it.doneAt;}}if(it.done)popId=id;}}
       save();renderAll();break;
     case 'edit':editDate=null;editItem(kind,id);break;
     case 'add':editDate=el.getAttribute('data-date');editItem(kind,null);break;
-    case 'clearDone':var before=S[kind].length;S[kind]=S[kind].filter(function(x){return !x.done;});save();renderAll();toast((before-S[kind].length)+' borttagna. Rent och prydligt.');break;
+    case 'clearDone':var before=S[kind].length;S[kind]=S[kind].filter(function(x){if(x.done&&kind==='shop')tombstone('shop',x.id);return !x.done;});save();renderAll();toast((before-S[kind].length)+' borttagna. Rent och prydligt.');break;
     case 'goShopAdd':go('inkop');setTimeout(function(){var i2=$('shopInput');if(i2)i2.focus();},80);break;
     case 'fav':var f=S.favs[+el.getAttribute('data-i')];if(f){var n=addShop([f]);renderAll();toast(n?f+' tillagd.':f+' står redan på listan.');}break;
     case 'editFavs':openForm({title:'Favoriter',values:{favs:S.favs.join(', ')},fields:[{k:'favs',l:'Varor som ofta behövs (separera med komma)',t:'area'}],
@@ -2302,9 +2989,9 @@ document.addEventListener('click',function(ev){
     case 'showJson':var b=$('exportBox');b.style.display='block';b.value=JSON.stringify(S,null,1);toast('Markera allt och kopiera, t.ex. till Anteckningar.');break;
     case 'importFile':$('importInput').click();break;
     case 'importText':var bx=$('exportBox');if(bx.style.display!=='block'||!bx.value.trim()){bx.style.display='block';bx.value='';bx.focus();toast('Klistra in säkerhetskopian och tryck Importera text igen.');}else importData(bx.value);break;
-    case 'removeExamples':['todos','events','shop','notes','chores','pickups','dates','bills','service','parcels','fridge','recipes'].forEach(function(k){S[k]=S[k].filter(function(x){return !x.ex;});});
+    case 'removeExamples':['todos','events','shop','notes','chores','pickups','dates','bills','service','parcels','fridge','recipes','cars','countdowns','spend','meds','plants','places','packs'].forEach(function(k){S[k]=S[k].filter(function(x){return !x.ex;});});
       for(i=1;i<=7;i++)if(S.menu[i]&&S.menu[i].ex)S.menu[i]={dish:'',ingr:[]};save();renderAll();toast('Exemplen är borta. Nu är det på riktigt.');break;
-    case 'wipe':if(confirm('Tömma alla listor, händelser, sysslor, datum, räkningar och lappar? Recepten, kvällsrutinen och inställningarna behålls.')){['todos','events','shop','notes','chores','pickups','dates','timers','bills','service','parcels','fridge','jarvis'].forEach(function(k){S[k]=[];});S.choreHist={};S.fridgeStats={};for(i=1;i<=7;i++)S.menu[i]={dish:'',ingr:[]};save();renderAll();toast('Allt är tömt. Rent och prydligt.');}break;
+    case 'wipe':if(confirm('Tömma alla listor, händelser, sysslor, datum, räkningar, utgifter, bilar, mediciner, växter och lappar? Recepten, packlistorna, kvällsrutinen och inställningarna behålls.')){S.shop.forEach(function(x){tombstone('shop',x.id);});['todos','events','shop','notes','chores','pickups','dates','timers','bills','service','parcels','fridge','jarvis','cars','countdowns','spend','meds','plants','places'].forEach(function(k){S[k]=[];});S.packs.forEach(function(p){p.items.forEach(function(x){x.done=false;});});S.choreHist={};S.fridgeStats={};for(i=1;i<=7;i++)S.menu[i]={dish:'',ingr:[]};save();renderAll();toast('Allt är tömt. Rent och prydligt.');}break;
   }
 });
 document.addEventListener('change',function(ev){
@@ -2337,6 +3024,7 @@ function importData(txt){
 
 /* ================= Tick & dygn ================= */
 var lastMin=-1,lastDay='';
+function setSub(v,x){if(v==='mat')matSub=x;else if(v==='hemmet'){hemSub=x;budKey=null;}else if(v==='vardag')varSub=x;}
 function applyNight(){var h=now().getHours();document.body.classList.toggle('isnight',!!S.settings.night&&(h>=23||h<6));}
 function dayRollover(){
   var today=ymd(now());if(S.lastDay===today)return;
@@ -2344,6 +3032,7 @@ function dayRollover(){
   if(S.settings.autoClear)S.todos=S.todos.filter(function(t){return !t.done;});
   var pc=ymd(addDays(now(),-3));S.parcels=S.parcels.filter(function(p){return p.status!=='klar'||(p.doneAt||today)>pc;});
   var cutoff=ymd(addDays(now(),-60));S.events=S.events.filter(function(e){return (e.repeat&&e.repeat!=='none')||e.date>=cutoff;});
+  pruneTomb();var mc=ymd(addDays(now(),-14));S.meds.forEach(function(m){for(var k in m.done)if(m.done.hasOwnProperty(k)&&k<mc)delete m.done[k];});
   S.lastDay=today;save();
 }
 function tick(){
@@ -2379,7 +3068,7 @@ setVh();load();loadDev();loadWx();applyLayout();
 if(params.wx==='offline')wxOnline=false;
 document.body.classList.toggle('glass',!!S.settings.glass);
 applyTheme(true);renderRail();
-if(params.sub)matSub=params.sub;if(params.vmode)weekMode=params.vmode;
+if(params.sub)setSub(params.vy||'mat',params.sub);if(params.vmode)weekMode=params.vmode;
 go(params.vy&&document.getElementById('v-'+params.vy)?params.vy:'home');
 lastDay=ymd(now());dayRollover();lastMin=now().getMinutes();applyNight();
 setInterval(tick,1000);
@@ -2389,7 +3078,7 @@ fetchDagens();setInterval(fetchDagens,60*60000);
 S.timers.forEach(function(t){if(t.state==='ring')t.state='run';});
 if(params.saver)setTimeout(openSaver,30);
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1')){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
-window.__hem={S:function(){return S;},editPerson:editPerson,askRemove:askRemove,removePerson:removePerson,movePerson:movePerson,people:people,person:person,allLabel:allLabel,rotOf:rotOf,personRefs:personRefs,whoLabel:whoLabel,DEV:function(){return DEV;},openQuick:openQuick,openPicker:openPicker,openMore:openMore,kollItems:kollItems,calDay:calDay,calYear:calYear,namnsdag:namnsdag,billNext:billNext,billThis:billThis,billTotals:billTotals,serviceNext:serviceNext,pickRecipe:pickRecipe,weekScore:weekScore,choreStreak:choreStreak,recordWeek:recordWeek,dayRollover:dayRollover,normalize:normalize,applyLayout:applyLayout,isPhone:isPhone,daySummary:daySummary,setMat:function(x){matSub=x;},setWeekMode:function(x){weekMode=x;},go:go,applyTheme:applyTheme,renderAll:renderAll,openSaver:openSaver,closeSaver:closeSaver,editItem:editItem,closeForm:closeForm,startAlarm:startAlarm,stopAlarm:stopAlarm,tickTimers:tickTimers,menuToShop:menuToShop,startTimer:startTimer,tick:tick,guessCat:guessCat,choreWho:choreWho,weekIndex:weekIndex,save:save};
+window.__hem={S:function(){return S;},editPerson:editPerson,askRemove:askRemove,removePerson:removePerson,movePerson:movePerson,people:people,person:person,allLabel:allLabel,rotOf:rotOf,personRefs:personRefs,whoLabel:whoLabel,DEV:function(){return DEV;},openQuick:openQuick,openPicker:openPicker,openMore:openMore,kollItems:kollItems,calDay:calDay,calYear:calYear,namnsdag:namnsdag,billNext:billNext,billThis:billThis,billTotals:billTotals,billOcc:billOcc,billOccsIn:billOccsIn,markPaid:markPaid,unmarkPaid:unmarkPaid,billDue:billDue,billStatus:billStatus,billSince:billSince,suggestWeek:suggestWeek,countdownList:countdownList,budgetMonth:budgetMonth,addSpend:addSpend,parseSpend:parseSpend,guessSpendCat:guessSpendCat,carAlerts:carAlerts,tireAdvice:tireAdvice,medDoses:medDoses,medToggle:medToggle,plantsDue:plantsDue,plantNext:plantNext,packProgress:packProgress,QR:QR,wifiString:wifiString,addShop:addShop,pickupNext:pickupNext,pickupDates:pickupDates,setSub:setSub,inFridge:inFridge,load:load,APPV:APPV,KEY:KEY,serviceNext:serviceNext,pickRecipe:pickRecipe,weekScore:weekScore,choreStreak:choreStreak,recordWeek:recordWeek,dayRollover:dayRollover,normalize:normalize,applyLayout:applyLayout,isPhone:isPhone,daySummary:daySummary,setMat:function(x){matSub=x;},sub:function(){return {mat:matSub,hemmet:hemSub,vardag:varSub};},setWeekMode:function(x){weekMode=x;},go:go,applyTheme:applyTheme,renderAll:renderAll,openSaver:openSaver,closeSaver:closeSaver,editItem:editItem,closeForm:closeForm,startAlarm:startAlarm,stopAlarm:stopAlarm,tickTimers:tickTimers,menuToShop:menuToShop,startTimer:startTimer,tick:tick,guessCat:guessCat,choreWho:choreWho,weekIndex:weekIndex,save:save};
 })();
 </script>
 </body>
